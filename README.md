@@ -1,13 +1,13 @@
 # Programming Interview Questions
 
 ### Strings
-- check a String is palindrome or not?
-- remove any given character from a String?
-- find out longest palindrome in a given string?
-- find the first non repeated character of a given String?
-- count the occurrence of a given character in a String?
-- check if two String are Anagram?
-- convert numeric String to int in Java?
+- Check a String is palindrome or not
+- Remove any given character from a String
+- Find out longest palindrome in a given string
+- Find the first non repeated character of a given String
+- Count the occurrence of a given character in a String
+- Check if two String are Anagram
+- Convert numeric String to int in Java
 - Reverse words in a given string
 ```
  input :Hi I am vishal
@@ -30,13 +30,13 @@ output: yes
 ----
 #### LinkList
 
-- find the middle element of a singly linked list in one pass?
-- check if a given linked list contains a cycle/loop?find the starting node of the cycle
+- Find the middle element of a singly linked list in one pass
+- Check if a given linked list contains a cycle/loop?find the starting node of the cycle
 - Finding middle element in a linked list
 - Reverse a linked list with recursion and without recursion
 - Remove duplicate nodes in an unsorted linked list
-- find the 4th node from the end in a singly linked list
-- find the sum of two linked lists using Stack
+- Find the 4th node from the end in a singly linked list
+- Find the sum of two linked lists using Stack
 - Rotate a Linked List
   ```
     input: 2
@@ -74,20 +74,20 @@ output: yes
 - Count a number of leaf nodes in a given binary tree
 - Perform a binary search in a given array
 - Find the depth of a binary tree
-- Find Height of Binary Tree  : [example](https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1) 
-- print InOrder ,postorder,preorder traversal of a BT with and without recursion
-- check if a Binary tree is a BST or not
+- Find Height of Binary Tree   [example](https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1) 
+- Print InOrder ,postorder,preorder traversal of a BT with and without recursion
+- Check if a Binary tree is a BST or not
 - Tree is balanced or not   
-- Print Left View of Binary Tree : [example](https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1)
-- Print Bottom View of Binary Tree : [example](https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1)
-- Print a Binary Tree in Vertical Order : [example](https://practice.geeksforgeeks.org/problems/print-a-binary-tree-in-vertical-order/1)
-- Level order traversal in spiral form : [example](https://practice.geeksforgeeks.org/problems/level-order-traversal-in-spiral-form/1)
-- Lowest Common Ancestor in a BST : [example](https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1)
-- Convert a given Binary Tree to Doubly Linked List  : [example](https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1)
-- Write Code to Determine if Two Trees are Identical or Not  : [example](https://practice.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1)
-- Given a binary tree, check whether it is a mirror of itself  : [example](https://practice.geeksforgeeks.org/problems/symmetric-tree/1)
-- Maximum Path Sum  : [example](https://practice.geeksforgeeks.org/problems/maximum-path-sum/1)
-- Diameter of a Binary Tree  : [example](https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1)
-- Check if given Binary Tree is Height Balanced or Not  : [example](https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1)
-- Serialize and Deserialize a Binary Tree  : [example](https://practice.geeksforgeeks.org/problems/serialize-and-deserialize-a-binary-tree/1)
+- Print Left View of Binary Tree  [example](https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1)
+- Print Bottom View of Binary Tree  [example](https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1)
+- Print a Binary Tree in Vertical Order  [example](https://practice.geeksforgeeks.org/problems/print-a-binary-tree-in-vertical-order/1)
+- Level order traversal in spiral form  [example](https://practice.geeksforgeeks.org/problems/level-order-traversal-in-spiral-form/1)
+- Lowest Common Ancestor in a BST  [example](https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1)
+- Convert a given Binary Tree to Doubly Linked List   [example](https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1)
+- Write Code to Determine if Two Trees are Identical or Not   [example](https://practice.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1)
+- Given a binary tree, check whether it is a mirror of itself   [example](https://practice.geeksforgeeks.org/problems/symmetric-tree/1)
+- Maximum Path Sum   [example](https://practice.geeksforgeeks.org/problems/maximum-path-sum/1)
+- Diameter of a Binary Tree   [example](https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1)
+- Check if given Binary Tree is Height Balanced or Not  [example](https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1)
+- Serialize and Deserialize a Binary Tree   [example](https://practice.geeksforgeeks.org/problems/serialize-and-deserialize-a-binary-tree/1)
   
