@@ -1,5 +1,12 @@
 # Programming Interview Questions
+### Sortings(with time and space complexity)
+- Bubble Sort
+- Insertion Sort
+- Selection Sort
+- Merge Sort
+- Quick Sort
 
+----
 ### Strings
 - Check a String is palindrome or not
 - Remove any given character from a String
