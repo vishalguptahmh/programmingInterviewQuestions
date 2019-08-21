@@ -1,5 +1,12 @@
 # Programming Interview Questions
+### Sortings(with time and space complexity)
+- Bubble Sort
+- Insertion Sort
+- Selection Sort
+- Merge Sort
+- Quick Sort
 
+----
 ### Strings
 - Check a String is palindrome or not
 - Remove any given character from a String
@@ -91,3 +98,6 @@ output: yes
 - Check if given Binary Tree is Height Balanced or Not  [example](https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1)
 - Serialize and Deserialize a Binary Tree   [example](https://practice.geeksforgeeks.org/problems/serialize-and-deserialize-a-binary-tree/1)
   
+  ---
+  ### Mathematics For Topcoders
+  https://www.topcoder.com/community/competitive-programming/tutorials/mathematics-for-topcoders/
