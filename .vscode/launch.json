@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - MainTestFile",
+      "request": "launch",
+      "mainClass": "MainTestFile"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - CheckPallindrom",
+      "request": "launch",
+      "mainClass": "CheckPallindrom"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - RemoveAnyChar",
+      "request": "launch",
+      "mainClass": "RemoveAnyChar"
+    }
+  ]
+}
