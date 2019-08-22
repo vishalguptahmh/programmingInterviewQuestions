@@ -39,7 +39,7 @@ output: yes
 
 - Find the middle element of a singly linked list in one pass
 - Check if a given linked list contains a cycle/loop?find the starting node of the cycle
-- Finding middle element in a linked list
+- Find Merge point of Two singly linklist
 - Reverse a linked list with recursion and without recursion
 - Remove duplicate nodes in an unsorted linked list
 - Find the 4th node from the end in a singly linked list
