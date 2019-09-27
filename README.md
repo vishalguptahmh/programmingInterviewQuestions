@@ -38,7 +38,7 @@ output: yes
 #### LinkList
 
 - Find the middle element of a singly linked list in one pass
-- Check if a given linked list contains a cycle/loop?find the starting node of the cycle
+- Check if a given linked list contains a cycle/loop?find the starting node of the cycle and remove the loop
 - Find Merge point of Two singly linklist
 - Reverse a linked list with recursion and without recursion
 - Remove duplicate nodes in an unsorted linked list
