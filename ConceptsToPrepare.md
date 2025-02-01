@@ -127,6 +127,7 @@ public void abs(int);
 public void abs(float);
 public void abs(long);
 ```
+Compiler can promote varaible to next type. here is flow of that.
 
 ```mermaid
 flowchart LR
@@ -139,9 +140,152 @@ flowchart LR
 ```
 
 
+example 
+```java
+class Test{
+
+// Example 1
+    public void m1(int i ){ print("integer");}
+    public void m1(flow f){print("float");}
+
+// Example 2
+    public void m2(Object o ){print("object");}
+    public void m2(String str){print("String");}
+
+// Example 3
+    public void m3(String str ){print("String");}
+    public void m3(StringBuffer buffer){print("StringBuffer");}
+
+// Example 4
+    public void m4(int i ){print("Integer only");}
+    public void m4(int... intarray){print("int array");}
+
+// Example 5
+    public void m5(int i, float f ){print("Int-float");}
+    public void m5(float f, int i){print("float-int");}
+
+// Example 6
+    public void m6(Animal a ){print("Animal");}
+    public void m6(Monkey m ){print("Monkey");}
+
+}
+
+class Animal{ }
+class Monkey extends Animal{}
+
+public static void main(args ...){
+    Test test = new Test();
+
+// Example 1
+    test.m1(10); // print integer
+    test.m1(10.5f); // print float
+    test.m1('a'); // print integer due to promotion . compiler will not give error imeediatly.
+    test.m1(10.5); // this is long. there is no promotion for long so compiler will give error here.
+
+// Example 2
+    test.m2(new Object()); // print  object
+    test.m2("Vishal"); // print String
+    test.m2(null); // print  String, as chil always get priroty
+
+// Example 3
+
+    test.m3("Vishal"); // String
+    test.m3(new StringBuffer("vishal"));// StringBuffer
+    test.m3(null) //  Compile time error : reference to m3 ambiguous.
+
+// Example 4
+    test.m4();// int arrary
+    test.m4(3,4); // int arrary
+    test.m4(3); // integer only, because arg concept later so general method wins because its old guy in industry.
+
+// Example 5
+    test.m5(11,22.5.f); // int-float
+    test.m5(22.5.f,11); // float-int
+    test.m5(11,11); // compile time error: ambiguous, as both can be promoted , compiler is confused which to choose
+    test.m5(22.5f,22.5.f); // no method found error, because int can be promoted to float but float cannot. 
+
+// Example 6 
+    Animal a = new Animal();
+    Monkey m = new Monkey();
+    Animal c = new Monkey();
+    test.m6(a); // Animal
+    test.m6(m) // Monkey
+    test.m6(c) //  Animal ,because method resolution taken care by compiler based on reference type not object type.
+
+}
+```
+
+- if after promotions there is no arguments found then compiler will give error.
+In overloading, exact match will get high priorty
+- when there is arugments check for parent and child, then compiler first check with child class then it will got to parent class.
+- In String and StringBuffer , both are child of Object class so there is no common thing. and null is related to both so compiler is confused which method it should call. so it will give compile time error.
 
 
 
+## Overriding
+
+ Method resolution always taken care by JVM based on run time object not  by reference.that' why callled Runtime polymorhism or Dynamic Polymorphsim or late binding.
+
+
+ Example 
+
+ ```java
+
+class P {
+    public void property(){print("GOLD,land")}
+    public void marry(){print("sapna")}
+}
+
+class Child{
+    public void marry(){print("katrina")}
+}
+
+void main(){
+
+    P p = new P();
+    p.marry(); // sapna
+
+    child c  = new Child();
+    c.marry(); // katrina
+
+    P cp = new Child();
+    cp.marry(); //katrina, because its taken care by jvm on runtime
+
+}
+
+ ```
+
+Covarient type : In parent class , method is returing object type then child can return String, String buffer, or any type which is extended by Object.then this type is called covarient type.
+
+ex. Object -> String, Stringbuffer , etc
+
+ex. Number -> Integer,float,double,short,byte,long
+
+```java
+
+class P{
+    public Object m1(){}
+    public Number m2(){}
+    public String m3(){}
+    public double m4(){}
+}
+
+class C {
+    public String m1(){} // allowed
+    public int m2(){} // allowed
+    public Object m3(){} // not allowed, compiler will give error : object type is not compatable with String
+    public int m4(){} // compiler error: int not compatiable with dobule, primitive type not allowed
+
+}
+
+```
+
+Rules : 
+
+1. Method signature should be same
+2. Return type no need to be same as parent type but it should be covarient type.
+3. covarient return is applicable for objects not primitive data types
+4. if parent return type is primitive, then child method return type should be same as parent
 
 
 
