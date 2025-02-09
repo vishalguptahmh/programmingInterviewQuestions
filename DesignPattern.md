@@ -109,3 +109,127 @@ __Builder:__
 
 we use when object is very complex and having lot of configurations to build .
 ex. to build house , we need interior , pipline, gas,ac
+
+
+![Builder Design Pattern Diagram](BuilderdesignPattern.drawio.png)
+
+in below example we are creating desktop
+
+
+- Product = Desktop or Vehicle
+- Builder = DesktopBuilder or VehicleBuilder(abstract interface for creating parts of a product object)
+- ConcreateBuilder = DellDesktop and HpDesktop or (MotorcyclineBuilder, CarBuilder , ScooterBuilder)
+    - constructs and assembles parts of the product by implementing the Builder interface
+    - defines and keeps track of the representation it creates
+    - provides an interface for retrieving the product
+
+- Director = Is responsible to generate the product ie. civil enginer while constructor of house who guides everyone what to do and what steps they have to follow.
+    - Construct an object using the Builder interface
+
+```java
+
+class Desktop{
+    var monitor:String = "";
+    var keyboard:String = "";
+    var mouse:String = "";
+
+    fun showspecs(){
+        println("Monitor: $monitor")
+        println("Keyboard: $keyboard")
+        println("Mouse: $mouse")
+    }
+}
+
+abstract class DesktopBuilder(val desktop: Desktop = Desktop()) {
+   abstract fun buildMonitor ():DesktopBuilder
+    abstract fun buildKeyboard ():DesktopBuilder
+    abstract fun buildMouse ():DesktopBuilder
+    fun getDesktopFromBuilder(): Desktop{
+        return desktop
+    }
+}
+
+class DellDesktopBuilder: DesktopBuilder(){
+    override fun buildMonitor(): DellDesktopBuilder {
+        desktop.monitor = "Dell Monitor"
+        return this
+    }
+
+    override fun buildKeyboard() :DellDesktopBuilder{
+        desktop.keyboard = "Dell Keyboard"
+        return this
+    }
+
+    override fun buildMouse():DellDesktopBuilder {
+        desktop.mouse = "Dell Mouse"
+        return this
+    }
+
+}
+
+class HpDesktopBuilder: DesktopBuilder(){
+    override fun buildMonitor() :HpDesktopBuilder{
+        desktop.monitor = "Hp Monitor"
+        return this
+    }
+
+    override fun buildKeyboard() :HpDesktopBuilder{
+        desktop.keyboard = "Hp Keyboard"
+        return this
+    }
+
+    override fun buildMouse():HpDesktopBuilder {
+        desktop.mouse = "Hp Mouse"
+        return this
+    }
+
+}
+
+class Director(_builder: DesktopBuilder){
+    var builder : DesktopBuilder = _builder
+
+    fun BuildDesktop(): Desktop{
+        builder.buildMonitor()
+        builder.buildKeyboard()
+        builder.buildMouse()
+        return  builder.getDesktopFromBuilder()
+    }
+    
+    fun buildDesktop2(): Desktop{
+       return builder.buildMonitor().
+       buildKeyboard().
+       getDesktopFromBuilder()
+    }
+
+}
+
+fun main(){
+
+    val dellDesktopBuilder = DellDesktopBuilder()
+    val director = Director(dellDesktopBuilder)
+    val desktop = director.BuildDesktop()
+    desktop.showspecs()
+
+    val hpDesktopBuilder = HpDesktopBuilder()
+    val directorDiff = Director(hpDesktopBuilder)
+    directorDiff.buildDesktop2().showspecs()
+}
+
+main()
+
+```
+
+
+__OBSERVER:__
+
+
+![Observer Design Pattern Diagram](observerdesignPatter.drawio.png)
+
+
+
+
+
+
+
+
+
