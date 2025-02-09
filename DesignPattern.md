@@ -222,8 +222,66 @@ main()
 
 __OBSERVER:__
 
+With one data change with have to run multiple services or do tasks on multiple services.
+we can say that lot of people are observing one person.so this one person is subject and other are observers.
+
+When there is change in subject all observers will get to know that.
+
+
+example
+1) you have logged in to multiple devices for email. now whenever some mail comes , you need to notify all these devices.
+2) In group chat,  we have to notify all users of that group.
 
 ![Observer Design Pattern Diagram](observerdesignPatter.drawio.png)
+
+```java 
+
+interface ISubscribe {
+    fun notifynotifyMyObservers()
+}
+
+class Subject {
+    private val subscribers = mutableListOf<ISubscribe>()
+
+    fun subscribe(observer: ISubscribe) {
+        subscribers.add(observer)
+    }
+
+    fun unsubscribe(observer: ISubscribe) {
+        subscribers.remove(observer)
+    }
+
+    fun notifyMy() {
+        subscribers.forEach { it.notifynotifyMyObservers() }
+    }
+}
+
+
+class Observer(val _id: Int) : ISubscribe {
+    var id: Int = _id
+    override fun notifynotifyMyObservers() {
+        println("User $id has been notified")
+    }
+}
+
+class main() {
+    val observer1 = Observer(1)
+    val observer2 = Observer(2)
+    var mySubject = Subject()
+
+    init {
+        mySubject.subscribe(observer1)
+        mySubject.subscribe(observer2)
+        mySubject.notifyMy()
+        println("removing user 2 from notification as he left the group")
+        mySubject.unsubscribe(observer2)
+        mySubject.notifyMy()
+    }
+}
+
+main()
+```
+
 
 
 
