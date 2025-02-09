@@ -285,6 +285,100 @@ main()
 
 
 
+__Abstract Factory Design Pattern(AFDP)__
+
+
+Main question comes what is difference between factory and abstract factory : 
+so factory design patter is creating concreate classes or objects and Abstract factory design pattern is going to create factories that is going to create objects basically AFDP is going to create a family of classes.
+
+![Abstract Factory Design Pattern Diagram](afdp.drawio.png)
+
+```java
+class main() {
+    //    var osType = "windows"
+    var osType = "mac"
+
+    fun createUI() {
+        val factory = MainFactory.createFactory(osType)
+        val button = factory.createButton()
+        val textBox = factory.createTextBox()
+        button.press()
+        textBox.show()
+    }
+}
+
+main().createUI()
+
+class MainFactory(val os: String) {
+    companion object {
+        fun createFactory(os: String): IFactory {
+            when (os) {
+                "windows" -> return WindowsFactory()
+                "mac" -> return MacFactory()
+            }
+            return WindowsFactory()
+        }
+    }
+}
+
+interface IFactory {
+    fun createButton(): IButton
+    fun createTextBox(): ITextBox
+}
+
+class WindowsFactory : IFactory {
+    override fun createButton(): IButton {
+        return WindowsButton()
+    }
+    override fun createTextBox(): ITextBox {
+        return WindowsTextBox()
+    }
+}
+
+class MacFactory : IFactory {
+    override fun createButton(): IButton {
+        return MacButton()
+    }
+    override fun createTextBox(): ITextBox {
+        return MacTextBox()
+    }
+}
+
+interface IButton {
+    fun press()
+}
+
+interface ITextBox {
+    fun show()
+}
+
+class WindowsButton : IButton {
+    override fun press() {
+        println("Windows Button Pressed")
+    }
+}
+
+class MacButton : IButton {
+    override fun press() {
+        println("Mac Button Pressed")
+    }
+}
+
+class WindowsTextBox : ITextBox {
+    override fun show() {
+        println("Windows TextBox Showed")
+    }
+}
+
+class MacTextBox : ITextBox {
+    override fun show() {
+        println("Mac TextBox Showed")
+    }
+}
+```
+
+
+
 
 
 
