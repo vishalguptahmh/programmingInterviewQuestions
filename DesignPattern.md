@@ -377,8 +377,51 @@ class MacTextBox : ITextBox {
 }
 ```
 
+__Adapter Design Pattern(ADP)__
+
+example: 
+we have plug and plug points, when indian people goes in Europe, there plug points are different. so they cannot charge the phones.
+To work with them we need to have some instrument which will take our charger point and output the desired plug which is used in europe. 
+So we our charger will work. This instrument we call adapters.
+
+Adapters are converting one thing to another. 
+
+example 2 : there is tool which is taking json but our data is xml. so we create adapter which will convert xml to json.
 
 
+```java
+
+class Main {
+    val xmlData = XMLData("<data>hello</data>")
+    //    val tool = Tool(xmlData.getXMLdata()) // gives error as its not json input
+    val tool = ToolAdapterForJson(xmlData.getXMLdata())
+    val client = client()
+    fun run() {
+        client.processData(tool)
+    }
+}
+val m = Main()
+m.run()
+
+class XMLData(val data: String) {
+    fun getXMLdata(): String { return data; }
+}
+
+open class Tool(val data: String) {
+    open fun analysisData() { println("This should be json data : $data") }
+}
+
+class client {
+    fun processData(tool: Tool) { tool.analysisData() }
+}
+
+class ToolAdapterForJson(data: String) : Tool(data) {
+    override fun analysisData() {
+        println("Convert xml to json data")
+        println("analysis converted Json data $data")
+    }
+}
+```
 
 
 
