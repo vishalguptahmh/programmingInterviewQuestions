@@ -1,5 +1,21 @@
 # OOPS
 
+SOLID is an acronym for the first five object-oriented design (OOD) principles by Robert C. Martin (also known as Uncle Bob).
+
+These principles establish practices for developing software with considerations for maintaining and extending it as the project grows. Adopting these practices can also help avoid code smells, refactor code, and develop Agile or Adaptive software.
+
+SOLID stands for:
+
+    S - Single-responsibility Principle (A class should have one and only one reason to change, meaning that a class should have only one job.)
+    O - Open-closed Principle (Objects or entities should be open for extension but closed for modification.)
+    L - Liskov Substitution Principle (subclasses should be substitutable for their base classes. )
+    I - Interface Segregation Principle (many client-specific interfaces are better than one general-purpose interface. Clients should not be forced to implement a function they do no need. )
+    D - Dependency Inversion Principle (our classes should depend upon interfaces or abstract classes instead of concrete classes and functions. )
+
+more you can read : https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html
+
+
+
 OOP (Object-Oriented Programming) is a programming paradigm based on the concept of objects, which are instances of classes. The core concepts of OOP are:
 
 1. Encapsulation: Hiding the internal state of an object and controlling access through methods (getters/setters).
