@@ -1,7 +1,7 @@
 
 # Design Pattern
 
-![Alt text here](designPattern.drawio.png)
+![Alt text here](drawio/designPattern.drawio.png)
 
 
 Defination : 
@@ -111,7 +111,7 @@ we use when object is very complex and having lot of configurations to build .
 ex. to build house , we need interior , pipline, gas,ac
 
 
-![Builder Design Pattern Diagram](BuilderdesignPattern.drawio.png)
+![Builder Design Pattern Diagram](drawio/BuilderdesignPattern.drawio.png)
 
 in below example we are creating desktop
 
@@ -232,7 +232,7 @@ example
 1) you have logged in to multiple devices for email. now whenever some mail comes , you need to notify all these devices.
 2) In group chat,  we have to notify all users of that group.
 
-![Observer Design Pattern Diagram](observerdesignPatter.drawio.png)
+![Observer Design Pattern Diagram](drawio/observerdesignPatter.drawio.png)
 
 ```java 
 
@@ -291,7 +291,7 @@ __Abstract Factory Design Pattern(AFDP)__
 Main question comes what is difference between factory and abstract factory : 
 so factory design patter is creating concreate classes or objects and Abstract factory design pattern is going to create factories that is going to create objects basically AFDP is going to create a family of classes.
 
-![Abstract Factory Design Pattern Diagram](afdp.drawio.png)
+![Abstract Factory Design Pattern Diagram](drawio/afdp.drawio.png)
 
 ```java
 class main() {
