@@ -14,6 +14,8 @@ SOLID stands for:
 
 more you can read : https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html
 
+or https://www.youtube.com/watch?v=phW8rVlto-U&list=PLliXPok7ZonkudBBQ6aH661wr6keVg2CU&ab_channel=KeertiPurswani
+
 
 
 OOP (Object-Oriented Programming) is a programming paradigm based on the concept of objects, which are instances of classes. The core concepts of OOP are:
