@@ -1,11 +1,15 @@
 # Things to Study
 
-- OOPS
+- [OOPS](oOPS.md)
 - UML diagram concepts
-- Design Patterns - Creational , Structural , Behavioural
-- Solid Principals
+- [Design Patterns](DesignPattern.md) - Creational , Structural , Behavioural
+- [Solid Principals](oOPS.md)
+- [DataStructure](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)- Sorting
+- 
 - what type of authentication mechansims are there ? how they work ? how they are implemented ?
 - Open id vs outh vs SSO
+- idp
+- enrollment with idp , sso, oauth
 - [Zero trust architecture](https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-architecture)
 - IAM
 - Android 
@@ -14,9 +18,10 @@
     - keychain
     - Certificate Pinning
     - Retrofit
-    -  Dependency Injection (Dagger,hilt)
+    - Dependency Injection (Dagger,hilt)
     - live Data
     - Room 
+    - volatile variable
     - Junit test
     - biometric
 
@@ -38,14 +43,15 @@
     - Threat modeling
 
 
-
+Questions : 
+- Difference between hashmap and mutableMapof and mapOf() in kotlin?
 
 Day 1 : 
 
 - [ ] Two Sum
 - [ ] Best Time to Buy and Sell Stock
 - [ ] Majority Element
-- [ ] Move Zeroes
+- [ ] [Move Zeroes](https://leetcode.com/problems/move-zeroes/description/)
 - [ ] Squares of a Sorted Array
 - [ ] Merge Sorted Array
 
@@ -351,6 +357,34 @@ Day 41 :
 
 reference : 
 
+https://github.com/ashishps1/awesome-system-design-resources
+https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms
+https://www.coursera.org/learn/design-patterns
+https://github.com/dbacinski/Design-Patterns-In-Kotlin
+
+https://github.com/DovAmir/awesome-design-patterns?tab=readme-ov-file#general-architecture
 https://www.youtube.com/channel/UCZgt6AzoyjslHTC9dz0UoTw
+https://www.youtube.com/@sudocode/playlists
+
+
+https://www.youtube.com/@ashishps_1/videos
+https://www.youtube.com/@gkcs
+https://www.youtube.com/@TechDummiesNarendraL
+
+
+https://www.youtube.com/@SuccessinTech/featured
+https://github.com/sindresorhus/awesome?tab=readme-ov-file
+
+
+Remote Job plateform
+
+Linkedin
+[wwR](https://weworkremotely.com/)
+[wellfound](https://wellfound.com/) for Startups
+[instahyre](https://www.instahyre.com/)
+
+Notes : 
+Take referal from employees on linkedin
+Cold emailing to HR's - why you are important
 
 
