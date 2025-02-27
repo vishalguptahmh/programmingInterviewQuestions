@@ -1,11 +1,49 @@
-StateFlow vs SharedFlow:
 
+# Android
+
+![Alt text](drawio/mindmap%20testing.svg)
+
+# Classes
+- Data
+- Object
+- Sealed
+- open
+
+# jetPack
+- Room
+- DataStore
+- WorkManager
+- Paging
+
+
+# UI
+- Compose
+
+
+
+# Coroutines
+- Suspend
+- Blocking
+- RunBlocking
+- Structured Concurrency
+- Scope
+- Context
+- Launch
+- async
+- delay
+
+
+
+
+# FLOW
 ![SSFlow](drawio/StateFlowVsSharedFlow.drawio.png)
 
 
 
 Flow is an asynchronous data stream(which generally comes from a task) that emits values to the collector and gets completed with or without an exception.
 
+
+## StateFlow vs SharedFlow:
 
 ```kotlin
 StateFlow = SharedFlow
