@@ -110,3 +110,25 @@ showSnackbarSharedFlow.collect {
 - as soon as activty subscribe, activity will not get anything
 - if task get failed then only value got into collector
 - in orientation change also it will not send any values to collector as activity will re-subscribe
+
+
+Unit testing : 
+
+https://medium.com/1mgofficial/unit-testing-in-mvvm-kotlin-databinding-ba3d4ea08f0e
+[sample](https://github.com/niharika2810/UnitTesting-MVVM-Kotlin-Koin-Coroutines-Sample)
+
+### References 
+
+- https://nik-arora8059.medium.com/android-learning-resources-77a67a77d340
+- https://readmedium.com
+- https://readmedium.com/en/https:/medium.com/mobile-app-development-publication/dagger-2-and-koin-comparison-4223dae9725d
+- [Android development best practices](https://github.com/niharika2810/android-development-best-practices)
+- https://www.youtube.com/@StudyingWithAlex
+
+github pages for full List 
+- https://github.com/niharika2810/android-learning-resources
+- https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers
+- [Design Patterns](https://github.com/vishalguptahmh/java-design-patterns)
+- [Android Interview Questions](https://github.com/niharika2810/android-interview-questions)
+- [Android Learning Resource](https://nik-arora8059.medium.com/android-learning-resources-77a67a77d340)
+- https://github.com/anitaa1990/Android-Cheat-sheet
