@@ -5,7 +5,7 @@
 - [Design Patterns](DesignPattern.md) - Creational , Structural , Behavioural
 - [Solid Principals](oOPS.md)
 - [DataStructure](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)- Sorting
-- 
+- (Data Strcuture)[https://github.com/vishalguptahmh/datastructure]
 - what type of authentication mechansims are there ? how they work ? how they are implemented ?
 - Open id vs outh vs SSO
 - idp

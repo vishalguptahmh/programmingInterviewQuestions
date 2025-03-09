@@ -36,13 +36,16 @@ output: yes
   
 ----
 #### LinkList
-
+- [! Insert Element at first](algorithms/singlelinklist.md)
+- [! Inserting node at nth position](algorithms/singlelinklist.md)
+- [! Delete Node at nth position](algorithms/singlelinklist.md)
+- ! Reverse a linked list with recursion and without recursion
+- ! Implement stack using Linklist
+- Find the 4th node from the end in a singly linked list
 - Find the middle element of a singly linked list in one pass
 - Check if a given linked list contains a cycle/loop?find the starting node of the cycle and remove the loop
 - Find Merge point of Two singly linklist
-- Reverse a linked list with recursion and without recursion
 - Remove duplicate nodes in an unsorted linked list
-- Find the 4th node from the end in a singly linked list
 - Find the sum of two linked lists using Stack
 - Rotate a Linked List
   ```
@@ -74,6 +77,8 @@ output: yes
           1234567
   output: 123467
   ```
+### Doubly LinkList
+- ! Insert at first
 
   ---
   ### Tree
