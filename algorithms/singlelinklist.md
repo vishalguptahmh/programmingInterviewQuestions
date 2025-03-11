@@ -113,6 +113,41 @@ class SinglyLinkList{
               recursionprint(head.next)
        }
     }
+
+    //Reverse a linked list without recursion
+    // To get more in detail understanding watch this https://youtu.be/XgABnoJLtG4?si=5xOyDl_PjqPPqT7y
+    fun reverseLinkListWithoutRecusion(){
+        if(head?.next==null){
+            return
+        }
+        var next : Node? = null
+        var prev : Node? = null
+        while(head!=null){
+            next = head?.next
+            head?.next = prev
+            prev = head
+            head = next
+        }
+        head = prev
+    }
+
+     //Reverse a linked list with recursion
+     // for more understanding https://youtu.be/KYH83T4q6Vs?si=F8sdA7bl44SkJP-j
+
+    fun reverseLinkListWithRecursion(current : Node?){
+        if(current?.next==null){
+            head = current
+            return
+        }
+        reverseLinkListWithRecursion(current?.next)
+        var nextOfCurrent = current.next
+        nextOfCurrent?.next = current
+        current.next = null
+    }
+
+    // Implement stack using Linklist
+
+    
 }
 
 fun main(){

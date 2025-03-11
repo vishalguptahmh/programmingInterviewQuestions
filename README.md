@@ -39,7 +39,8 @@ output: yes
 - [! Insert Element at first](algorithms/singlelinklist.md)
 - [! Inserting node at nth position](algorithms/singlelinklist.md)
 - [! Delete Node at nth position](algorithms/singlelinklist.md)
-- ! Reverse a linked list with recursion and without recursion
+- [! Reverse a linked list with recursion ](algorithms/singlelinklist.md)
+- [! Reverse a linked list without recursion](algorithms/singlelinklist.md)
 - ! Implement stack using Linklist
 - Find the 4th node from the end in a singly linked list
 - Find the middle element of a singly linked list in one pass
