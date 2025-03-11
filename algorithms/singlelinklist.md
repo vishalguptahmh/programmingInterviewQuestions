@@ -147,6 +147,23 @@ class SinglyLinkList{
 
     // Implement stack using Linklist
 
+     fun  push(vale  : Int){
+        val newNode = Node(vale)
+        newNode.next = head
+        head = newNode
+    }
+
+    fun pop():Int?{
+        if(head ==null){
+            return -1
+        }
+        else{
+            val data = head?.value
+            head = head?.next
+            return data
+        }
+    }
+
     
 }
 
