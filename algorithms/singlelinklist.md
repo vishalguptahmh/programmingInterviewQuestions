@@ -164,9 +164,95 @@ class SinglyLinkList{
         }
     }
 
-    
-}
 
+    // find 4th element from last of singly linklist
+
+    var count = 0;
+    fun findNthElementFromLast(current: Node?,finding:Int){
+        if(current?.next == null){
+            if(finding == 1){
+                println("Value : "+ current?.value)
+            }
+            count = 1
+            return
+        }
+        findNthElementFromLast(current.next,finding)
+        count++
+        if(count==finding){
+            println(" value on $finding : "+ current.value)
+        }
+
+    }
+
+    // iternative method
+    // we are taking two pointers having different of 4
+    fun findNthFromEnd(n: Int): Node? {
+        var mainPtr = head
+        var refPtr = head
+
+        var count = 0
+        while (count < n) {
+            if (refPtr == null) {
+                println("$n is greater than the number of nodes in the list")
+                return null
+            }
+            refPtr = refPtr.next
+            count++
+        }
+
+        while (refPtr != null) {
+            mainPtr = mainPtr?.next
+            refPtr = refPtr.next
+        }
+
+        return mainPtr
+    }
+
+
+    //    - Find the middle element of a singly linked list in one pass
+
+    fun findMiddleElementofSingleList():Int?{
+        // taking two pointers
+        // one will run at speed of 1 and other will run at speed of 2x
+        var mainpt = head
+        var refPtr = head
+        while(refPtr?.next != null){
+            mainpt = mainpt?.next
+            refPtr = refPtr?.next?.next
+        }
+        return mainpt?.value
+    }
+
+
+
+    //   - Check if a given linked list contains a cycle/loop?find the starting node of the cycle and remove the loop
+    fun createCYcle() {
+        var current = head
+        while (current?.next != null) {
+            current = current?.next
+        }
+
+        current?.next = head
+    }
+
+    fun findCycleAndRemoveit(removeCycle: Boolean) {
+        var mptr = head
+        var rptr = head
+
+        while (mptr?.next != rptr?.next && mptr != null && rptr != null) {
+            mptr = mptr.next
+            rptr = rptr.next?.next
+        }
+        if (mptr?.next == rptr?.next) {
+            println("found cycle at" + mptr?.value)
+            if (removeCycle) {
+                head = mptr?.next
+                mptr?.next = null
+            }
+        }
+    }
+
+}
 fun main(){
     val linkList = SinglyLinkList()
     linkList.add(1)
@@ -174,6 +260,8 @@ fun main(){
     linkList.add(3)
     linkList.add(4)
     linkList.add(5)
+//    linkList.add(6)
+//    linkList.add(7)
 //    linkList.printWithRecursion() // print with recursion
 //    linkList.addAtFirst(10) // add at n th position
 //    linkList.addAtN(4,10) // add at n th position
@@ -185,10 +273,28 @@ fun main(){
 //    linkList.print()
 //    linkList.deleteValue(1)
 
-    linkList.deleteAtN(5) // Delete at nth position
-    linkList.print()
-}
+//    linkList.deleteAtN(5) // Delete at nth position
+//    linkList.reverseLinkListWithoutRecusion()
+//    linkList.reverseLinkListWithRecursion(null)
+//    linkList.push(1)
+//    linkList.push(2)
+//    linkList.push(3)
 
+//    linkList.print()
+//    println("- > "+linkList.pop())
+//    println("- > "+linkList.pop())
+//    println("- > "+linkList.pop())
+//    println("- > "+linkList.pop())
+
+
+//    linkList.findNthElementFromLast(linkList.head,4)
+
+//    println(" middle element : "+linkList.findMiddleElementofSingleList())
+
+//    linkList.createCYcle()
+//    linkList.findCycleAndRemoveit(true)
+    linkList.printForCycle()
+}
 main()
 
 ```

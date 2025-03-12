@@ -42,9 +42,9 @@ output: yes
 - [! Reverse a linked list with recursion ](algorithms/singlelinklist.md)
 - [! Reverse a linked list without recursion](algorithms/singlelinklist.md)
 - [! Implement stack using Linklist](algorithms/singlelinklist.md)
-- Find the 4th node from the end in a singly linked list
-- Find the middle element of a singly linked list in one pass
-- Check if a given linked list contains a cycle/loop?find the starting node of the cycle and remove the loop
+- [Find the 4th node from the end in a singly linked list](algorithms/singlelinklist.md)
+- [Find the middle element of a singly linked list in one pass](algorithms/singlelinklist.md)
+- [Check if a given linked list contains a cycle/loop?find the starting node of the cycle and remove the loop ](algorithms/singlelinklist.md)
 - Find Merge point of Two singly linklist
 - Remove duplicate nodes in an unsorted linked list
 - Find the sum of two linked lists using Stack
