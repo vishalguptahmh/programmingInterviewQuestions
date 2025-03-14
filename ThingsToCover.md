@@ -7,12 +7,22 @@
 - [DataStructure](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)- Sorting
 - (Data Strcuture)[https://github.com/vishalguptahmh/datastructure]
 - what type of authentication mechansims are there ? how they work ? how they are implemented ?
-- Open id vs outh vs SSO
-- idp
-- enrollment with idp , sso, oauth
-- [Zero trust architecture](https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-architecture)
-- IAM
-- Android 
+- ! [IAM , Open id (OIDC),oAuth](saas.md) 
+- FIDO
+- login flow sso 
+- [Zero trust architecture]()
+https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-architecture
+https://www.paloaltonetworks.com/zero-trust
+
+- Java
+    - Synchornized keyword
+    - Difference bw final,finally,static
+    - Difference bw throws and throw and throwable
+    - Difference bw hashmap and hashset
+
+
+
+- [Android](Android.md) 
     - deep linking
     - universal link
     - keychain
@@ -24,9 +34,11 @@
     - volatile variable
     - Junit test
     - biometric
-
+    - SSL pining
+    - Work Manager
+    - JailBroken
+    
 - MDM (Work profile, device owner, byod mode,dpc,activation process,retrieving policy)  
-- Jail broken
 
 - Security 
     - symetric/ asymetric
@@ -45,6 +57,12 @@
 
 Questions : 
 - Difference between hashmap and mutableMapof and mapOf() in kotlin?
+- what is your product ? (device trust, Passcodes, MFA)
+- find out how product is implemented? (what implemention works in android and ios)
+- what are the challenges when you implemented?
+
+
+
 
 Day 1 : 
 
@@ -353,9 +371,20 @@ Day 41 :
 - [ ] Pancake Sorting
 
 
+## How to cover ?
+
+|Day | Things to cover |
+|----|----|
+|Sunday     | Revision                  |
+|Monday     | Main Tech                 |
+|Tuesday    | Datastructure / Coding    |
+|Wenesday   | Main Tech                 |
+|Thursday   | Product Knowledge         | 
+|Friday     | Main Tech                 |
+|Saturday   | DataStructure + Product Knowledge + Coding |
 
 
-reference : 
+## References 
 
 https://github.com/ashishps1/awesome-system-design-resources
 https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms
