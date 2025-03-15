@@ -1,28 +1,27 @@
 # Things to Study
 
+we are dividing whole process into 4 parts.
+- Main Technology
+- Data Strcture
+- Product Knowledge
+- Coding
+
+
+
+## DataStructure and Algorithms
 - [OOPS](oOPS.md)
 - UML diagram concepts
 - [Design Patterns](DesignPattern.md) - Creational , Structural , Behavioural
 - [Solid Principals](oOPS.md)
-- [DataStructure](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)- Sorting
-- (Data Strcuture)[https://github.com/vishalguptahmh/datastructure]
-- what type of authentication mechansims are there ? how they work ? how they are implemented ?
-- ! [IAM , Open id (OIDC),oAuth](saas.md) 
-- FIDO
-- login flow sso 
-- [Zero trust architecture]()
-https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-architecture
-https://www.paloaltonetworks.com/zero-trust
-
-- Java
-    - Synchornized keyword
-    - Difference bw final,finally,static
-    - Difference bw throws and throw and throwable
-    - Difference bw hashmap and hashset
+- [DataStructure](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)
+- [Data Strcutures by me](https://github.com/vishalguptahmh/datastructure)
 
 
+
+## Main Tech
 
 - [Android](Android.md) 
+    - SSL pining
     - deep linking
     - universal link
     - keychain
@@ -34,9 +33,9 @@ https://www.paloaltonetworks.com/zero-trust
     - volatile variable
     - Junit test
     - biometric
-    - SSL pining
     - Work Manager
     - JailBroken
+    - Proguard
     
 - MDM (Work profile, device owner, byod mode,dpc,activation process,retrieving policy)  
 
@@ -55,11 +54,32 @@ https://www.paloaltonetworks.com/zero-trust
     - Threat modeling
 
 
+## Product Knowledge
+- what type of authentication mechansims are there ? how they work ? how they are implemented ?
+- ! [IAM , Open id (OIDC),oAuth](saas.md) 
+- FIDO
+- login flow sso 
+- [Zero trust architecture]()
+https://www.zscaler.com/resources/security-terms-glossary/what-is-zero-trust-architecture
+https://www.paloaltonetworks.com/zero-trust
+
 Questions : 
-- Difference between hashmap and mutableMapof and mapOf() in kotlin?
+
 - what is your product ? (device trust, Passcodes, MFA)
 - find out how product is implemented? (what implemention works in android and ios)
 - what are the challenges when you implemented?
+
+
+
+## Coding
+- Java
+    - Synchornized keyword
+    - Difference bw final,finally,static
+    - Difference bw throws and throw and throwable
+    - Difference bw hashmap and hashset
+    - Lamba function
+- Kotlin
+    - Difference between hashmap and mutableMapof and mapOf() in kotlin?
 
 
 

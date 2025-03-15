@@ -20,6 +20,7 @@
 - Compose
 
 # Coroutines
+
 - Suspend
 - Blocking
 - RunBlocking
@@ -29,22 +30,171 @@
 - Launch
 - async
 - delay
+- Internal workings of coroutines (state machine and continuation).
+- How coroutines handle structure concurrency?
+- Differences between coroutines and threads.
+- Scopes and builders for coroutines.
 
 
 # Basic Android Components 
 - Activity Fragment Lifecycle
-- Dependency Injections like Dagger, hilt
+- <a href="#SSL-Pinning">SSL Pinning</a> 
 - SQLITE
 - Whats new in Android?
+- MVP vs MVI vs MVVM: Differences and use cases.
+- ViewModel survival during configuration changes: Understand ViewModel internals.
+- RecyclerView view caching: How RecyclerView handles view caching internally.
+- Android Handler, Looper, and message queue: Their roles in Android threading.
+- Normal class vs data class: Differences in Kotlin.
+- Activity and Fragment Lifecycle: Understand their lifecycle methods.
+- Activity launch modes: Different launch modes in Android.
+- Memory Management and solving memory leaks: Techniques to manage memory efficiently.
+- StateFlow vs SharedFlow vs LiveData: Differences and when to use each.
+- App performance improvement: Strategies to enhance app performance.
+- Foreground service vs background service: Their distinctions and use cases.
+- WorkManager vs AlarmManager: Choosing the right one for scheduling tasks.
+- Benefits of Dependency Injection (Dagger and Hilt): Importance and alternatives to using DI frameworks.
+- Ensuring app security: Best practices for securing Android applications.
+- Encrypting and decrypting user data: Using RSA vs AES encryption algorithms.
+- Networking and Data Persistence : Offline support. (Retrofit & Room)
+Activity Lifecycle
+- What is the difference between onCreate() and onStart()
+- When only onDestroy is called for an activity without onPause() and onStop()?
+    - when you put finish in oncreate :D
+https://developer.android.com/guide/components/activities/activity-lifecycle
 
 
+
+#### Tell all the Android application components
+
+App components are the essential building blocks of an Android app. Each component serves a specific purpose and has its own lifecycle.
+
+There are four types of app components:
+
+• Activities: An activity is the entry point for user interaction. It represents a single screen with a user interface. For example, a login screen or a settings page is an Activity. Activities are managed in a stack, and you can navigate between them.
+• Services: A Service is a component that runs in the background to perform long-running operations or handle tasks without a UI. For example, playing music or downloading a file can be managed by a Service. It doesn’t interact directly with the user but can communicate with other components.
+• Broadcast receivers: A Broadcast Receiver listens for system-wide broadcast announcements or events, such as a low battery warning, a new SMS, or a custom event from another app.
+• Content providers: It manages data sharing between different applications. Example: Sharing contacts or accessing media files from the gallery.
+
+Kotlin
+
+    val vs const val: Differences and usage scenarios.
+    lateinit vs lazy: When to use each and how they work.
+    Lambda and higher-order functions: Benefits and examples.
+    object vs companion object: Usage and differences.
+    Scope functions (let, apply, with, run): How they simplify code blocks.
+    Extension functions: Implementing and utilizing extension functions effectively.
+    == vs ===: Equality checks in Kotlin.
+    Sealed class vs enum: Differences and use cases.
+    Inline functions: Reasons for using inline, crossinline, and noinline functions.
+    Synchronization in Kotlin: Understanding how it works.
+
+## Mobile system desing (https://github.com/weeeBox/mobile-system-design/)
+
+## SSL Pinning
+#### What is SSL ?
+SSL (Secure Sockets Layer) is a protocol for establishing authenticated and encrypted links between networked computers and servers.
+
+#### How SSL Pinning will help to get rid of Middle Man attack ? 
+
+SSL encrypts the data exchanged between our server and app, and the attacker middle man can’t view the actual data transmitted. Actual data exchanged will only be visible to our Server and App.
+
+#### What is SSL pinning?
+It is a process where we can check the authenticity of a HOST by checking its core X509 certificate. This X509 certificate is the integral part of SSL. we can find more about it here X509 certificate.
+SSL pinning is a process which forces our client App to validate the server’s certificate against a known copy.
+
+
+    we have a known KEY of our server’s certificate stored in our app (like we can store in strings or constants in some file) and then when we try to establish a connection with our server (means hit any API call), first we try to check if the connection is secure by matching the KEY we have in our app with Server’s certificate’s KEY.
+
+    “If these both keys matches we are good to go our App connection is with our known(our own) Server”
+
+
+we have these `3` certificates for every endpoint URL, and we can use any of these certificates’ KEY to check with our server’s certificate while making a connection.
+
+> Root Certificate -> Intermediate Certificate -> leaf Certificate
+
+When we pin one of these certficate there is pros and cons
+
+#### Root Certificate : 
+this is also known as Certificate Authority(CA), if we pin against this Root Certificate, that means we need to use the Certificate key of the Hosting service provider.
+
+The benefit of using the Pinning to Root Certificate is it has a good long life (approx 10+ years) it will not expire soon hence we no need to worry to upload a new APK again and again just because our certificate expired and we got a new one with a new respective KEY.
+
+
+#### Intermediate Certificate: 
+If we use an Intermediate Certificate so we are relying on the company where our backend server is hosted. for eg. baltimore cybertrust, AWS, GoDaddy, etc.
+
+
+#### Leaf Certificate : 
+Leaf Certificate has a short expiry time (like approx 1 year) so If we pin this and use the KEY provided from this certificate in our App, then once it expires our backend Server gets a new Leaf Certificate hence new KEY, that time our app is blocked we need to update another APK of our app by adding this new KEY generated by newly issued Leaf Certificate.
+
+#### Implementation
+
+There are many ways to implement : 
+- Retrofit with OkHttp using CertificatePinner.
+- network_security_config.xml.
+
+Using Retrofit
+```kotlin
+@Provides
+@Singleton
+fun provideRetrofit(){
+    val API_BASE = "www.abc.com"
+    val certificatePinner = CertificatePinner.Builder()
+                .add(API_BASE,"Root Certficate Key")
+                .build()
+
+    val httpClient = OkhttpClient.newBuilder()
+    httpClient.apply{
+        certificatePinner(certificatePinner)
+    }
+
+    val converter = MoshiConvertorFactory.create(Moshi.Builder().add(KotlinJsonAdapterFactory.Build()).asLenient()
+
+    return Retrofit.Builder()
+                .baseUrl(API_BASE)
+                .addConvertFactory(converter)
+                .client(httpclient.build())
+                .build()
+} 
+```
+
+2nd way -  https://developer.android.com/privacy-and-security/security-config
+
+create xml folder inside res directory. Create file `network_security_config.xml`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted = "false" >
+        <domain includeSubdomains="true">example.com</domain>
+        <pin-set expiration="2025-01-26">
+            <pin digest = "SHA-256">Root Certificate Key</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>
+```
+add this file to `AndroidManifest.xml`
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ... >
+    <application android:networkSecurityConfig="@xml/network_security_config"
+                    ... >
+        ...
+    </application>
+</manifest>
+```
 
 ## FLOW
+
+Flow is an asynchronous data stream(which generally comes from a task) that emits values to the collector and gets completed with or without an exception.
+
+
+
 ![SSFlow](drawio/StateFlowVsSharedFlow.drawio.png)
 
 
 
-Flow is an asynchronous data stream(which generally comes from a task) that emits values to the collector and gets completed with or without an exception.
 
 
 ## StateFlow vs SharedFlow:
@@ -67,9 +217,9 @@ val stateFlow = sharedFlow.distinctUntilChanged()
 ```
 
 
-## Now lets where see where we have to use which Flow
+## Where we have to use which Flow
 
-example1 : we have a use case: Get the list of the users from the network and show them in the UI.
+`example1` : we have a use case: Get the list of the users from the network and show them in the UI.
 
 ```kotlin
 //ViewModel
@@ -85,7 +235,7 @@ usersStateFlow.value = UiState.Success(usersFromNetwork)
 
 
 ```
-Now, if orientation changes, the ViewModel gets retained, and our collector present in the Activity will resubscribe to collect. The following will be collected:
+Now, if orientation changes, the ViewModel gets retained, and our collector present in the Activity will re-subscribe to collect. The following will be collected:
 
 usersStateFlow: List of users which was set from the network. (StateFlow keeps the last value).
 
@@ -95,10 +245,10 @@ if we have used used SharedFlow here
 - as soon as activity is subscribed to collect, it will not get any value and we to explicity add loading
 - Now, if orientation changes, the ViewModel gets retained, and our collector present in the Activity will resubscribe to collect. Nothing will get collected here as SharedFlow is used which does not store any data. We will have to make a new network call.
 
-Disadvantage: Unnecessary network call as we were already having the data.
+Disadvantage: Un-necessary network call as we were already having the data.
 
 
-example 2 : suppose we are doing a task, if that task gets failed, we have to show Snackbar.
+`example 2` : suppose we are doing a task, if that task gets failed, we have to show Snackbar.
 
 ```kotlin 
 //Viewmodel

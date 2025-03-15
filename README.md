@@ -2,7 +2,7 @@
 ### Sortings(with time and space complexity)
 - Bubble Sort (Best - `O(n)`, Worst - `O(n^2)`)
 - Insertion Sort (Best - `O(n)`, Worst - `O(n^2)`)
-- Selection Sort (Best - `O(^2)`, Worst - `O(n^2)`)
+- Selection Sort (Best - `O(n^2)`, Worst - `O(n^2)`)
 - Merge Sort (Best - `O(nlogn)`, Worst - `O(nlogn)`)
 - Quick Sort (Best - `O(nlogn)`, Worst - `O(n^2)`)
 
