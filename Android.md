@@ -20,7 +20,6 @@
 - Compose
 
 # Coroutines
-
 - Suspend
 - Blocking
 - RunBlocking
@@ -35,6 +34,8 @@
 - Differences between coroutines and threads.
 - Scopes and builders for coroutines.
 
+# Kotlin 
+- <a href="#FLOW">FLOW</a> 
 
 # Basic Android Components 
 - Activity Fragment Lifecycle
