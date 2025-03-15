@@ -80,6 +80,9 @@ Step 4 : Resource Access
 - Print express uses the access token to retrieve your photos from Google Drive (Resource Server).
 - You don't need to share your Google credentials with Print Express.
 
+![oauth 2.0 flow diagram](drawio/oauth2.drawio.png)
+
+
 #### Key benefits
 
 - Security : No sharing of credentials.
