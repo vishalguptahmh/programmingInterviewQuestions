@@ -48,4 +48,64 @@ Below IAM industry standards are considered the most secure, reliable, and pract
 - json web tokens (JWTs)
 - SAML (Security Assertion Markup langaguge)
 - WS-FED
-- 
+
+
+### [Auth0](https://auth0.com/docs/get-started/identity-fundamentals/introduction-to-auth0)
+
+### OAuth 2.0
+OAuth 2.0 is an authorization framework that allows applications to access resources on behalf of a user without sharing the user's credentials. It's widely used for secure data sharing between different applications.
+
+#### Roles in OAuth 2.0
+- Resource owner: The user who owns the data (e.g., photos on Google Drive).
+- Client : The application requesting access to the user's data (e.g., a printing service).
+- Authorization Server : Issues access tokens after user consent (e.g., Google).
+- Resource Server : Hosts the protected resources (e.g., Google Drive).
+
+#### Example
+Let's say you want to print photos from your Google Drive using a third-party printing service called Print Express.
+
+Step 1 : Authorization Request
+ - Print Express : (Client) requests authorization from you (Resource Owner) to access your photos on Google Drive.
+ - You are redirected to Google's authorization page.
+
+Step 2  : User Consent
+- You grant Print Express permission to access your photos.
+- Google (Authorization Server) redirects you back to Print Express with an authorization code.
+
+Step 3 : Token Exchange
+- Print Express exchanges the authorization code for an access token with Google.
+- This access token is used to access your photos on Google Drive.
+
+Step 4 : Resource Access
+- Print express uses the access token to retrieve your photos from Google Drive (Resource Server).
+- You don't need to share your Google credentials with Print Express.
+
+#### Key benefits
+
+- Security : No sharing of credentials.
+- Control : Users can revoke access at any time.
+- Flexiblity : Supports various client types (web, mobile, desktop).
+
+#### Common grant types
+- Authorization Code Grant: Used for web apps.
+- Imlicit Grnant : Used for clients that cannot store or handle client secrets securely (e.g., JavaScript apps).
+- Client Credentials Grant: Used for server-to-server interactions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Other Things : 
+
+- TCP RELAY
