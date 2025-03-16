@@ -1,12 +1,11 @@
 
 # Design Pattern
 
-![Alt text here](drawio/designPattern.drawio.png)
+![Design Patter diagram](drawio/designPattern.drawio.png)
 
+<ins>Definition</ins> : its a general repeatable solution to a commonly occurring problem in software design. A design pattern isn't a finished design that can be transformed directly into code. It is a description or template for how to solve a problem that can be used in many different situations.
 
-Defination : its a general repeatable solution to a commonly occurring problem in software design. A design pattern isn't a finished design that can be transformed directly into code. It is a description or template for how to solve a problem that can be used in many different situations.
-
-Types:
+## Types:
 
 - Creational : creating of objects and clases
 - Structural : how to structure the these objects and classes ex. Bridge, Adapter, composite
@@ -14,21 +13,21 @@ Types:
 
 
 
-Quick idea of patterns : 
+### Quick idea of patterns : 
 
-1. Singleton: Ensures only one instance exists.
-2. Factory Method: Delegates object instantiation to subclasses.
-3. Abstract Factory: Creates related object families without specifying their concrete classes.
+1. <a href="#singlton">Singleton:</a> Ensures only one instance exists.
+2. <a href="#factory">Factory Method: </a> Delegates object instantiation to subclasses.
+3. <a href="#abstract-factory-design-patternafdp">Abstract Factory:</a> Creates related object families without specifying their concrete classes.
 4. Prototype: Clones objects for a prototypical instance.
-5. Builder: Constructs complex objects step by step.
-6. Adapter: Bridges incompatible interfaces.
+5. <a href="#builder">Builder:</a> Constructs complex objects step by step.
+6. <a href="#adapter-design-patternadp">Adapter:</a> Bridges incompatible interfaces.
 7. Bridge: Separates abstraction from implementation.
 8. Composite: Treats single and composite objects uniformly.
 9. Decorator: Adds behaviors to objects dynamically.
 10. Facade: Simplifies complex system interfaces.
 11. Flyweight: Shares objects to reduce memory.
 12. Proxy: Controls object access.
-13. Observer: Notifies changes to multiple objects.
+13. <a href="#observer">Observer:</a> Notifies changes to multiple objects.
 14. Strategy: Encapsulates interchangeable algorithms.
 15. Command: Encapsulates a request as an object.
 16. State: Changes object behavior with internal state.
@@ -41,7 +40,7 @@ Quick idea of patterns :
 
 
 
-__Factory:__
+## Factory:
 Library should be responsible to decide which obj type to create based on input
 Client should just call lib factory and pass the type without worry about actual implementation of creation of object.
 ex. 
@@ -121,7 +120,7 @@ class main(){
 
 ```
 
-__Singlton:__
+## Singlton:
 
 - single object should be created for the class.
 - constructor should be **private**.
@@ -133,7 +132,7 @@ __Singlton:__
 - In c++ , you have to make equaltodelete also as private
 
 
-__Builder:__
+## Builder:
 
 we use when object is very complex and having lot of configurations to build .
 ex. to build house , we need interior , pipline, gas,ac
@@ -248,7 +247,7 @@ main()
 ```
 
 
-__OBSERVER:__
+## OBSERVER
 
 With one data change with have to run multiple services or do tasks on multiple services.
 we can say that lot of people are observing one person.so this one person is subject and other are observers.
@@ -313,7 +312,7 @@ main()
 
 
 
-__Abstract Factory Design Pattern(AFDP)__
+## Abstract Factory Design Pattern(AFDP)
 
 
 Main question comes what is difference between factory and abstract factory : 
@@ -405,7 +404,7 @@ class MacTextBox : ITextBox {
 }
 ```
 
-__Adapter Design Pattern(ADP)__
+## Adapter Design Pattern(ADP)
 
 example: 
 we have plug and plug points, when indian people goes in Europe, there plug points are different. so they cannot charge the phones.
