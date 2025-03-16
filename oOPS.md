@@ -298,7 +298,7 @@ In overloading, exact match will get high priorty
 
 ### Overriding
 
-Method resolution always taken care by JVM based on run time object not  by reference.that's why called Runtime polymorhism or Dynamic Polymorphsim or late binding.
+Method resolution always taken care by JVM based on run time object not  by reference that's why called Runtime polymorhism or Dynamic Polymorphsim or late binding.
 
 
  Example 
@@ -314,6 +314,15 @@ class Child{
     public void marry(){print("katrina")}
 }
 
+class Test {
+    fun my(P : p){
+        print("Parent")
+    }
+    fun my(Child : p){
+        print("Child")
+    }
+    
+}
 void main(){
 
     P p = new P();
@@ -323,13 +332,17 @@ void main(){
     c.marry(); // katrina
 
     P cp = new Child();
-    cp.marry(); //katrina, because its taken care by jvm on runtime
+    cp.marry(); //katrina, because its taken care by jvm on runtime (Child function)
+    
+    // but if you pass this object
+    Test t = new Test()
+    t.my(cp) // It will print Parent
 
 }
 
  ```
 
-Covarient type : In parent class , method is returing object type then child can return String, String buffer, or any type which is extended by Object.then this type is called covarient type.
+__Covarient type__ : In parent class , method is returing object type then child can return String, String buffer, or any type which is extended by Object.then this type is called covarient type.
 
 ex. Object -> String, Stringbuffer , etc
 
