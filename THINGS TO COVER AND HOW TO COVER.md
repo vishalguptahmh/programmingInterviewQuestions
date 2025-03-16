@@ -9,19 +9,17 @@ we are dividing whole process into 4 parts.
 
 
 ## DataStructure and Algorithms
-- [OOPS](oOPS.md)
+- [OOPS , SOLID principals](OOPS.md)
 - UML diagram concepts
-- [Design Patterns](DesignPattern.md) - Creational , Structural , Behavioural
-- [Solid Principals](oOPS.md)
-- [DataStructure](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)
-- [Data Strcutures by me](https://github.com/vishalguptahmh/datastructure)
+- [Design Patterns](DESIGN_PATTERNS.md) - Creational , Structural , Behavioural
+- DataStructure [1](https://github.com/vishalguptahmh/datastructure) [2](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)
 
 
 
 ## Main Tech
 
 - [Android](Android.md) 
-    - SSL pining
+    - [SSL pining]((Android.md) )
     - deep linking
     - universal link
     - keychain
@@ -56,7 +54,7 @@ we are dividing whole process into 4 parts.
 
 ## Product Knowledge
 - what type of authentication mechansims are there ? how they work ? how they are implemented ?
-- ! [IAM , Open id (OIDC),oAuth](saas.md) 
+- ! [IAM, Openid(OIDC), oAuth, OAuth2.0](saas.md) 
 - FIDO
 - login flow sso 
 - [Zero trust architecture]()
