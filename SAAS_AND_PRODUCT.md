@@ -99,14 +99,33 @@ Step 4 : Resource Access
 
 
 
+## SSO
+Single Sign ON 
+
+It is an authentication method where user can login to multiple application from multiple devices from single set of credentials.
+It works best on trust relationship setupup between applications (Service providers) and identity providers.
+
+One-click secure access to all resources your employees need. This includes access to resources both on-prem or in the cloud. Let your team focus on work, rather than trying to remember passwords.
+
+Login to portal > Single Sign on creds > get acess to all app ex (social,google directory service, Microsoft AD, LDAP)
 
 
 
 
+### Reference 
+Auth2.0 :
+https://www.youtube.com/watch?v=CPbvxxslDTU&ab_channel=InterSystemsLearningServices
+
+IDP : https://www.youtube.com/watch?v=hDRVq7T2A3M&ab_channel=JumpCloud
+
+PKI : https://www.youtube.com/watch?v=5OqgYSXWYQM&ab_channel=PaulTurner
+
+Single Sign on : https://www.youtube.com/watch?v=-hWaEy7_XQU&ab_channel=AutomatedTesting
 
 
+AWS LAMBDA : https://youtu.be/qYM5UwhIkPI?si=OfWXhqUStBDQBZWd
 
-
+OIDC : https://openidconnect.net/
 
 
 #### Other Things : 
