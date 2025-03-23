@@ -559,8 +559,14 @@ Lifecycle of Activity:
 ![SSFlow](drawio/android_lifecycle_activity.drawio.png)
 
 
-In the onCreate() method, perform basic application startup logic that happens only once for the entire life of the activity.
-For example, your implementation of onCreate() might bind data to lists, associate the activity with a ViewModel, and instantiate some class-scope variables. This method receives the parameter savedInstanceState, which is a Bundle object containing the activity's previously saved state. If the activity has never existed before, the value of the Bundle object is null. 
+In the `onCreate()` method, perform basic application startup logic that happens only once for the entire life of the activity.
+
+For example, your implementation of onCreate() might 
+- bind data to lists
+- associate the activity with a ViewModel,
+- instantiate some class-scope variables. 
+
+This method receives the parameter savedInstanceState, which is a Bundle object containing the activity's previously saved state. If the activity has never existed before, the value of the Bundle object is null. 
 
 ```kotlin
 // This callback is called only when there is a saved instance previously saved using
@@ -582,35 +588,40 @@ override fun onSaveInstanceState(outState: Bundle?) {
 }
 ```
 
-Onstart call makes the activity visible to the user as the app prepares for the activity to enter the foreground and become interactive. For example, this method is where the code that maintains the UI is initialized. 
+`Onstart` call makes the activity visible to the user as the app prepares for the activity to enter the foreground and become interactive. 
+
+For example, this method is where the code that maintains the UI is initialized. 
 
 
-In OnResume state : When the activity enters the Resumed state, it comes to the foreground, and the system invokes the onResume() callback. This is the state in which the app interacts with the user. The app stays in this state until something happens to take focus away from the app, such as the device receiving a phone call, the user navigating to another activity, or the device screen turning off. 
+In `OnResume`state : When the activity enters the Resumed state, it comes to the foreground, and the system invokes the onResume() callback. This is the state in which the app interacts with the user. The app stays in this state until something happens to take focus away from the app, such as 
+- the device receiving a phone call
+- the user navigating to another activity, or 
+- the device screen turning off. 
 
 >Note : In multi-window mode, however, your activity might be fully visible even when it is in the Paused state. For example, when the app is in multi-window mode and the user taps the window that does not contain your activity, your activity moves to the Paused state.
 
-onPause()
+`onPause()`
 The system calls this method as the first indication that the user is leaving your activity, though it does not always mean the activity is being destroyed. It indicates that the activity is no longer in the foreground, but it is still visible if the user is in multi-window mode.
 
 ex 
 In multi-window mode, only one app has focus at any time, and the system pauses all the other apps.
 The opening of a new, semi-transparent activity, such as a dialog, pauses the activity it covers. As long as the activity is partially visible but not in focus, it remains paused. 
 
-You can also use the onPause() method to release system resources, handles to sensors (like GPS), or any resources that affect battery life while your activity is Paused and the user does not need them.
+You can also use the onPause() method to `release system resources`, handles to sensors (like GPS), or any resources that affect battery life while your activity is Paused and the user does not need them.
 
-onPause() execution is very brief and does not necessarily offer enough time to perform save operations. For this reason, don't use onPause() to save application or user data, make network calls, or execute database transactions. Such work might not complete before the method completes.
+onPause() execution is very brief and does not necessarily offer enough time to perform save operations. For this reason, `don't use onPause() to save application or user data, make network calls, or execute database transactions.` Such work might not complete before the method completes.
 
-onStop()
+`onStop()`
 When your activity is no longer visible to the user, it enters the Stopped state
 This can occur when a newly launched activity covers the entire screen. 
 
  In the onStop() method, release or adjust resources that are not needed while the app is not visible to the user. For example, your app might pause animations or switch from fine-grained to coarse-grained location updates. Using onStop() instead of onPause() means that UI-related work continues, even when the user is viewing your activity in multi-window mode.
 
-Also, use onStop() to perform relatively CPU-intensive shutdown operations. For example, if you can't find a better time to save information to a database, you might do so during onStop(). 
+Also, use onStop() to perform relatively CPU-intensive shutdown operations. For example, if you can't find a `better time to save information to a database`, you might do so during onStop(). 
 
 >Note: Once your activity is stopped, the system might destroy the process that contains the activity if the system needs to recover memory. Even if the system destroys the process while the activity is stopped, the system still retains the state of the View objects, such as text in an EditText widget, in a Bundle—a blob of key-value pairs—and restores them if the user navigates back to the activity.
 
-onDestroy() is called before the activity is destroyed. The system invokes this callback for one of two reasons:
+`onDestroy()` is called before the activity is destroyed. The system invokes this callback for one of two reasons:
 
 - The activity is finishing, due to the user completely dismissing the activity or due to finish() being called on the activity.
 - The system is temporarily destroying the activity due to a configuration change, such as device rotation or entering multi-window mode.
@@ -619,7 +630,9 @@ Instead of putting logic in your Activity to determine why it is being destroyed
 
 If the Activity isn't recreated, then the ViewModel has the onCleared() method called, where it can clean up any data it needs to before being destroyed. You can distinguish between these two scenarios with the isFinishing() method.
 
-If the activity is finishing, onDestroy() is the final lifecycle callback the activity receives. If onDestroy() is called as the result of a configuration change, the system immediately creates a new activity instance and then calls onCreate() on that new instance in the new configuration. 
+If the activity is finishing, onDestroy() is the final lifecycle callback the activity receives. 
+
+If onDestroy() is called as the result of a configuration change, the system immediately creates a new activity instance and then calls onCreate() on that new instance in the new configuration. 
 
 The system never kills an activity directly to free up memory. Instead, it kills the process the activity runs in, destroying not only the activity but everything else running in the process as well.
 
@@ -649,7 +662,13 @@ the order of operations that occur when Activity A starts Activity B:
 
 ## Fragment
 ![fragmentLifecycle](images/fragment-view-lifecycle.png)
-fragments live inside activities, and each activity can host many fragments. Like activities, they have a specific lifecycle, unlike activities, they are not top-level application components. Advantages of fragments include code reuse and modularity (e.g., using the same list view in many activities), including the ability to build multi-pane interfaces (mostly useful on tablets). The main disadvantage is (some) added complexity. You can generally achieve the same thing with (custom) views in a non-standard and less robust way. 
+
+
+fragments live inside activities, and each activity can host many fragments. Like activities, they have a specific lifecycle, unlike activities, they are not top-level application components. 
+
+`Advantages of fragments` include code reuse and modularity (e.g., using the same list view in many activities), including the ability to build multi-pane interfaces (mostly useful on tablets). 
+
+The main `disadvantage` is (some) added complexity. You can generally achieve the same thing with (custom) views in a non-standard and less robust way. 
 
 A Fragment represents a reusable portion of your app's UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments can't live on their own. They must be hosted by an activity or another fragment. 
 
