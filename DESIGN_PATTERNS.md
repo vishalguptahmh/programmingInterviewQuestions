@@ -126,7 +126,8 @@ class main(){
 - constructor should be **private**.
 - mainly used with db connections, loggers
 - It should be **thread safe**
-- put double check for null instance one before lock and one after lock because locking is expensive.
+- put double check for null instance one before lock and one after lock  
+- Keep in mind that locking is expensive.
 - Make copy constructor as private
 - Make equalto overloading as private
 - In c++ , you have to make equaltodelete also as private

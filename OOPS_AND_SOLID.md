@@ -16,6 +16,14 @@ SOLID stands for:
 
 `SRP` : Gather together the things that change for the same reasons. Separate things that change for different reasons. We do not mix SQL queries with communications protocols.We keep code that is changed for different reasons separate so that changes to one part to not break other parts.
 
+Q - When to change design for SRP ?
+A- Question yourself : Are parts of it changing while other parts arn't?
+if things are not changing in code and code is stable then it doesn't need to be fixed.
+examine your design and apply SRP when need is real not hypothetical.
+
+![SRP](drawio/SRP.drawio.png)
+
+
 `OCP` : A Module should be open for extension but closed for modification.
 example : you have written code for display type TV and mobile but now there is new requirement for Tablet. you can do it via putting if else statements but now your code is not open for extention without modifiying previous code. if you have follwed then you would have interface and seprate classes for display on TV, Mobile and it is easy to extend support for tablets.
 
@@ -85,14 +93,19 @@ or
 https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/
 
 
+![DIPS](drawio/DIP.drawio.png)
+In this example now Remote can be used anywhere,its not depend on TV
+
 ## OOP (Object-Oriented Programming) 
 OOP is a programming paradigm based on the concept of objects, which are instances of classes. The core concepts of OOP are:
 
+`A EPIC` = Abstraction,Encasulation,Polymorphism,Inheritance,Classes
+
+1. Abstraction: Hiding the complexity of implementation and exposing only necessary details.
 1. Encapsulation: Hiding the internal state of an object and controlling access through methods (getters/setters).
-2. Abstraction: Hiding the complexity of implementation and exposing only necessary details.
-3. Inheritance: Creating new classes from existing ones, inheriting properties and behaviors.
-4. Polymorphism: Allowing objects of different classes to be treated as objects of a common superclass, enabling different behaviors (method overriding or overloading).
-5. Classes and Objects: A class is a blueprint for creating objects, and an object is an instance of a class.
+1. Polymorphism: Allowing objects of different classes to be treated as objects of a common superclass, enabling different behaviors (method overriding or overloading).
+1. Inheritance: Creating new classes from existing ones, inheriting properties and behaviors.
+1. Classes and Objects: A class is a blueprint for creating objects, and an object is an instance of a class.
 
 OOP promotes modularity, reusability, and maintainability, making it easier to structure complex programs.
 
@@ -126,15 +139,15 @@ or
 
 ## Encapusaltion 
 
-The process of grouping data members and corresponding methods into a single unit. you can relate it to casules that we use for medicine. the main medicine is bundled in single pouch that we call capsule.
+The process of grouping data members and corresponding methods into a single unit. you can relate it to capsules that we use for medicine. the main medicine is bundled in single pouch that we call capsule.
 if any component follows data hiding and abstraction that component called encapuslated component.
 
 `Datahiding + abstraction` 
 
-Key Difference:
-
-- Encapsulation is about protecting and controlling access to an object's data.
-- Abstraction is about hiding the complexity of the internal workings of an object.
+> Key Difference:
+    
+    - Encapsulation is about protecting and controlling access to an object's data.
+    - Abstraction is about hiding the complexity of the internal workings of an object.
 
 ```java
 
