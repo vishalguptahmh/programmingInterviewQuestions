@@ -66,6 +66,7 @@ https://developer.android.com/guide/components/activities/activity-lifecycle
 
 
 
+
 #### Tell all the Android application components
 
 App components are the essential building blocks of an Android app. Each component serves a specific purpose and has its own lifecycle.
@@ -77,7 +78,9 @@ There are four types of app components:
 • Broadcast receivers: A Broadcast Receiver listens for system-wide broadcast announcements or events, such as a low battery warning, a new SMS, or a custom event from another app.
 • Content providers: It manages data sharing between different applications. Example: Sharing contacts or accessing media files from the gallery.
 
-Kotlin
+##  Chote magar mote baate
+
+#### Kotlin
 
 - val vs const val: Differences and usage scenarios.
 - lateinit vs lazy: When to use each and how they work.
@@ -89,6 +92,28 @@ Kotlin
 - Sealed class vs enum: Differences and use cases.
 - Inline functions: Reasons for using inline, crossinline, and noinline functions.
 - Synchronization in Kotlin: Understanding how it works.
+
+- Difference between AAR, JAR, DEX, APK in Android ? 
+
+    | Format    |   Contains	|   Used for	|   Can Include Resources?	|   Android-Specific?   |
+    |---|----|---|---|---|
+    |JAR|	.class files	|Java/Kotlin libraries                                  |	❌ No	|❌ No|
+    |AAR	| .class, res/, AndroidManifest.xml	| Android libraries (SDKs, UI components)     |	✅ Yes|	✅ Yes|
+    |DEX|	Compiled bytecode	|       Running apps on Android	                                        |❌ No	|✅ Yes|
+    |APK|	.dex, res/, AndroidManifest.xml	|Final Android application                       |	✅ Yes|	✅ Yes|
+
+        - Use JAR for pure Java/Kotlin libraries (e.g., Gson, OkHttp).
+        - Use AAR for Android-specific libraries (e.g., custom UI components, third-party SDKs).
+        - Use DEX indirectly (it’s generated automatically during compilation).
+        - Use APK as the final installable package for Android apps.
+
+- Different ways to add dependency in android
+    - __implementation__ : The dependency is available at `compile-time` and `runtime`, but `not exposed` to other modules.
+    - __api__ : Works like implementation, but it `exposes` the dependency to other modules.Other modules that depend on your library can also access the transitive dependency. Use When you are creating a library module and want to expose dependencies to other modules.
+    - __compileOnly__ : The dependency is available at `compile-time` but not included in the APK. Used for annotations, provided dependencies, or optional APIs. Use When a library is needed only at compile-time but should not be packaged with the app.
+    - __runtimeOnly__ : The dependency is `not available at compile-time`, but included in the APK. Use When a library is needed only at runtime (e.g., logging, database drivers).
+
+
 
 ## Mobile system desing (https://github.com/weeeBox/mobile-system-design/)
 
@@ -613,6 +638,106 @@ the order of operations that occur when Activity A starts Activity B:
     - Activity A's onPause() method executes.
     - Activity B's onCreate(), onStart(), and onResume() methods execute in sequence. Activity B now has user focus.
     - If Activity A is no longer visible on screen, its onStop() method executes.
+
+- When only onDestroy is called for an activity without onPause() and onStop()?
+
+    - when you call `finish()` in `OnCreate()` function. 
+- Why do we need to call setContentView() in onCreate() of Activity class? 
+    - because `OnCreate()` is called once.if we call it in another methods then UI will set again and again which is not efficient way.
+- What is onSaveInstanceState() and onRestoreInstanceState() in activity?
+    - already described above or check this [link](https://developer.android.com/guide/components/activities/activity-lifecycle)
+
+## Fragment
+![fragmentLifecycle](images/fragment-view-lifecycle.png)
+fragments live inside activities, and each activity can host many fragments. Like activities, they have a specific lifecycle, unlike activities, they are not top-level application components. Advantages of fragments include code reuse and modularity (e.g., using the same list view in many activities), including the ability to build multi-pane interfaces (mostly useful on tablets). The main disadvantage is (some) added complexity. You can generally achieve the same thing with (custom) views in a non-standard and less robust way. 
+
+A Fragment represents a reusable portion of your app's UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments can't live on their own. They must be hosted by an activity or another fragment. 
+
+Dividing your UI into fragments makes it easier to modify your activity's appearance at runtime.
+
+fragments can be added, replaced, or removed. And you can keep a record of these changes in a back stack that is managed by the activity, so that the changes can be reversed.
+
+The Fragment library also provides more specialized fragment base classes:
+    - DialogFragment
+    - PreferenceFragmentCompat
+
+FragmentActivity is the base class for AppCompatActivity
+
+There are two ways to add Fragment 
+- the fragment in your activity's layout file
+- fragment container in your activity's layout file and then programmatically adding the fragment from within your activity.
+
+In either case, you need to add a FragmentContainerView that defines the location where the fragment should be placed within the activity's view hierarchy. It is strongly recommended to always use a FragmentContainerView as the container for fragments, as FragmentContainerView includes fixes specific to fragments that other view groups such as FrameLayout do not provide.
+
+[`FragmentManager`](https://developer.android.com/guide/fragments/fragmentmanager) is the class responsible for performing actions on your app's fragments, such as adding, removing, or replacing them and adding them to the back stack.
+You might never interact with FragmentManager directly if you're using the Jetpack Navigation library, as it works with the FragmentManager on your behalf.
+Fragments can host one or more child fragments. Inside a fragment, you can get a reference to the FragmentManager that manages the fragment's children through getChildFragmentManager(). If you need to access its host FragmentManager, you can use getParentFragmentManager(). [more Detail](https://developer.android.com/guide/fragments/fragmentmanager#access)
+
+[Child fragments] (https://developer.android.com/guide/fragments/fragmentmanager#child)
+usecase : Jetpack Navigation uses child fragments as individual destinations. An activity hosts a single parent NavHostFragment and fills its space with different child destination fragments as users navigate through your app.
+
+As an alternative to using a LifecycleObserver, the Fragment class includes callback methods that correspond to each of the changes in a fragment's lifecycle. These include onCreate(), onStart(), onResume(), onPause(), onStop(), and onDestroy().
+
+A fragment's view has a separate Lifecycle that is managed independently from that of the fragment's Lifecycle. Fragments maintain a LifecycleOwner for their view, which can be accessed using getViewLifecycleOwner() or getViewLifecycleOwnerLiveData().
+
+When a fragment is instantiated, it begins in the INITIALIZED state. For a fragment to transition through the rest of its lifecycle, it must be added to a FragmentManager. The FragmentManager is responsible for determining what state its fragment should be in and then moving them into that state.
+
+Beyond the fragment lifecycle, FragmentManager is also responsible for attaching fragments to their host activity and detaching them when the fragment is no longer in use. The Fragment class has two callback methods, onAttach() and onDetach(), that you can override to perform work when either of these events occur.
+
+The onAttach() callback is invoked when the fragment has been added to a FragmentManager and is attached to its host activity. At this point, the fragment is active, and the FragmentManager is managing its lifecycle state. At this point, FragmentManager methods such as findFragmentById() return this fragment.
+
+onAttach() is always called before any Lifecycle state changes.
+
+The onDetach() callback is invoked when the fragment has been removed from a FragmentManager and is detached from its host activity. The fragment is no longer active and can no longer be retrieved using findFragmentById().
+
+onDetach() is always called after any Lifecycle state changes.
+
+Note that these callbacks are unrelated to the FragmentTransaction methods attach() and detach(). 
+
+>Caution: Avoid using the <fragment> tag to add a fragment using XML, as the <fragment> tag allows a fragment to move beyond the state of its FragmentManager. Instead, always use FragmentContainerView for adding a fragment using XML.
+
+Created : 
+
+When your fragment reaches the CREATED state, it has been added to a FragmentManager and the onAttach() method has already been called.
+This transition invokes the onCreate() callback. The callback also receives a savedInstanceState Bundle argument containing any state previously saved by onSaveInstanceState(). Note that savedInstanceState has a null value the first time the fragment is created, but it is always non-null for subsequent recreations, even if you do not override onSaveInstanceState()
+
+
+
+- What is the difference between FragmentPagerAdapter vs FragmentStatePagerAdapter?
+    - FragmentPagerAdapter: Each fragment visited by the user will be stored in the memory but the view will be destroyed. When the page is revisited, then the view will be created not the instance of the fragment.
+    FragmentStatePagerAdapter: Here, the fragment instance will be destroyed when it is not visible to the user, except the saved state of the fragment.
+
+
+- What is difference between add and replace fragment ? 
+    - replace removes the existing fragment and adds a new fragment. This means when you press back button the fragment that got replaced will be created with its onCreateView being invoked. Whereas add retains the existing fragments and adds a new fragment that means existing fragment will be active and they wont be in 'paused' state hence when a back button is pressed onCreateView is not called for the existing fragment(the fragment which was there before new fragment was added).
+    
+    - In terms of fragment's life cycle events onPause, onResume, onCreateView and other life cycle events will be invoked in case of replace but they wont be invoked in case of add. 
+
+- What is retained Fragment?
+    - A retained fragment in Android refers to a fragment that persists across configuration changes, such as screen rotations, without being destroyed and recreated.The fragment instance is retained across activity recreation, ensuring that its non-UI data remains intact. However, the fragment's views are still destroyed and recreated during configuration changes
+    
+    - onDestroy() is not called, but onDetach() is still executed because the fragment detaches from its previous activity
+    - onCreate(Bundle) is skipped since the fragment isn't re-created
+    - Methods like onAttach(Activity) and onActivityCreated(Bundle) are still invoked
+
+- What is the purpose of addToBackStack() while commiting fragment transaction?
+    - [link](https://stackoverflow.com/questions/22984950/what-is-the-meaning-of-addtobackstack-with-null-parameter)
+
+- How Android Image Loading library optimizes memory usage ?
+    - To optimize memory usage and use less memory, Glide ,Fresco does downsampling.Downsampling means scaling the bitmap(image) to a smaller size which is actually required by the view.Assume that we have an image of size 4000*4000, but the view size is 200*200. So why load an image of 4000*4000, Glide down-samples the bitmap to 200*200, and then show it into the view.
+
+## launch modes 
+We use launchMode to give instructions to the Android operating system about how to launch the activity
+
+
+#### Single Task
+
+example : 
+A > B > C > D > E
+c is single task 
+if you call C after E then stack will become like
+A > B > C 
+and C will get new Extras from `onNewIntent()`
 
 
 ### References 

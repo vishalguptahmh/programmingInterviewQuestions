@@ -9,13 +9,10 @@
 
 ## Apply atleast 30 jobs per day
 
-## On naukri.com update the resume everyday from 9-10 am 
+aes-128-cbc - https://encode-decode.com/encryption-functions/
+pass : mybro
 
-- upload same resume
-- heading line section , add space and delete space and save. atleast do it for 30 days
-
-## Recuriters put filter on CTC and immediate joiner
-so put ctc 0 and time to join within 15 days
+6codBWdpb3iL+mMioy2tSsubTA1gkgfJbC2s4HiCFWqcgVg88mAWjbLiqKWR82CULkiWw+ifEoLmTCORvzUHLkG6g2Il8axytk4wQaldCR3uKZyUmRJa0Vp9jqwB+RUzLSiX6ZJ9SrDbbhi5sVoi2br2TLv7kmhd3VOG42XkuU8ChcB2oLjCBSRSS4Sa5APaxsIKpcHN4rqg4wOQ1TEnvlnA8QrmC0Lsu2zK8s8ZHOBMdjels7d8xjzuJof75hbxydfKMNDxYiRpKvYhQlUqxS5iFpPM2DU94lCt6lhts9GXXyueiAmL6Di30875vNOFqP7m1lg6Ur6eHUdLXm80EnBWJTDz7k46Z3/zL9ey44sFnm1pc8SKIvrDuUnhY45M
 
 ## put profile heading 
 
