@@ -664,15 +664,13 @@ the order of operations that occur when Activity A starts Activity B:
 ![fragmentLifecycle](images/fragment-view-lifecycle.png)
 
 
-fragments live inside activities, and each activity can host many fragments. Like activities, they have a specific lifecycle, unlike activities, they are not top-level application components. 
+Fragments live inside activities, and each activity can host many fragments. 
+ , unlike activities, they are not top-level application components. 
+A Fragment represents a reusable portion of your app's UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments can't live on their own. They must be hosted by an activity or another fragment. 
 
 `Advantages of fragments` include code reuse and modularity (e.g., using the same list view in many activities), including the ability to build multi-pane interfaces (mostly useful on tablets). 
 
 The main `disadvantage` is (some) added complexity. You can generally achieve the same thing with (custom) views in a non-standard and less robust way. 
-
-A Fragment represents a reusable portion of your app's UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments can't live on their own. They must be hosted by an activity or another fragment. 
-
-Dividing your UI into fragments makes it easier to modify your activity's appearance at runtime.
 
 fragments can be added, replaced, or removed. And you can keep a record of these changes in a back stack that is managed by the activity, so that the changes can be reversed.
 

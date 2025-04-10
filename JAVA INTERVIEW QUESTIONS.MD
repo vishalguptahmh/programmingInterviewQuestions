@@ -5,16 +5,10 @@
 #### Final
 final is modifier applicable for classes , methods and variables
 
-if class is final then we cannot extend that class means we cannot create child for that class
+- if class is final then we cannot extend that class means we cannot create child for that class
+- if a method declared as final then we cannot override that method in child class
+- if a variable declared as final then it will become constant and we cannot perform re-assignment for that variable.
 
-if a method declared as final then we cannot override that method in child class
-
-if a variable declared as final then it will become constant and we cannot perform re-assignment for that variable.
-
-```java
-final class {}
-
-```
 #### Finally
 
 Finally is a block always associated with try-catch to maintain cleanup code.
@@ -35,7 +29,7 @@ finally{
 
 finalize is a method which is always invoked by garbage collector just before destroying object to perform cleanup activites.
 
-ex if there is object to which db and network connection is associated then garbage collector gives change by calling finazlize method to close these connections.
+ex if there is object to which db and network connection is associated then garbage collector gives change by calling Finalize method to close these connections.
 
 
->NOTE : finally meant for cleanup activities related to try block wehre as finalize meant for cleanup activities releated to object.
+>NOTE : finally meant for cleanup activities related to try block where-as Finalize meant for cleanup activities releated to object.

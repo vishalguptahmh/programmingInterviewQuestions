@@ -3,11 +3,11 @@
 
 | code | Description|
 |----|---|
-2xx Worked
+|2xx Worked|
 |   200     | `Sucessfull` : everything went well on server side|
 |   201     | `Created` : ex. server says got your data, new profile is live|
 |   204     | `No Content` :  It worked but no content to send back|
-4xx Client Errors 
+|4xx Client Errors |
 |   400     | `Bad Request` :  In our request doesn't make sense  |
 |   401     |  `Unauthorized` : Missing right credentials |
 |   403     |  `Forbidden` : server says i know you but don't have permission |
