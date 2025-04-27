@@ -15,28 +15,28 @@
 
 ### Quick idea of patterns : 
 
-1. <a href="#singlton">Singleton:</a> Ensures only one instance exists.
-2. <a href="#factory">Factory Method: </a> Delegates object instantiation to subclasses.
-3. <a href="#abstract-factory-design-patternafdp">Abstract Factory:</a> Creates related object families without specifying their concrete classes.
+1. <a href="#singlton">!Singleton:</a> Ensures only one instance exists.
+2. <a href="#factory">!Factory Method: </a> Delegates object instantiation to subclasses.
+3. <a href="#abstract-factory-design-patternafdp">!Abstract Factory:</a> Creates related object families without specifying their concrete classes.
 4. Prototype: Clones objects for a prototypical instance.
-5. <a href="#builder">Builder:</a> Constructs complex objects step by step.
-6. <a href="#adapter-design-patternadp">Adapter:</a> Bridges incompatible interfaces.
+5. <a href="#builder">!Builder:</a> Constructs complex objects step by step.
+6. <a href="#adapter-design-patternadp">!Adapter:</a> Bridges incompatible interfaces.
 7. Bridge: Separates abstraction from implementation.
-8. Composite: Treats single and composite objects uniformly.
-9. Decorator: Adds behaviors to objects dynamically.
-10. Facade: Simplifies complex system interfaces.
+8. !Composite: Treats single and composite objects uniformly.
+9. !Decorator: Adds behaviors to objects dynamically.
+10. !Facade: Simplifies complex system interfaces.
 11. Flyweight: Shares objects to reduce memory.
 12. Proxy: Controls object access.
-13. <a href="#observer">Observer:</a> Notifies changes to multiple objects.
-14. Strategy: Encapsulates interchangeable algorithms.
-15. Command: Encapsulates a request as an object.
-16. State: Changes object behavior with internal state.
+13. <a href="#observer">!Observer:</a> Notifies changes to multiple objects.
+14. <a href="#strategy">!Strategy:</a> Encapsulates interchangeable algorithms.
+15. !Command: Encapsulates a request as an object.
+16. !State: Changes object behavior with internal state.
 17. Visitor: Adds operations to object structures without modifying them.
 18. Memento: Captures and restores object states externally.
 19. Iterator: Sequentially accesses elements of a collection.
 20. Mediator: Centralizes complex communications.
 21. Chain of Responsibility: Passes requests along a chain of handlers.
-22. Template Method: Defines the skeleton of an algorithm.
+22. !Template Method: Defines the skeleton of an algorithm.
 
 
 
@@ -452,6 +452,126 @@ class ToolAdapterForJson(data: String) : Tool(data) {
 ```
 
 
+## Strategy 
+
+The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. The context object delegates the behavior to the chosen strategy, allowing the algorithm to be selected at runtime.
+
+Behavioral Pattern
+
+Primary Purpose	: 	Encapsulates interchangeable algorithms or behaviors
+
+What it Does	:	Allows runtime selection and switching of algorithms
+
+How it Works	:	Defines a family of algorithms, encapsulates each one, and makes them interchangeable within a context object
+
+Example Use Case	:	Choosing different sorting algorithms or payment methods at runtime
+
+Key Components	: Context, Strategy interface, Concrete strategies
+Focus	How operations are performed
+
+
+
+
+### Confused with Factory ? 
+
+Real-Time Android Examples: Factory vs. Strategy Pattern
+
+Below are two real-world Android use cases—one for the Factory pattern and one for the Strategy pattern—demonstrating scenarios where they cannot be replaced by each other.
+
+1. Factory Pattern Example: Notification Creation
+
+#### Scenario:
+You need to create different types of notifications (Email, SMS, Push) in your app. The notification type is determined at runtime, and each type requires different logic and resources.
+
+#### Implementation:
+
+- Define a Notification interface.
+
+- Implement concrete classes: EmailNotification, SMSNotification, PushNotification.
+
+- Use a NotificationFactory to return the appropriate notification object based on input.
+
+##### Why Strategy Won't Work Here:
+The Factory pattern is about which object to create. The client doesn't know or care about the specific subclass; it just requests a notification of a given type. If you used Strategy here, you'd have to manually instantiate the correct notification type outside the factory, defeating the purpose of decoupling object creation logic from client code
+
+
+```kotlin
+
+interface Notification { fun notifyUser() }
+class EmailNotification : Notification { override fun notifyUser() { /* Email logic */ } }
+class SMSNotification : Notification { override fun notifyUser() { /* SMS logic */ } }
+class PushNotification : Notification { override fun notifyUser() { /* Push logic */ } }
+
+object NotificationFactory {
+    fun create(type: String): Notification = when(type) {
+        "EMAIL" -> EmailNotification()
+        "SMS" -> SMSNotification()
+        "PUSH" -> PushNotification()
+        else -> throw IllegalArgumentException("Unknown type")
+    }
+}
+
+// Usage
+val notification = NotificationFactory.create("EMAIL")
+notification.notifyUser()
+
+
+```
+
+##### Cannot Replace with Strategy:
+If you used Strategy, you'd still need to explicitly instantiate the correct notification class yourself, losing the decoupling and centralization of creation logic that Factory provides.
+
+
+2. Strategy Pattern Example: Image Loading with Different Caching Strategies
+
+##### Scenario:
+You have an image loader in your app. Depending on user settings or network conditions, you want to switch between different caching strategies (e.g., memory cache, disk cache, no cache) at runtime.
+
+##### Implementation:
+
+- Define a CacheStrategy interface.
+
+- Implement concrete strategies: MemoryCacheStrategy, DiskCacheStrategy, NoCacheStrategy.
+
+- The ImageLoader class holds a reference to a CacheStrategy and delegates caching operations to it.
+
+##### Why Factory Won't Work Here:
+The Strategy pattern is about how to do something (the algorithm/behavior), not which object to create. The image loader object already exists and can change its caching behavior at runtime by swapping strategies. Factory cannot help you switch behaviors dynamically after the object is created.
+
+```kotlin
+interface CacheStrategy { fun cache(image: Bitmap) }
+class MemoryCacheStrategy : CacheStrategy { override fun cache(image: Bitmap) { /* Memory caching */ } }
+class DiskCacheStrategy : CacheStrategy { override fun cache(image: Bitmap) { /* Disk caching */ } }
+class NoCacheStrategy : CacheStrategy { override fun cache(image: Bitmap) { /* No caching */ } }
+
+class ImageLoader(var cacheStrategy: CacheStrategy) {
+    fun load(image: Bitmap) { cacheStrategy.cache(image) }
+}
+
+// Usage
+val imageLoader = ImageLoader(MemoryCacheStrategy())
+imageLoader.load(bitmap)
+// Switch strategy at runtime
+imageLoader.cacheStrategy = DiskCacheStrategy()
+imageLoader.load(bitmap)
+```
+##### Cannot Replace with Factory:
+Factory is for creating objects, not for switching behaviors of an existing object. You need Strategy to dynamically change how an object behaves at runtime.
+
+##### Summary 
+| Pattern| Android Example| What It Solves| Why Not the Other Pattern?|
+|--|--|--|--|
+| Factory|NotificationFactory (Email/SMS/Push) |Decides which object to create | Strategy doesn't centralize creation logic|
+| Strategy| ImageLoader with CacheStrategy| Switches behavior of existing object|Factory can't change behavior after creation |
+	
+			
+### In essence:
+
+- Use Factory when you need to centralize and abstract object creation.
+
+- Use Strategy when you want to change the behavior of an existing object at runtime.
+    They solve fundamentally different problems and are not interchangeable in these real-world Android scenarios
+
 
 
 
@@ -459,4 +579,7 @@ class ToolAdapterForJson(data: String) : Tool(data) {
 reference : 
 
 https://sourcemaking.com/design_patterns
+https://github.com/pdichone/JavaDesignPatterns
+
+Course : https://www.coursera.org/learn/design-patterns#modules
 

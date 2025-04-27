@@ -1,4 +1,9 @@
 
+## Resume template
+ex 1 : https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs
+
+ex 2 : https://www.overleaf.com/latex/templates/faangpath-simple-template/npsfpdqnxmbc
+
 ## Send Cold EMAILS : Format : 
 ![ColdEmail Format](images/coldemail.png)
 

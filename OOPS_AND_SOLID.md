@@ -1,4 +1,8 @@
-# OOPS
+# Important Design Principals
+- DRY (Don't Repeat yourself)
+- YAGNI (you aren't gonna need it)
+- KISS (Keep it simple stupid)
+- SOLID (->)
 ## SOLID Principal
 SOLID is an acronym for the first five object-oriented design (OOD) principles by Robert C. Martin (also known as Uncle Bob).
 
@@ -96,7 +100,7 @@ https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/
 ![DIPS](drawio/DIP.drawio.png)
 In this example now Remote can be used anywhere,its not depend on TV
 
-## OOP (Object-Oriented Programming) 
+# OOP (Object-Oriented Programming) 
 OOP is a programming paradigm based on the concept of objects, which are instances of classes. The core concepts of OOP are:
 
 `A EPIC` = Abstraction,Encasulation,Polymorphism,Inheritance,Classes

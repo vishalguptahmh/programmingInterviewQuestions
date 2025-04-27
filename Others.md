@@ -29,3 +29,36 @@
 1xx Directions
 | 100       | `Continue` :The server has received the request headers and the client can conitnue furhter sending the request body where required |
 | 101       | `Switching protocals` : Client has asked the server to switch the protocl and server agrreed to do so. example switching from http to websocket |
+
+
+
+## WsFed apps 
+
+it require Token based authentication.
+
+#### How to setup
+- Login to Azure with admin creds
+- Navigate to Applications
+- App Registrations
+- New Registration
+- Give application name and Register
+- Navigate Api Permissions 
+- Add permissions
+- Microsoft graph
+- There are two types of permission `Deligate permissions` and `Application Permissions`.
+- select appropiate permissions like Directory.AccessUser.All , Directory.Read.all or Director.ReadWrite.all
+- Click `Grant Admin consent`
+- Navigate to clients and secrets 
+- New Client Secreat
+- Copy secret (this is one time)
+- Go to Portal where you are creating this app
+- put the Client Secreate, clientID,Directory and Verify
+- Don't forget to allow certificate for authentication
+- Now app is in Manged state we need to put in fedrated state
+- Now click app and download Powershell script
+- run command as admin `Set-ExecutionPolicy -scope Process -ExecutionPolicy Bypass`
+- Run 0365script.ps1
+- autenticate as admin to fedrate the domain
+- Now App state changed from `Managed` to `Fedrated`
+
+
