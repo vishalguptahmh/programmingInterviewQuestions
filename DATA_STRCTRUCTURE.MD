@@ -96,20 +96,55 @@ you can go with buckets created by leetcode for iterviews.
 you can practice pattern list by going [algomaster](https://algomaster.io/practice/dsa-patterns) and select pattern and `i` there is link to learn also. its very usefull
 
 Most common Pattern List
-- Prefix Sum
-- Two Pointer
-- Sliding Window
-- Fast and Slow Pointer
-- LinkList in-place reversal
-- Monotonic Stack
-- Top K elements
-- Overlapping intervals
-- Modified Binary Tree
-- Binary tree traversal
-- DFS
-- BFS
-- Mattrix Traversal
-- BackTracking
+- Prefix Sum (303,525,560)
+- Two Pointer (167,15,11)
+- Sliding Window (643,3,76)
+- Fast and Slow Pointer -  find the loop in linklist and middle element in linklist(141,202,287)
+- LinkList in-place reversal (206,92,24)
+- Monotonic Stack (496,739,84)
+- Top K elements -  find 3 largest element (215,347,373)
+    - K largetst => MinHeap
+    - K smallest => MaxHeap
+- Overlapping intervals - Merging intervals, interval intersection, insert interval , find min number of meeting rooms (56,57,435)
+- Modified Binary Tree (33,153,240)
+  - Searching in  :  nearly sorted array,rotated sorted array,list with unknown length,array with dublicates,
+  - find the first or last occurance of an element
+  - find the sequre root of number
+  - find a peak element
+- Binary tree traversal (257,230,124,107)
+  - Sorted list use in-order 
+  - create a copy of tree (serialization) , use pre-order 
+  - when you want to process child nodes before the parent = use post order 
+  - When you need to explore all nodes at current level before next = level order
+
+- DFS (133,113,210)
+  - find path between two nodes
+  - checking graph contains cycle
+  - find a topological order in a directed acyclic graph(DAG)
+  - counting number of connnected components in a graph
+
+- BFS (102,994,127)
+  - find shorted path between two nodes
+  - printing all nodes of a tree level by level
+  - finding all connected components in a graph
+  - finding the shortest transformation sequence from one word to other
+  - 
+- Mattrix Traversal(733,200,130)
+  - find the shortest path in a grid
+  - famous island problem
+- BackTracking (46,78,51)
+  - used to explore all potential solutions path 
+  - Generate all possible permuation combinations of a given set of elements
+  - Solve puzzles like sodku or n-queen problem
+  - find all possible paths from start to end in a graph or a maze
+  - Generate all valid parentheses of a given length
+- Dynamic Programming (70,300,322,416,1143,312)
+  - Overlapping sub problems
+  - optimal substrcture 
+  - maximize or minize certain value
+  - count number of ways
+  - fibonaci, 0/1 kanpsack, longest common subsquence, longest increasing subseque, subset sum , Mattrix chain multiplication  
+
 
 ![DSA pattern](images/dsapatternsheet.jpg)
 

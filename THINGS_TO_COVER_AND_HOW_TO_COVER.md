@@ -34,6 +34,7 @@ we are dividing whole process into 4 parts.
     - Work Manager
     - JailBroken
     - Proguard
+    - C++ code implementation in android
     
 - MDM (Work profile, device owner, byod mode,dpc,activation process,retrieving policy)  
 

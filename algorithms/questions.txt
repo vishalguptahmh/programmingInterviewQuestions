@@ -1,0 +1,265 @@
+𝗔𝗿𝗿𝗮𝘆𝘀 𝗮𝗻𝗱 𝗦𝘁𝗿𝗶𝗻𝗴𝘀:
+1. Find the maximum sum subarray.
+2. Find all substrings that are palindromes.
+3. Implement the "two sum" problem.
+4. Implement Kadane's algorithm for maximum subarray sum.
+5. Find the missing number in an array of integers.
+6. Merge two sorted arrays into one sorted array.
+7. Check if a string is a palindrome.
+8. Find the first non-repeating character in a string.
+9. Write a program to remove duplicates from a sorted array.
+https://leetcode.com/discuss/post/2001789/collections-of-important-string-question-pc6y/
+
+
+𝗟𝗶𝗻𝗸𝗲𝗱 𝗟𝗶𝘀𝘁𝘀:
+10. Reverse a linked list.
+11. Detect a cycle in a linked list.
+12. Find the middle of a linked list.
+13. Merge two sorted linked lists.
+14. Implement a stack using linked list.
+15. Find the intersection point of two linked lists.
+
+𝗦𝘁𝗮𝗰𝗸𝘀 𝗮𝗻𝗱 𝗤𝘂𝗲𝘂𝗲𝘀:
+16. Implement a stack using an array.
+17. Implement a stack that supports push, pop, top, and retrieving the minimum element.
+18. Implement a circular queue.
+19. Design a max stack that supports push, pop, top, retrieve maximum element.
+20. Design a queue using stacks.
+
+𝗧𝗿𝗲𝗲𝘀 𝗮𝗻𝗱 𝗕𝗶𝗻𝗮𝗿𝘆 𝗦𝗲𝗮𝗿𝗰𝗵 𝗧𝗿𝗲𝗲𝘀:
+21. Find the height of a binary tree.
+22. Find the lowest common ancestor of two nodes in a binary tree.
+23. Validate if a binary tree is a valid binary search tree.
+24. Serialize and deserialize a binary tree.
+25. Implement an inorder traversal of a binary tree.
+26. Find the diameter of a binary tree.
+27. Convert a binary tree to its mirror tree.
+
+𝗚𝗿𝗮𝗽𝗵𝘀:
+28. Implement depth-first search (DFS).
+29. Implement breadth-first search (BFS).
+30. Find the shortest path between two nodes in an unweighted graph.
+31. Detect a cycle in an undirected graph using DFS.
+32. Check if a graph is bipartite.
+33. Find the number of connected components in an undirected graph.
+34. Find bridges in a graph.
+
+𝗦𝗼𝗿𝘁𝗶𝗻𝗴 𝗮𝗻𝗱 𝗦𝗲𝗮𝗿𝗰𝗵𝗶𝗻𝗴:
+35. Implement (bubble, insertion, selection, merge) sort.
+36. Implement quicksort.
+37. Implement binary search.
+38. Implement interpolation search.
+39. Find the kth smallest element in an array.
+40. Given an array of integers, count the number of inversions it has. An inversion occurs when two elements in the array are out of order.
+
+
+
+𝗗𝘆𝗻𝗮𝗺𝗶𝗰 𝗣𝗿𝗼𝗴𝗿𝗮𝗺𝗺𝗶𝗻𝗴 (𝗗𝗣):
+1. How do you find the nth Fibonacci number using dynamic programming?
+2. Write a dynamic programming solution for the 0/1 knapsack problem.
+3. Memoization to optimize recursive solutions in dynamic programming?
+4. Implement a dynamic programming algorithm to find the longest common subsequence of two strings.
+5. The coin change problem.
+6. Tabulation approach in dynamic programming.
+
+𝗕𝗮𝗰𝗸𝘁𝗿𝗮𝗰𝗸𝗶𝗻𝗴:
+7. Backtracking algorithm to solve the N-Queens problem.
+8. Generate all permutations of a given set using backtracking?
+9. Implement backtracking to solve the Sudoku puzzle.
+10. Subset sum problem.
+11. Graph coloring problem using backtracking.
+12. Write a backtracking algorithm to find the Hamiltonian cycle in a graph.
+
+𝗛𝗮𝘀𝗵𝗶𝗻𝗴:
+13. Implement a hash table using separate chaining.
+14. First non-repeating character in a string using hashing.
+15. Collision resolution techniques in hashing.
+16. Write a function to solve the two-sum problem using hashing.
+17. How can you implement a hash set data structure?
+18. Count the frequency of elements in an array using hashing.
+
+𝗛𝗲𝗮𝗽:
+19. Implement a priority queue using a min-heap.
+20. How do you merge K sorted arrays using a min-heap?
+21. Write a function to perform heap sort algorithm.
+22. Find the kth largest element in an array using a min-heap.
+23. Implement a priority queue using a min-heap.
+24. How do you build a max heap from an array?
+
+𝗧𝗿𝗶𝗲𝘀:
+25. Implement a trie data structure.
+26. Write a function to search for a word in a trie.
+27. How can you implement autocomplete feature using a trie?
+28. Deleting a word from a trie.
+30. Write a function to find all words matching a pattern in a trie.
+
+𝗚𝗿𝗲𝗲𝗱𝘆 𝗔𝗹𝗴𝗼𝗿𝗶𝘁𝗵𝗺𝘀:
+31. Solve the activity selection problem using a greedy algorithm.
+32. Implement Huffman coding using a greedy algorithm.
+33. Write a function to find the minimum spanning tree using Prim's algorithm.
+34. Coin change problem.
+35. Dijkstra's algorithm using a greedy approach.
+36. Implement the job sequencing problem using a greedy algorithm.
+
+
+37. Stack Vs queue.
+38. breadth-first search (BFS) and depth-first search (DFS) traversal 
+39. Concept of big O notation.
+40. What is an AVL tree? Explain its properties and how it maintains balance during insertion and deletion operations.
+
+
+
+Binary Search for Beginners [Problems | Patterns | Sample solutions]
+https://leetcode.com/discuss/post/691825/binary-search-for-beginners-problems-pat-0hei/
+
+Powerful Ultimate Binary Search Template. Solved many problems https://leetcode.com/discuss/post/786126/python-powerful-ultimate-binary-search-t-rwv8/
+
+
+BFS and its variations
+    https://leetcode.com/discuss/post/1833581/bfs-and-its-variations-by-c0d3m-o47u/
+    https://leetcode.com/problems/shortest-path-visiting-all-nodes/solutions/549233/Breadth-First-Search(BFS)with-intuitive-approach-Thinking-process-or-13-ms/
+    problem list : https://leetcode.com/problem-list/breadth-first-search/
+
+DFS : https://medium.com/leetcode-patterns/leetcode-pattern-1-bfs-dfs-25-of-the-problems-part-1-519450a84353
+    practice list : https://leetcode.com/problem-list/depth-first-search/
+
+InOrder traversal : 
+    https://leetcode.com/discuss/post/5020529/master-tree-patterns-by-mercer80-8b0z/
+    practice : https://leetcode.com/problems/binary-tree-inorder-traversal/description/
+
+Postorder Tree Traversal: In postorder, you traverse from left of the subtree to the right of the subtree then to the root.
+ - https://leetcode.com/discuss/post/3743769/crack-easily-any-interview-tree-data-str-nxr9/
+ - practice : https://leetcode.com/problems/binary-tree-postorder-traversal/description/
+
+
+Insertion Sort: Algorithm works similar to the way you sort playing cards in your hand.
+ - https://algo.monster/liteproblems/147
+ - practice : https://leetcode.com/problems/insertion-sort-list/solutions/
+
+8. Selection Sort: Algorithm that works by repeatedly selecting the smallest element from the the sorted list.
+ - https://www.youtube.com/watch?v=9_B6TmAHveU&ab_channel=CoderArmy
+
+9. Merge Sort: Algorithm that works by dividing an array into smaller subarrays, sorting each subarray.
+ - https://leetcode.com/discuss/post/1380769/utility-of-mergesort-sorting-problem-var-x25s/
+ - https://leetcode.com/problems/squares-of-a-sorted-array/description/
+
+10. Quick Sort: Highly effective sorting technique that divides a large data array into smaller ones.
+ - https://leetcode.com/discuss/post/1083445/how-quick-sort-works-and-the-problems-th-1h5f/
+ - problem : https://leetcode.com/problems/move-zeroes/description/
+
+11. Counting Sort: Counting sort is a sorting technique based on keys between a specific range.
+ - https://www.geeksforgeeks.org/counting-sort/
+ - problem : https://leetcode.com/problems/sort-an-array/solutions/461526/counting-sort/
+
+12. Heap Sort: Heap sort is a comparison-based sorting technique based on Binary Heap data structure.
+ - https://leetcode.com/discuss/post/1127238/master-heap-understanding-4-patterns-whe-fb8z/
+ - https://leetcode.com/discuss/post/4595617/optimization-of-heap-sort-by-adwxith-l5nw/
+
+13. Kruskal's Algorithm: Used to find the minimum spanning tree for a connected weighted graph.
+ - https://leetcode.com/problems/min-cost-to-connect-all-points/solutions/843930/accepted-python-3-minimum-spanning-tree-kruskals-algorithm-union-find/
+
+14. Floyd Warshall Algorithm: Finding the shortest path between all the pairs of vertices in the weighted graph.
+ - https://leetcode.com/discuss/post/969327/graph-algorithms-one-place-dijkstra-bell-asgf/
+ - problem : https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/solutions/701523/simple-floyd-warshall-algoall-pair-shortest-path/
+
+15. Dijkstra's Algorithm: To find the shortest path between the nodes in the graph.
+ - https://leetcode.com/discuss/post/1059477/a-guide-to-dijkstras-algorithm-by-bliss1-6x3l/
+ - https://leetcode.com/discuss/post/731911/please-share-dijkstras-algorithm-questio-dp0g/
+
+16. Kadane's Algorithm: To find the maximum sum of contiguous subarray in an array.
+ - https://medium.com/@arijitnath92/leetcode-53-maximum-subarray-kadanes-algorithm-9ab8c780d141
+ - https://leetcode.com/problems/maximum-subarray/solutions/369797/kadanes-algorithm-with-detailed-explanation-and-example-python/
+
+
+
+ If input array is sorted then
+ - Binary search
+ - Two pointers
+
+If asked for all permutations/subsets then 
+ - Backtracking
+
+If given a tree then 
+ - DFS
+ - BFS
+
+If given a graph then
+ - DFS
+ - BFS
+
+If given a linked list then 
+ - Two pointers
+
+If recursion is banned then
+ - Stack
+
+If must solve in-place then
+ - Swap corresponding values
+ - Store one or more different values in the same pointer
+
+If asked for maximum/minimum subarray/ subset/options then 
+ - Dynamic programming
+
+If asked for top/least K items then
+ - Heap
+ - QuickSelect
+
+If asked for common strings then
+ - Map
+ - Trie
+
+Else
+ - Map/Set for O(1) time & O(n) space
+ - Sort input for O(nlogn) time and O(1) space
+
+
+
+ PATTERNS : 
+
+
+
+𝟭. 𝗧𝘄𝗼 𝗣𝗼𝗶𝗻𝘁𝗲𝗿𝘀:
+ - https://www.pluralsight.com/resources/blog/guides/algorithm-templates-two-pointers-part-1
+ - https://www.pluralsight.com/resources/blog/guides/algorithm-templates-two-pointers-part-2
+
+𝟮. 𝗜𝗻𝘁𝗲𝗿𝘃𝗮𝗹𝘀:
+ - https://medium.com/@timpark0807/leetcode-is-easy-the-interval-pattern-d68a7c1c841
+ - https://leetcode.com/discuss/post/794725/general-pattern-for-greedy-approach-for-smnkj/
+ 
+𝟯. 𝗔𝗿𝗿𝗮𝘆:
+ - https://leetcode.com/discuss/post/4039411/14-patterns-to-ace-any-coding-interview-87e6c/
+ - https://leetcode.com/discuss/post/448285/list-of-questions-sorted-by-common-patte-936d/
+ - https://leetcode.com/problems/reverse-pairs/solutions/97268/General-principles-behind-problems-similar-to-%22Reverse-Pairs%22/
+
+𝟰. 𝗗𝘆𝗻𝗮𝗺𝗶𝗰 𝗣𝗿𝗼𝗴𝗿𝗮𝗺𝗺𝗶𝗻𝗴:
+ - https://leetcode.com/discuss/post/651719/how-to-solve-dp-string-template-and-4-st-nagj/
+ - https://www.youtube.com/watch?v=ZwDDLAeeBM0&t=294s&ab_channel=NickWhite
+ 
+
+𝟱. 𝗗𝗙𝗦-𝗕𝗙𝗦:
+ - https://www.youtube.com/watch?v=TIbUeeksXcI&ab_channel=BackToBackSWE
+ - https://medium.com/leetcode-patterns/leetcode-pattern-1-bfs-dfs-25-of-the-problems-part-1-519450a84353
+ - https://medium.com/leetcode-patterns/leetcode-pattern-2-dfs-bfs-25-of-the-problems-part-2-a5b269597f52
+ - https://leetcode.com/problems/pacific-atlantic-water-flow/solutions/438276/Python-beats-98.-DFS-template-for-Matrix/
+
+𝟲. 𝗕𝗶𝗻𝗮𝗿𝘆 𝗦𝗲𝗮𝗿𝗰𝗵:
+ - https://leetcode.com/discuss/post/691825/binary-search-for-beginners-problems-pat-0hei/
+ - https://leetcode.com/discuss/post/786126/python-powerful-ultimate-binary-search-t-rwv8/
+ - https://leetcode.com/problems/binary-search/solutions/423162/Binary-Search-101-The-Ultimate-Binary-Search-Handbook/
+
+𝟳. 𝗧𝗿𝗲𝗲 𝗧𝗿𝗮𝘃𝗲𝗿𝘀𝗮𝗹:
+ - https://leetcode.com/problems/binary-tree-inorder-traversal/description/
+ - https://leetcode.com/problems/binary-tree-postorder-traversal/solutions/45551/Preorder-Inorder-and-Postorder-Iteratively-Summarization/
+ - https://medium.com/leetcode-patterns/leetcode-pattern-0-iterative-traversals-on-trees-d373568eb0ec
+
+𝟴. 𝗦𝗹𝗶𝗱𝗶𝗻𝗴 𝗪𝗶𝗻𝗱𝗼𝘄:
+ - https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem./
+ - https://leetcode.com/problems/minimum-window-substring/solutions/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems/
+ - https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b
+ - https://www.pluralsight.com/resources/blog/guides/algorithm-templates-two-pointers-part-3
+
+𝟵. 𝗕𝗮𝗰𝗸𝘁𝗿𝗮𝗰𝗸𝗶𝗻𝗴:
+ - https://leetcode.com/problems/combination-sum/
+ - https://medium.com/leetcode-patterns/leetcode-pattern-3-backtracking-5d9e5a03dc26
+ - https://leetcode.com/problems/permutations/solutions/18284/Backtrack-Summary:-General-Solution-for-10-Questionsh/
+
