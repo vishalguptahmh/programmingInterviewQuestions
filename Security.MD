@@ -25,312 +25,208 @@ Output : C , the encrypted ciphertext
 
 ```
 
-### Symetry and Asymetry alogrithms
+### Symmetric and Asymmetric alogrithms
 
-Two of the major categories of encryption algorithms
- 
-are symmetric and asymmetric algorithms.
-You're probably already familiar
- 
-with the concept of symmetry, meaning that two things
- 
-are the same.
- 
-Symmetric shapes have two sides,
- 
-that when divided along an axis, are identical.
-In cryptography, symmetry relates to keys
- 
-rather than shapes.
- 
+There are two major categories of encryption algorithms: symmetric and asymmetric
 
-In cryptography, symmetry relates to keys
- 
-rather than shapes.
- 
-We have two categories of encryption algorithms.
- 
-In symmetric encryption algorithms,
- 
-also known as shared secret encryption algorithms,
- 
-the encryption and decryption operations use the same key.
- 
-If one user encrypts a message using the secret key apple,
- 
-the second user would then decrypt the message
- 
-using that same key, apple.
- 
-It's a shared secret.
-
-Asymmetric encryption algorithms, on the other hand,
- 
-use different keys for encryption and decryption.
- 
-They are also known as public key encryption algorithms
- 
-and they use the concept of a key pair,
+Symmetric Encryption Algorithms:
+- Also known as shared secret encryption algorithms
+- Key idea: You use the SAME key for both encrypting and decrypting a message
+- Think of the key as a "password to a message"
+- Example: If Alice encrypts a message with key "apple", Bob must use the exact same key "apple" to decrypt it. It's a "shared secret"
+- Problem with more people: This works well for two people. But as more people join a group (like Charlie joining Alice and Bob), you need more and more keys for every pair of people to communicate privately
+- For 'n' number of people, you need keys calculated by (n * (n-1)) / 2
+- This becomes an unmanageable number of keys for large groups, like 10,000 employees needing almost 50 million keys Also, adding a new person requires generating and distributing many new keys
 
 
-### symmetric key
+Asymmetric Encryption Algorithms:
 
-First, let's dive more into symmetric encryption.
-You can think of a shared secret key
-as the password to a message.
-Let's say that Alice and Bob want to communicate
-with each other.
-If they both know the same shared secret,
-they can use it to exchange encrypted messages
-with each other.
-This works great when we have two people involved.
-They can simply agree on an encryption key
-and then use it to communicate with each other.
-If we have three people involved, now we need
-to change things a little bit.
-Alice and Bob can still use their shared secret key
-to communicate with each other privately,
-but now Charlie joins the picture
- and wants to be able to communicate with Alice or Bob.
- Each person in the group wants the ability
- to communicate privately with any other member of the group.
- Alice already has a way to communicate privately
- with Bob, but then we need to add a second key
- that allows her to communicate privately with Charlie.
- And we still have a missing link here.
- Bob and Charlie don't have a way to communicate privately.
- We have to add a third key that allows those two
- to communicate with each other.
- So for these three people to communicate privately,
- using symmetric cryptography,
- we need three keys.
- As groups get larger, we need more and more keys
- to facilitate this communication.
- There's a formula that computes
- the number of keys required for symmetric cryptography.
- Where n is the number of people who wish to communicate,
- we multiply n by n minus one
- and then divide the result by two.
- As you can see, when we grow to larger groups,
- symmetric cryptography starts to require
- an unmanageable number of keys.
- For example, if we have an organization
- with 10,000 employees, we'd need
- almost 50 million encryption keys.
- If a new person joins the organization,
- we'd need to generate 10,000 new keys
- for that one person to be able to communicate
- with the other employees in the organization.
- And then we'd need to distribute those 10,000 keys
- to every other employee in the organization.
- Asymmetric cryptography solves this problem for us
- by using the concept of keypairs.
- Each user gets two keys, a public key
- that can be freely distributed to anyone the user
- might wish to communicate with,
- and a private key that they keep secret
- and don't disclose to anyone else.
- In asymmetric cryptography, anything that is encrypted
- with one key from the pair, can be decrypted
- with the other key from that pair.
- For normal communications, the sender of the message
- would encrypt it with the recipient's public key,
- which is publicly known.
- The recipient would then use his or her private key
- to decrypt the message.
- 
-> Remember that in asymmetric cryptography,
- the keys must be from the same pair.
- If Bob encrypts a message for Alice,
- he uses Alice's public key,
- and then Alice uses her own private key
- to decrypt the message, because Alice's public
- and private key come from the same pair.
- People get this confused on the exam all the time.
- So make sure you review it carefully
- before you take the test.
+- Also known as public key encryption algorithms
+- Key idea: You use DIFFERENT keys for encrypting and decrypting
+- They use the concept of a key pair
+- Each person gets TWO keys from this pair
+    - A public key: This can be freely given to anyone you want to communicate with
+    - A private key: This must be kept secret and NEVER shared with anyone else
+- How it works: Anything encrypted with ONE key from the pair can be decrypted with the OTHER key from the same pair
+- Communication flow:
+    - To send a message to someone (e.g., Bob sending to Alice), you encrypt the message using the recipient's PUBLIC key (e.g., Bob uses Alice's public key)
+    - The recipient (Alice) then uses HER OWN PRIVATE key to decrypt the message.This works because Alice's public and private keys are a pair
+- Solution for large groups: This solves the key management problem because you only need TWO keys per user (their public and private key) The key count remains much more manageable for large organizations
+- Comparison: Asymmetric cryptography is slower than symmetric cryptography
+
+|People Size | Symmetric Keys | Asymmetric keys|
+|---|--|--|
+|2|1|4|
+|3|3|6|
+|10|45|20|
+|100|4950|200|
+|1,000|499,500|2,000|
+|10,000|49,995,000|20,000|
 
 
-Asymmetric cryptography is slower
- than symmetric cryptography, but is solves our problem
- of creating keys for large organizations.
- We only need two keys for each user.
- As you can see in this table,
- it results in much more manageable key counts for large organizations
+##  Goals of cryptography
+Security professionals use cryptography for several reasons, described as the four goals of cryptography
 
-![](images/crypto_keys.png) 
+1. Confidentiality:
+    - Goal: Ensures unauthorized individuals cannot access sensitive information. Keeps communication private
+    - Example: Alice and Bob encrypt their messages so a third-party like Mal cannot read the contents even if she intercepts them
+    - This protects data in three states:
+        - Data at rest: Data stored on devices (like hard drives) Encryption protects it even if the device is lost or stolen
+        - Data in transit (or data in motion): Data sent over a network. Encryption protects it even if someone eavesdrops
+        - Data in use: Data actively being used in memory by an application. Encryption can protect it from other processes or individuals
 
-## 4 Goals
+1. Integrity:
+    - Goal: Protects messages and content against unauthorized modification
+    - Example: Alice and Bob want to make sure Mal cannot tamper with their message.Bob wants to be sure a message claiming to be from Alice is actually the message Alice sent
 
-#### preserve confidentiality
+1. Authentication:
+    - Goal: Verifies the identity of users.Many systems rely on encryption for this.We will discuss this more when covering identity and access management
 
-Confidentiality ensures that
- unauthorized individuals are not able to gain access
- to sensitive information.
- 
-If Alice and Bob are communicating with each other
- using encryption, they want to ensure that
- their communication remains private,
- and even a third-party, Mal, intercepts their communication,
- she is unable to read the contents.
- 
-
-When we use cryptography to protect
- the confidentiality of information,
- we consider three different states of data
- where it might be exposed to prying eyes.
- Data at rest is data stored on a hard drive or other storage device.
- We can use encryption to protect stored data
- so that it remains protected
- even if the device is lost or stolen.
- 
-Data in transit, or data in motion,
- is data being sent over a network between two systems.
- We use encryption to protect data in motion
- so that it remains protected,
- even if someone eavesdrops on the network communication.
- 
-And finally, data in use is in memory
- where it is actively being used by an application.
- We can use encryption to protect this data
- from access by other processes or individuals.
+1. Nonrepudiation:
+    - Goal: The recipient can prove to an independent third-party that the message actually came from the alleged sender
+    - Example: If Alice sends Bob a message using an algorithm that supports nonrepudiation, Bob can show it to Charlie and prove it came from Alice, demonstrating he didn't just create it himself
+    - The technology used for this is called digital signatures
+    - Key Point: Nonrepudiation is only possible with asymmetric encryption algorithms
+    - Why symmetric doesn't work: In symmetric cryptography, the sender (Alice) and receiver (Bob).both know and use the same key.Because Bob knows the same secret key as Alice, he could easily forge a message that looks like it came from Alice. While Bob knows a message encrypted with that key came from Alice (because only they have the key), he cannot prove to a third-party (like Charlie) that Alice sent it because Bob could have created it himself using their shared key
 
 
-#### integrity
+Encryption Algorithms
+- RC4
+    - Symmetric encryption algorithm
+    - Stream cipher
+    - Uses a pseudorandom keystream
+    - Variable key length between 40 and 2,048 bits
+    - Used in Network Encryption like WEP, WPA, SSL, and TLS
+    - Not considered secure
 
+- Twofish
+    - Symmetric encryption algorithm
+    - Block cipher operating on 128-bit blocks
+    - Key lengths: 128, 192, or 256 bits
+    - Considered secure
+- Blowfish
+    - Symmetric encryption algorithm
+    - Block cipher operating on 64-bit blocks
+    - Key length anywhere between 32 and 448 bits
+    - Not considered secure
 
-Integrity protects messages and other content
- 
-against unauthorized modification.
- 
+- AES (Advanced Encryption Standard)
+    - Symmetric encryption algorithm
+    - Block cipher operating on 128-bit blocks
+    - Key lengths: 128, 192, or 256 bits
+    - Considered secure
 
-If Alice and Bob are communicating with each other,
- 
-they want to make sure that Mal
- 
-is not able to tamper with the message.
- 
-Bob wants to know that the message he received
- 
-claiming to be from Alice,
- 
-is actually the message that Alice sent.
+- 3DES (Triple DES)
+    - Symmetric encryption algorithm
+    - Block cipher operating on 64-bit blocks
+    - Effective key length of 112 bits
+    - Considered secure
 
-#### authentication
- 
-The third goal of cryptography is authentication.
- 
-Many systems that verify the identity of users
- 
-rely upon the use of encryption.
- 
-We'll talk more about the use of encryption
- 
-to provide authentication
- 
-when we discuss identity and access management.
+- Block Cipher Modes
+    - Electronic Codebook (ECB) Mode
+        - Encrypting the same block with the same key results in identical ciphertext blocks
 
-#### nonrepudiation
- 
-The final goal of cryptography is nonrepudiation.
- 
-Nonrepudiation means that the recipient of a message
- 
-can prove to an independent third-party
- 
-that the message actually came from the alleged sender.
- 
-For example, if Alice sends a message to Bob
- 
-using an encryption algorithm
- 
-that supports nonrepudiation,
- 
-Bob could then show the message to Charlie
- 
-and prove that the message actually came from Alice
- 
-and that he didn't simply create it himself.
- 
-The technology that we use to achieve nonrepudiation
- 
-is called digital signatures.
- 
-We'll discuss digital signatures later in this course.
+    - Cipher Block Chaining (CBC) Mode
+        - Uses an IV (Initialization Vector)
 
-
-
-Nonrepudiation is only possible
- 
-with asymmetric encryption algorithms.
- 
-Remember, in symmetric cryptography,
- 
-the sender and receiver both know and use the same key.
-
-
- 
-In this approach, it would be easy for Bob
- 
-to forge a message from Alice
- 
-because Bob knows the same secret key that Alice does.
- 
-If Bob receives a message encrypted with that key,
- 
-he knows that it came from Alice
- 
-because she is the only other person with a key.
- 
-Bob can't however prove to Charlie
- 
-that the message came from Alice
- 
-because Bob could just as easily
- 
-have created it himself.
-
->Symmetric encryption algorithm
-Block Cipher operating on 64-bit blocks
-Effective key length of 112 bits
-Considered secure
-
-3DES :
-AES
-BLOWfish
-twofish
-
-
-RC4:RC4 : widly used for Networks but not secure
-
-
-CIPHER MODES : 
-    - ECB
-    - CBC
-    - CTR
+    - Counter Mode (CTR)
+        - Uses a Nonce and a Counter which are combined and fed into the Encryption Algorithm
+        - The output of the Encryption Algorithm is XORed with the plaintext block to produce the ciphertext block
 
 Encrypting the same block with same key in ECB mode reuslts in identical cipher text blocks 
 
 # Steganography
+- Steganography hides data in large files
+- It often uses innocent-looking, high-resolution images
+- Information can be hidden by making slight modifications to image pixels
+- An example tool shown is QuickStego - Steganography which can hide a secret text message in an image.The interface allows editing text, opening/saving images and text files, and performing the steganography process
 
 
-### RSA keys
-    - Sender encypts a message using the recipient's public key.
-Recipient decrpts a message using the recipient's private key.
+## Data Encryption Standard (DES) and Triple DES (3DES)
 
+**FAQ:**
+- What length encryption key does the data encryption standard use?
+    -  DES typically uses a 56-bit key.
+- How many keys should be used with 3DES to achieve the greatest level of security?
+    - 3DES uses three keys to enhance security over DES, applying DES encryption three times with different keys.
+
+## RSA
+RSA is a widely used asymmetric encryption algorithm named after its creators, Rivest, Shamir, and Adleman. It relies on the mathematical difficulty of factoring large prime numbers.
 Key Facts about RSA
-    - Asymmetric encyption algo
-    - Variable length key between 1024 and 4096 bits
-Considered secure
+- Asymmetric encyption algo
+- Variable length key between 1024 and 4096 bits
+- Considered secure
 
-PGP: 
+## Pretty Good Privacy (PGP)
 
+*   **What is PGP?**
+    *  PGP is a cryptographic program that provides cryptographic privacy and authentication for data communication. It is often used for signing, encrypting, and decrypting texts, emails, files, and whole disk partitions.
 
+*   **PGP Working: Communication between Alice and Bob**
+    *   Both Alice and Bob will **generate private and public keys**, and then exchange their public keys.
 
+*   **Key Generation Command:**
+    ```bash
+    gpg --gen-key
+    ```
+    This command is used to generate keys.
 
+*   **Getting Public Key in a File:**
+    *   To get Alice's public key in a file (`alice.pub`):
+        ```bash
+        gpg --armor --export alice@alice.com > alice.pub
+        ```
+    *   The same process is done for Bob.
+
+*   **Importing Public Keys:**
+    *   To import Bob's public key (`bob.pub`) on Alice's computer:
+        ```bash
+        gpg --import bob.pub
+        ```
+    *   This step is necessary to be able to encrypt messages for Bob.
+
+*   **Encrypting a File using Public Key:**
+    *   Alice encrypts a file (`demo.txt`) to send data to Bob using Bob's public key:
+        ```bash
+        gpg --encrypt --armor < demo.txt
+        ```
+    *   It will ask for the User ID, which is Bob's email ID (`bob@bob.com`).
+    *   It will ask to use the key anyway, and you answer `Y`.
+    *   It will ask for the User ID with an Empty Message, and you answer `Y`.
+    *   After these steps, it will return some encrypted data.
+
+*   **Decrypting a File:**
+    *   Bob will create a file (e.g., `msg.txt`) and put the encrypted text inside it.
+    *   Then, Bob decrypts that file:
+        ```bash
+        gpg --decrypt msg.txt
+        ```
+    *   It will ask for the **password for Bob's private key** to decrypt the message.
+
+## Quantum Computing and Cryptography
+
+*   **Quantum Computing:** It is an emerging field that attempts to use quantum mechanics to perform computing tasks.
+*   **Current Status:** It is still **mostly a theoretical field**.
+*   **Potential Impact on Cryptography:** If quantum computing advances to the point where it becomes practical, **quantum cryptography may be able to defeat cryptographic algorithms that depend upon factoring large prime numbers**.
+    * This is because quantum computers have the potential to run algorithms like Shor's algorithm, which can efficiently factor large numbers, posing a threat to algorithms like RSA and Diffie-Hellman.)*
+
+## Key Exchange or Management
+
+*   **OUT OF BAND KEY EXCHNAGE**
+    * This typically refers to key exchange where the key is transmitted over a separate, secure channel different from the main communication channel, such as physically delivering a key or using a phone call.
+*   **IN OF BAND KEY EXCHANGE**
+    * This refers to key exchange where the key is exchanged over the same communication channel as the data itself, often using cryptographic protocols.
+*   **ONE METHOD IS DIFFI-HELMEN ALGO**
+    *The Diffie-Hellman algorithm (more commonly spelled Diffie-Hellman) is a method for securely exchanging cryptographic keys over a public channel. It's one of the earliest practical examples of public key exchange, allowing two parties to establish a shared secret key without their initial communication being intercepted.
+
+*   **KEY ESCROW**
+    *  Key escrow is a system where the keys required to decrypt encrypted data are held in confidence by a third party, allowing authorized third parties (like law enforcement) to access the encrypted data under certain conditions.
+*   **KEY STRECHING**
+    * Key stretching (or key strengthening) is a technique used to make a weak key, typically a password or passphrase, more secure against brute-force attacks by increasing the computational cost of testing each possible key. This is often done by feeding the initial key into an algorithm that produces a longer, strengthened key or repeatedly applies a hash function.
 
 
 # Android TOP 10
+
 ## SENSITIVE INFORMATION DISCLOUSER ([OWSAP Mobile Data storage](https://owasp.org/www-project-mobile-top-10/2016-risks/m2-insecure-data-storage))
 
 ### Backup 
@@ -430,46 +326,39 @@ TLS is successor of SSL [geekforGeek](https://www.geeksforgeeks.org/difference-b
 
 
 TLS is a cryptographic protocol designed to render secure communication over a computer network, providing privacy, data integrity, and authentication between two or more communicating systems. Specifically, TLS can provide several security benefits:
+- Confidentiality: Protection against an attacker attempting to read traffic content.
+- Integrity: Protection against an attacker attempting to modify traffic.
+- Replay prevention: Protection against an attacker replaying requests against the server.
+- Authentication: Allowing the client to verify that they are connected to the real server (the client's authentication is optional).
 
-    Confidentiality: Protection against an attacker attempting to read traffic content.
-    Integrity: Protection against an attacker attempting to modify traffic.
-    Replay prevention: Protection against an attacker replaying requests against the server.
-    Authentication: Allowing the client to verify that they are connected to the real server (the client's authentication is optional).
 
-
-Impacts : 
-
+### Impacts : 
 - man-in-the-middle (MITM) attacks,
 - If certificates expire, users might experience service disruptions
 
-Preventions: 
-
+### Preventions: 
 The following aspects should be taken into consideration when configuring TLS:
 
-Server configuration
+- Server configuration
+    - Only Support Strong Protocols: Web applications should only support TLS 1.2 and TLS 1.3, with all other protocols disabled. SSL protocols are deprecated and should not be used under any circumstances.
+    - Only Support Strong Ciphers: TLS supports a large number of cipher suites with varying levels of security. Where possible, only enable GCM ciphers. However, if supporting legacy clients is absolutely necessary, it may require enabling other ciphers. At a minimum, the following types of ciphers should always be disabled: "Null ciphers", "Anonymous ciphers", and "EXPORT ciphers".
+    - Use Strong Diffie-Hellman Parameters: Where ciphers that use the ephemeral Diffie-Hellman key exchange are in use, deploy at least a 2048 bit-prime parameter.
+    - Disable Compression: TLS compression should be disabled to protect against CRIME vulnerability.
+    - Test the Server Configuration: There are a number of tools that can be used to quickly validate the configuration of a server, such as "SSLyze", "testssl.sh", and "tls-scan".
+- Certificates
+    - Use Strong Keys: The private key used to generate the cipher key must be at least 2048 bits in size.
+    - Protect The Keys: Filesystem permissions and other controls should be implemented to protect the private key from unauthorized access.
+    - Use Strong Cryptographic Hashing Algorithms: Certificates should use SHA-256 for the hashing algorithm rather than MD5 and SHA-1.
+    - Use Correct Domain Names: The domain name (or subject) of the certificate must match the fully qualified name of the server presenting the certificate. This name is stored in the "commonName" (CN) attribute of the certificate and, recently, in the "subjectAlternativeName" (SAN) attribute.
+    - Carefully Consider the use of Wildcard Certificates: Wildcard Certificates violate the principle of least privilege, as a single certificate is valid for all subdomains of a domain and should only be used where there is a genuine need.
+    - SSL Pinning: Storing commonly used certificates locally to compare against the advertised one from the host, helping to prevent MITM attacks.
+    - Renew Certificates Regularly: To avoid outages and downtimes due to expired certificates, set up an automated process for renewing SSL/TLS certificates well before their expiry dates. Utilize monitoring tools to alert administrators in case of nearing expiry or failed renewal attempts.
 
-- Only Support Strong Protocols: Web applications should only support TLS 1.2 and TLS 1.3, with all other protocols disabled. SSL protocols are deprecated and should not be used under any circumstances.
-- Only Support Strong Ciphers: TLS supports a large number of cipher suites with varying levels of security. Where possible, only enable GCM ciphers. However, if supporting legacy clients is absolutely necessary, it may require enabling other ciphers. At a minimum, the following types of ciphers should always be disabled: "Null ciphers", "Anonymous ciphers", and "EXPORT ciphers".
-- Use Strong Diffie-Hellman Parameters: Where ciphers that use the ephemeral Diffie-Hellman key exchange are in use, deploy at least a 2048 bit-prime parameter.
-- Disable Compression: TLS compression should be disabled to protect against CRIME vulnerability.
-- Test the Server Configuration: There are a number of tools that can be used to quickly validate the configuration of a server, such as "SSLyze", "testssl.sh", and "tls-scan".
-
-Certificates
-
-    Use Strong Keys: The private key used to generate the cipher key must be at least 2048 bits in size.
-    Protect The Keys: Filesystem permissions and other controls should be implemented to protect the private key from unauthorized access.
-    Use Strong Cryptographic Hashing Algorithms: Certificates should use SHA-256 for the hashing algorithm rather than MD5 and SHA-1.
-    Use Correct Domain Names: The domain name (or subject) of the certificate must match the fully qualified name of the server presenting the certificate. This name is stored in the "commonName" (CN) attribute of the certificate and, recently, in the "subjectAlternativeName" (SAN) attribute.
-    Carefully Consider the use of Wildcard Certificates: Wildcard Certificates violate the principle of least privilege, as a single certificate is valid for all subdomains of a domain and should only be used where there is a genuine need.
-    SSL Pinning: Storing commonly used certificates locally to compare against the advertised one from the host, helping to prevent MITM attacks.
-    Renew Certificates Regularly: To avoid outages and downtimes due to expired certificates, set up an automated process for renewing SSL/TLS certificates well before their expiry dates. Utilize monitoring tools to alert administrators in case of nearing expiry or failed renewal attempts.
-
-Web Applications
-
-    Do Not Mix TLS and Non-TLS Content: TLS should be used for all pages; external resources that load over unencrypted HTTP (such as JavaScript or CSS) should be programmed to load over HTTPS.
-    Use the "Secure" Cookie Attribute: All cookies should be marked with the "Secure" attribute, which instructs the browser only to send them over encrypted HTTPS connections.
-    Use HTTP Strict Transport Security: HTTP Strict Transport Security (HSTS) instructs the user's browser to always request the site over HTTPS and prevents the user from bypassing certificate warnings.
-    Consider the use of Client-Side Certificates: High-value applications or APIs should enforce client-side authentication.
+- Web Applications
+    - Do Not Mix TLS and Non-TLS Content: TLS should be used for all pages; external resources that load over unencrypted HTTP (such as JavaScript or CSS) should be programmed to load over HTTPS.
+    - Use the "Secure" Cookie Attribute: All cookies should be marked with the "Secure" attribute, which instructs the browser only to send them over encrypted HTTPS connections.
+    - Use HTTP Strict Transport Security: HTTP Strict Transport Security (HSTS) instructs the user's browser to always request the site over HTTPS and prevents the user from bypassing certificate warnings.
+    - Consider the use of Client-Side Certificates: High-value applications or APIs should enforce client-side authentication.
 
 
 ## Jailbreak/Root Check [OWSAP](https://owasp.org/www-project-mobile-top-10/2016-risks/m8-code-tampering) | [Android](https://source.android.com/docs/security)
@@ -483,26 +372,23 @@ Hash Functions are mathematical algorithms that perform a one-way conversion of 
 
 Hashing algorithms are a critical component for numerous information security applications; they are used to sign digital certificates, create message authentication codes (MACs), hash passwords and other authentication cases.
 
-Strong hash functions possess a range of properties:
+- Strong hash functions possess a range of properties:
+    - Any minor change to the data input, even if the change constitutes only 1 byte, will result in an uncorrelated hash value; this is known as an "avalanche effect".
+    - Pre-image Resistant: it should be computationally difficult to reverse a hash to its pre-hashed form.
+    - Second Pre-Image Resistant: it should be difficult for an attacker to find a different input with the same hash given an input and a hash.
+    - Collision Resistant: it should be difficult for an attacker to identify two different inputs of arbitrary length that result in identical hashes. Note: difficult does not mean impossible - every hashing algorithm permits collisions... the goal is to make this as a remote reality as possible!
 
-    Any minor change to the data input, even if the change constitutes only 1 byte, will result in an uncorrelated hash value; this is known as an "avalanche effect".
-    Pre-image Resistant: it should be computationally difficult to reverse a hash to its pre-hashed form.
-    Second Pre-Image Resistant: it should be difficult for an attacker to find a different input with the same hash given an input and a hash.
-    Collision Resistant: it should be difficult for an attacker to identify two different inputs of arbitrary length that result in identical hashes. Note: difficult does not mean impossible - every hashing algorithm permits collisions... the goal is to make this as a remote reality as possible!
-
-Previously standard hashing functions that are nowadays considered very high risk or completely broken include:
-
-    MD5: known to be susceptible to collision attacks since the mid-'90s, and considered completely broken.
-    SHA-1: considered insecure against well-resourced adversaries since 2005 and formally deprecated for use by NIST in 2011.
-    RIPEMD & RIPEMD-128: deemed insecure, with a reported collision occurring in 2004.
+- Previously standard hashing functions that are nowadays considered very high risk or completely broken include:
+    - MD5: known to be susceptible to collision attacks since the mid-'90s, and considered completely broken.
+    - SHA-1: considered insecure against well-resourced adversaries since 2005 and formally deprecated for use by NIST in 2011.
+    - RIPEMD & RIPEMD-128: deemed insecure, with a reported collision occurring in 2004.
     Whirlpool: a rebound attack presented collisions in 2009.
 
-When the hash function is used to hash passwords, consider the use of more suitable algorithms, such as:
-
-    bcrypt: the default password hash algorithm used in many systems.
-    scrypt: an algorithm specifically designed to make the hashing computationally intense so to mitigate the bruteforcing.
-    argon2: the winner of the 2015 Password Hashing Competition; the computational intensiveness of the process can be fine-tuned.
-    PBKDF2: a key derivarion algorithm recommended by NIST.
+- When the hash function is used to hash passwords, consider the use of more suitable algorithms, such as:
+    - bcrypt: the default password hash algorithm used in many systems.
+    - scrypt: an algorithm specifically designed to make the hashing computationally intense so to mitigate the bruteforcing.
+    - argon2: the winner of the 2015 Password Hashing Competition; the computational intensiveness of the process can be fine-tuned.
+    - PBKDF2: a key derivarion algorithm recommended by NIST.
 
 
 To check md5 hashs 
