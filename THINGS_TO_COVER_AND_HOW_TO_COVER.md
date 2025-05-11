@@ -10,7 +10,7 @@ we are dividing whole process into 4 parts.
 
 ## DataStructure and Algorithms
 - [OOPS , SOLID principals](OOPS_AND_SOLID.md)
-- UML diagram concepts
+- [UML diagram concepts](UML_understanding.MD)
 - [Design Patterns](DESIGN_PATTERNS.md) - Creational , Structural , Behavioural
 - DataStructure [1](DATA_STRCTRUCTURE.MD) [2](https://blog.algomaster.io/p/how-i-mastered-data-structures-and-algorithms)
 
