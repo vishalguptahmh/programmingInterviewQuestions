@@ -16,27 +16,27 @@
 ### Quick idea of patterns : 
 
 1. <a href="#singlton">!Singleton:</a> Ensures only one instance exists.
-2. <a href="#factory">!Factory Method: </a> Delegates object instantiation to subclasses.
-3. <a href="#abstract-factory-design-patternafdp">!Abstract Factory:</a> Creates related object families without specifying their concrete classes.
-4. Prototype: Clones objects for a prototypical instance.
-5. <a href="#builder">!Builder:</a> Constructs complex objects step by step.
-6. <a href="#adapter-design-patternadp">!Adapter:</a> Bridges incompatible interfaces.
-7. Bridge: Separates abstraction from implementation.
-8. !Composite: Treats single and composite objects uniformly.
-9. !Decorator: Adds behaviors to objects dynamically.
-10. !Facade: Simplifies complex system interfaces.
-11. Flyweight: Shares objects to reduce memory.
-12. Proxy: Controls object access.
-13. <a href="#observer">!Observer:</a> Notifies changes to multiple objects.
-14. <a href="#strategy">!Strategy:</a> Encapsulates interchangeable algorithms.
-15. !Command: Encapsulates a request as an object.
-16. !State: Changes object behavior with internal state.
-17. Visitor: Adds operations to object structures without modifying them.
-18. Memento: Captures and restores object states externally.
-19. Iterator: Sequentially accesses elements of a collection.
-20. Mediator: Centralizes complex communications.
-21. Chain of Responsibility: Passes requests along a chain of handlers.
-22. !Template Method: Defines the skeleton of an algorithm.
+1. <a href="#factory">!Factory Method: </a> Delegates object instantiation to subclasses.
+1. <a href="#abstract-factory-design-patternafdp">!Abstract Factory:</a> Creates related object families without specifying their concrete classes.
+1. Prototype: Clones objects for a prototypical instance.
+1. <a href="#builder">!Builder:</a> Constructs complex objects step by step.
+1. <a href="#adapter-design-patternadp">!Adapter:</a> Bridges incompatible interfaces.
+1. <a href="#observer">!Observer:</a> Notifies changes to multiple objects.
+1. !Decorator: Adds behaviors to objects dynamically.
+1. <a href="#strategy">!Strategy:</a> Encapsulates interchangeable algorithms.
+1. <a href="Chain of Responsibility">!Chain of Responsibility</a>: Passes requests along a chain of handlers.
+1. Proxy: Controls object access.
+1. Bridge: Separates abstraction from implementation.
+1. !Composite: Treats single and composite objects uniformly.
+1. !Facade: Simplifies complex system interfaces.
+1. Flyweight: Shares objects to reduce memory.
+1. !Command: Encapsulates a request as an object.
+1. !State: Changes object behavior with internal state.
+1. Visitor: Adds operations to object structures without modifying them.
+1. Memento: Captures and restores object states externally.
+1. Iterator: Sequentially accesses elements of a collection.
+1. Mediator: Centralizes complex communications.
+1. !Template Method: Defines the skeleton of an algorithm.
 
 
 
@@ -574,7 +574,90 @@ Factory is for creating objects, not for switching behaviors of an existing obje
 
 
 
+# Chain of Responsibility (Behavioral Design Pattern)
 
+Questions comes like ATM , Vending Machine, Logger
+![](https://mermaid.ink/img/pako:eNplUsFu2zAM_RWBpw1wA9mOnciHAVmWpJdtQDv00GoH1WYSA5aUydKWLs2_T7KdoO50EPQe3yMpSicodYVQwM6Iw578-MxV6557wGF1FPLQIIcRe-ukUIEjfi2eOCybGpUld_jLYWvJVhuSZJRy-MkVqoqrkX1hJZGi3NcKL0lWPklCKblrO0-g1p7KxtTGU_GYWtzcfCKrIQkJYE0GfwCb7jw00W1v-vj-G81DjX-GJnpbf5XgvRWqatD09AA--O6fW2tEaa9xIB-7wq_f8Ghfx7alVqVBYXFgY_Jf5veS5L3iOkKuIAKJRoq68g92ClEOdo_Sz7Hwxwq3wjU23OfspcJZff-iSii2omkxAqPdbg-FNc4Dd6h80S-18OOQV8lBqEet5UW0M6HUxe77QLPUTlko4nROOzkUJzh6zNJJHidxllDGcsrSeQQvUCRTNmHTeOoDdD6bM5qfI_jbVaCTPE_ZLMtYiMymaRYBVrXV5mv_I7uPef4H_sLPqA)
+
+
+Real Example of Android : 
+- Touch Event Hanlding in view Hierachy
+- Okhttp Interceptors
+```kotlin
+class LoggingInterceptor implements Interceptor {
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+        Request request = chain.request(); // Receive request
+        Log.d("Request", request.url().toString());
+
+        Response response = chain.proceed(request); // Pass to next
+        return response; // Can also modify before returning
+    }
+}
+
+```
+- Jetpack Compose Modifiers
+    ```kotlin 
+    Modifier
+    .padding(16.dp)
+    .clickable { /* handle click */ }
+    .background(Color.Red)
+    ```
+
+
+```kotlin
+
+class Main(){
+    val loghandler:LogHandler = InfoLog(DebugLog(ErrorLog(null)))
+    loghandler.log(INFO,"just info")
+    loghandler.log(DEBUG,"dubug log")
+    loghandler.log(ERROR,"Exception hanlded")
+}
+
+abstract class LogHandler(protected val nextLoghanlder:LogHandler?){
+    val INFO = 1
+    val DEGUG = 2
+    val ERROR = 3
+
+    fun log(log_level : Int , message:String){
+        if(nextLogHandler!=null){
+            nextLogHandler.log(log_level, message);
+        }
+    }
+}
+
+class InfoLog(LogHandler nextloghandler) : LogHandler(nextloghandler){
+    fun log(level:Int,message:String){
+        if(level == INFO){
+            println("INfo logs")
+        }
+        else{
+            super.log(level,message)
+        }
+    }
+}
+class DebugLog(LogHandler nextloghandler) : LogHandler(nextloghandler){
+    fun log(level:Int,message:String){
+        if(level == Debug){
+            println("Debug logs")
+        }
+        else{
+            super.log(level,message)
+        }
+    } 
+}
+class ErrorLog(LogHandler nextloghandler) : LogHandler(nextloghandler){
+    fun log(level:Int,message:String){
+        if(level == Error){
+            println("Error logs")
+        }
+        else{
+            super.log(level,message)
+        }
+    }
+}
+
+```
 
 reference : 
 

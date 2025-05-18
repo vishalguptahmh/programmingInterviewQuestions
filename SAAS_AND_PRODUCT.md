@@ -109,7 +109,99 @@ One-click secure access to all resources your employees need. This includes acce
 
 Login to portal > Single Sign on creds > get acess to all app ex (social,google directory service, Microsoft AD, LDAP)
 
+### SAML
+![](
+https://mermaid.ink/img/pako:eNp1U01v2zAM_SsCTxvgFvFHmtiHAfmOixUz5u5SawfVZhNjsZRJcrosyH-fLNtphnU6PZKP5CMlnSAXBUIEG8n2W_I4pZxyVT-35jeFknJiziRrMGF5jkqhImnyvQ1Ms6kUr01MYlFKzLUiWpC46AnrCyH5kj6azMnDZ_IV1V5whQ3VlkJe_NU5RXkoc0ykOJQFyoxC5yG9i3xIk48Uui6zLE3IBjlKpvHS5GeNSneMuGEc2K4srhmtjI5y3w5ZKmJEcI1FN-87-uICuS718Upg77pSaLbwJnGeGdNsKcfy8L7ERdt_UuttUyq3QrvY0mbnEv-rftXV72-hbmo9s_xHu2TyWurtP4ndXBNyc_OJzCifWWBewdSCOeVzCxaULyxYUr60YEX5yoI15WsLYspjC-4pBwcqlBUrC_O2To1ACmaqCilEBhb4wuqdpkD52VBZrUV65DlEL2yn0AEp6s0WIi1rY9T75srmJTOrry6UPeNPQlQ9aSObVn26GQvlTNRcQ-QHvmVDdIJfEHn-4HYUhneeOxx7A9_1hg4cIXK94HZwNx4PwuEg9EYjPzg78Ns2sHw_dF038Jtw4DlgtqyFfGj_jv1C5z-UmQ8J)
 
+
+### Different types of Single Sign On Mechanisms
+
+| Mechanism        | Protocol          | Common Use Case           | Format | Cloud-Friendly |
+| ---------------- | ----------------- | ------------------------- | ------ | -------------- |
+| SAML             | SAML 2.0          | Enterprise Web Apps       | XML    | ✅              |
+| OAuth 2.0 + OIDC | JSON + HTTP       | Web, Mobile, APIs         | JSON   | ✅✅             |
+| Kerberos         | Kerberos          | On-Prem AD Networks       | Binary | ❌              |
+| LDAP             | LDAP              | Legacy Systems            | Text   | ❌              |
+| CAS              | Custom Protocol   | Academic Environments     | Text   | ☑️ (limited)   |
+| Smart Card       | Certificate-Based | High-Security Enterprises | X.509  | ❌              |
+| Social Login     | OAuth + OIDC      | Consumer Web/Mobile       | JSON   | ✅✅             |
+
+### SAML vs Auth2.0
+
+Common Steps:
+
+    User tries to access a protected app.
+
+    App redirects browser to Identity Provider (SSO).
+
+    User logs in at IdP.
+
+    IdP sends a response (SAML Assertion or ID Token) back to the app via the browser.
+
+    App verifies the response and creates a session.
+
+
+
+
+| Aspect               | **SAML 2.0**                      | **OAuth 2.0 + OIDC**                         |
+| -------------------- | --------------------------------- | -------------------------------------------- |
+| **Purpose**          | Authentication only               | OAuth: Authorization; OIDC: Authentication   |
+| **Format**           | XML                               | JSON / JWT                                   |
+| **Transport**        | HTTP Redirect / POST (Base64 XML) | HTTPS (JSON, tokens in URL or body)          |
+| **Token Type**       | SAML Assertion (XML)              | ID Token (JWT), Access Token (JWT or opaque) |
+| **Audience**         | Enterprises, legacy web apps      | Modern web, mobile, APIs                     |
+| **SP Role**          | Service Provider                  | Relying Party / Client                       |
+| **IdP Role**         | Identity Provider                 | Authorization Server + IdP (in OIDC)         |
+| **Extensibility**    | Limited, XML schema bound         | High (JSON-based, supports scopes/claims)    |
+| **Common Providers** | Okta, ADFS, Ping, Azure AD        | Google, GitHub, Auth0, Firebase, AWS Cognito |
+
+SAML is identity-assertion centric:
+“Here’s a digitally signed XML document stating who this user is.”
+
+OIDC (on top of OAuth) is token-centric:
+“Here’s a signed JWT ID token that asserts the user’s identity, plus access token for APIs if needed.”
+
+Not all Single sign follow above 5 steps
+ex  : 
+- Kerberos(Uses tickets, Authentication is handled at OS level not app level)
+- LDAP Authentication : 
+    - App connects directly to an LDAP server (like Active Directory) to authenticate.
+    - SSO works when combined with Kerberos or a reverse proxy.
+- Smart Card / Certificate-Based
+    - Authentication happens using client-side certificates or physical smart cards.
+    - Often plugged into the browser or OS login.
+
+
+Trust Model of SAML
+
+![](https://mermaid.ink/img/pako:eNp1UstqwzAQ_JXFl6aQ_EAOhThPJ3ZiogQKdQ-qvSSiqexackIo_feuJdl5tLVhQGJmdnZXX16aZ-j1vV3Jiz1s_ETaX1Vv9irx2CAKYVDpPUwO-Qk6LO4FUmjBNWaPiZdIoG_8QsQY0hLpWhm6XONnhUpD5zkKifhqmRPLVGIn73gnQTWKUhzJAt7x3EqmJPHL_KSwhBIzUWKqFegcgiy2qmufVjYjWc0gOorjXaqWFTjWkR9EZsK7dFxXJUKlhNyB0jkVhqJ6O4j0Jtuc5Ns6GCdzlFqkxoPrOlzLWrgizXxqf_Kzo1Uk1yKXLTu86jdesY26I9ats4t5ZCd6aeBCtOmp8oP6K_zydmsKlapVXGZA25c0ZJ6mdGkEbtHQ6z3BxODU4MxgYHBucGEwNBgZXCYSZXb3sCLUnAJzYKirAuI9V9i8p4F7JaRS8NEQ7cr7MKY56zMEoy4Mhgy267ALsW1vcdWe76Zutmf22ji1lGFD-VWIUR3GVv-aj1xC61173Ji7Nkz3vqtlDiM3Cu_7B1HdHR0)
+
+
+
+
+#### How IdP ensures it’s valid:
+1. Signature Validation (Optional but Recommended):
+    - The SP signs the AuthnRequest using its private key.
+    - The IdP validates the signature using the SP’s public certificate (previously exchanged during metadata setup).
+    - This confirms:
+        - The request came from a trusted SP.
+        - The request was not tampered with.
+
+1. SP Metadata:
+    - SP and IdP trust each other based on pre-shared metadata.
+    - Metadata contains:
+        - SP entity ID
+        - SP public key
+        - Assertion Consumer Service (ACS) URLs
+        - Binding method (POST, Redirect)
+
+    - IdP uses this metadata to:
+        - Check if the incoming request is from a known SP.
+        - Verify request bindings and endpoints match expectations.
+
+1. Timestamp & Replay Protection:
+    - The AuthnRequest contains timestamps (IssueInstant).
+    - IdP can reject requests that are too old or reused.
 
 
 ### Reference 

@@ -39,18 +39,18 @@ we are dividing whole process into 4 parts.
 - MDM (Work profile, device owner, byod mode,dpc,activation process,retrieving policy)  
 
 - Security 
-    - symetric/ asymetric
-    - securing communication 
-    - data at rest, data at transit - mdm
+    - [symetric/ asymetric](Security.MD)
+    - [securing communication](Security.MD)
+    - [data at rest, data at transit - mdm ](Security.MD)
     - DLP, 
     - notification seed,how that communication happen ?
-    - screen shot capture
+    - [screen shot capture](Security.MD)
     - MTD
     - FRIDA detection 
     - Static check, dynamic check
     - Requirement checks
     - Cold start
-    - Threat modeling
+    - [Threat modeling](Security.MD)]
 
 
 ## Product Knowledge
