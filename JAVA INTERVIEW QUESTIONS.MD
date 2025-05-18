@@ -33,3 +33,11 @@ ex if there is object to which db and network connection is associated then garb
 
 
 >NOTE : finally meant for cleanup activities related to try block where-as Finalize meant for cleanup activities releated to object.
+
+
+
+Reference : 
+
+https://github.com/Pankaj-Str/Java-Interview-Questions-and-Answers/blob/main/01%20Java%20Interview%20Basic.md
+
+https://github.com/a11exe/java-interview/blob/main/questions/java-memory-managment.md#memory-management-in-java-interview-questions
