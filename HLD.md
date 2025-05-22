@@ -56,6 +56,11 @@ Application layer can be divided into two parts
 ![](images/HDL/micro9.png)
 
 
+## System Scaling to 1 Million
+
+![](images/HDL/scalingSystem1.png)
+![](images/HDL/scalingSystem2.png)
+![](images/HDL/scalingSystem3.png)
 
 ## API design
 - Rest
