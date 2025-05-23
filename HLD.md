@@ -62,6 +62,10 @@ Application layer can be divided into two parts
 ![](images/HDL/scalingSystem2.png)
 ![](images/HDL/scalingSystem3.png)
 
+## Consistent Hashing
+
+
+
 ## API design
 - Rest
 - Synchonous and Asynchronous calls
