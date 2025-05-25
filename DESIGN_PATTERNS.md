@@ -662,6 +662,8 @@ class ErrorLog(LogHandler nextloghandler) : LogHandler(nextloghandler){
 
 # Proxy Design Pattern
 
+In our college, when our friend does our attendence on our behave so this is real example of proxy . here our friend is doing job of proxy. I am reall object he is proxy of me , who is doing attendence.
+
 Think of it like a security guard at a building entrance:
 You want to enter the real building (real object), but first, the guard (proxy) checks your ID and permissions. If you're good, you're let in.
 
