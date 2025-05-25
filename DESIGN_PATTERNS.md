@@ -659,7 +659,100 @@ class ErrorLog(LogHandler nextloghandler) : LogHandler(nextloghandler){
 
 ```
 
-reference : 
+
+# Proxy Design Pattern
+
+Think of it like a security guard at a building entrance:
+You want to enter the real building (real object), but first, the guard (proxy) checks your ID and permissions. If you're good, you're let in.
+
+> A Proxy is a class that acts as a stand-in or placeholder for another class. It controls access to the real object — either by delaying its creation, controlling access, or adding extra behavior like logging or caching.
+
+
+### When to Use
+- Caching API data
+- Access control based on user roles
+- Logging or analytics wrappers
+- Lazy-loading heavy resources (e.g., images, files)
+- Adding retry mechanisms without altering the core logic
+
+### Example 
+You're calling the API directly. There's no caching. Every time you request the data, it hits the server.
+
+```kotlin 
+// Without Proxy
+interface ApiService {
+    @GET("user")
+    suspend fun getUser(): User
+}
+
+class UserRepository(private val apiService: ApiService) {
+
+    suspend fun fetchUser(): User {
+        return apiService.getUser() // always hits the network
+    }
+}
+
+```
+Result : 
+- Every call → hits the server.
+- No caching.
+- Wastes network/data/time if user data doesn’t change frequently.
+
+```kotlin
+// With Proxy
+interface ApiService {
+    @GET("user")
+    suspend fun getUser(): User
+}
+
+class CachedApiService(private val realService: ApiService) : ApiService {
+
+    private var cachedUser: User? = null
+
+    override suspend fun getUser(): User {
+        return cachedUser ?: realService.getUser().also {
+            cachedUser = it
+        }
+    }
+}
+
+class UserRepository(apiService: ApiService) {
+    private val cachedService = CachedApiService(apiService)
+
+    suspend fun fetchUser(): User {
+        return cachedService.getUser()
+    }
+}
+
+```
+
+| Without Proxy                  | With Proxy                          |
+| ------------------------------ | ----------------------------------- |
+| Directly calls `apiService`    | Calls `CachedApiService` first      |
+| No caching                     | Adds caching logic                  |
+| No control over extra behavior | Can log, cache, retry inside proxy  |
+| No separation of concerns      | Proxy handles "extra" logic cleanly |
+
+
+###  How to Think About It
+- ✅ Real Object (ApiService) → Does the actual work
+- ✅ Proxy (CachedApiService) → Adds logic like caching before delegating to the real object
+- ✅ Caller (UserRepository) → Thinks it's talking to ApiService, but actually using the proxy
+
+
+
+
+
+### Commnon Mistakes
+| Mistake                             | Tip to Avoid                                           |
+| ----------------------------------- | ------------------------------------------------------ |
+| Mixing proxy logic with real object | Keep proxy and real class **separate and independent** |
+| Not following interface contract    | Proxy must **implement the same interface**            |
+| Overusing proxy (overengineering)   | Use when there's a **clear need for extra behavior**   |
+
+
+
+# Reference : 
 
 https://sourcemaking.com/design_patterns
 https://github.com/pdichone/JavaDesignPatterns

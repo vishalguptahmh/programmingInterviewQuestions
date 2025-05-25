@@ -1,6 +1,21 @@
 
 
-# HLD 
+# HLD
+
+## Basics
+
+| Term          | Size                                      | Notes                                          |
+| ------------- | ----------------------------------------- | ---------------------------------------------- |
+| **Bit**       | 1 bit                                     | Smallest unit of data, either 0 or 1           |
+| **Nibble**    | 4 bits                                    | Half a byte. One hex digit represents a nibble |
+| **Byte**      | 8 bits = 2 nibbles                        | Can represent values from 0 to 255             |
+| **Hex Digit** | 4 bits = 1 nibble                         | E.g., `F` = `1111`, `A` = `1010`               |
+| **Word**      | 16 bits (2 bytes) (in some architectures) | Architecture-dependent                         |
+
+
+![](images/HDL/biteTrick.png)
+
+
 
 ## Netowrk protocols
 What is client server Model
@@ -64,16 +79,27 @@ Application layer can be divided into two parts
 
 ## Consistent Hashing
 
+![](images/HDL/consitanthasing1.png)
+![](images/HDL/consistanthasing2.png)
 
 
-## API design
-- Rest
-- Synchonous and Asynchronous calls
-- Blocking and Non-Blocking calls
-- Rate Limiting
-## Caching
+## URL Shortner
+
+![](images/HDL/urlShortner1.png)
+![](images/HDL/urlShortner2.png)
+![](images/HDL/urlShortner3.png)
+![](images/HDL/urlShortner4.png)
+
+## Back of Envelope Estimation
 
 
+![](images/HDL/boee1.png)
+![](images/HDL/boee2.png)
+![](images/HDL/boee3.png)
+![](images/HDL/boee4.png)
+![](images/HDL/boee5.png)
+![](images/HDL/boee6.png)
+![](images/HDL/boee7.png)
 
 
 
