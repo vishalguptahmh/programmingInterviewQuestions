@@ -102,6 +102,24 @@ Application layer can be divided into two parts
 ![](images/HDL/boee7.png)
 
 
+## Design key value DB
+
+
+![](images/HDL/designKeyValueDb1.png)
+![](images/HDL/designKeyValueDb2.png)
+![](images/HDL/designKeyValueDb3.png)
+![](images/HDL/designKeyValueDb4.png)
+![](images/HDL/designKeyValueDb5.png)
+![](images/HDL/designKeyValueDb6.png)
+
+
+## Sql vs NoSql
+
+![](images/HDL/sqlnosql1.png)
+![](images/HDL/sqlnosql2.png)
+![](images/HDL/sqlnosql3.png)
+
+
 
 # Reference : 
 
