@@ -131,3 +131,6 @@ https://leetcode.com/discuss/post/3611301/complete-system-design-case-studies-bo
 
 https://leetcode.com/discuss/post/2340482/system-design-template-that-landed-me-to-53gu/
 https://leetcode.com/discuss/post/2341201/object-oriented-design-template-that-lan-co46/
+
+https://github.com/donnemartin/system-design-primer
+https://www.youtube.com/@ByteByteGo

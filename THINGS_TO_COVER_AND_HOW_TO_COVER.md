@@ -390,6 +390,214 @@ Day 41 :
 - [ ] Pancake Sorting
 
 
+
+# 📆 6-Week Software Engineering Prep Plan with material 
+⏱️ 1hr per weekday | ⏱️ 3hr each on Sat & Sun  
+🎯 Focus: DSA, System Design, Android Core, Security
+
+---
+
+## ✅ Week 1: DSA Basics + System Design Intro + Android Architecture
+
+### Day 1 – Arrays & Hashing  
+📚 Learn:
+- [NeetCode: Arrays](https://www.youtube.com/watch?v=TPRS6zjP7JU)
+- [NeetCode: Hash Maps](https://www.youtube.com/watch?v=KyUTuwz_b7Q)
+
+🧩 Practice:
+- [ ] [Two Sum (1)](https://leetcode.com/problems/two-sum/)
+- [ ] [Contains Duplicate (217)](https://leetcode.com/problems/contains-duplicate/)
+
+---
+
+### Day 2 – Linked Lists  
+📚 Learn:
+- [NeetCode: Linked Lists](https://www.youtube.com/watch?v=QNGLxP9MjWk)
+- [Visualgo: Linked Lists](https://visualgo.net/en/list)
+
+🧩 Practice:
+- [ ] [Reverse Linked List (206)](https://leetcode.com/problems/reverse-linked-list/)
+- [ ] [Intersection of Two Linked Lists (160)](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+
+---
+
+### Day 3 – System Design Basics  
+📚 Learn:
+- [ByteByteGo: System Design Fundamentals](https://www.youtube.com/watch?v=AZKWvF9U_Y4)
+- [Client-server architecture](https://www.geeksforgeeks.org/client-server-architecture/)
+
+---
+
+### Day 4 – Fast/Slow Pointer Pattern  
+📚 Learn:
+- [NeetCode: Linked List Cycle](https://www.youtube.com/watch?v=gBTe7lFR3vc)
+
+🧩 Practice:
+- [ ] [Linked List Cycle (141)](https://leetcode.com/problems/linked-list-cycle/)
+- [ ] [Middle of the Linked List (876)](https://leetcode.com/problems/middle-of-the-linked-list/)
+
+---
+
+### Day 5 – Design: URL Shortener  
+📚 Learn:
+- [Grokking URL Shortener](https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR)
+
+---
+
+### Day 6 – Android + Security  
+📚 Learn:
+- [Android MVVM Architecture](https://developer.android.com/jetpack/guide)
+- [WorkManager Overview](https://developer.android.com/topic/libraries/architecture/workmanager)
+- [OAuth 2.0 Overview](https://oauth.net/2/)
+
+---
+
+### Day 7 – Practice + Review
+- [ ] [LeetCode Daily Practice](https://leetcode.com/problemset/all/)
+- [ ] [System Design Primer](https://github.com/donnemartin/system-design-primer)
+
+---
+
+## ✅ Week 2: Trees + Auth Design + Dependency Injection
+
+### Day 1 – Binary Trees  
+📚 Learn:
+- [NeetCode: Binary Trees](https://www.youtube.com/watch?v=fAAZixBzIAI)
+
+🧩 Practice:
+- [ ] [Maximum Depth of Binary Tree (104)](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+- [ ] [Invert Binary Tree (226)](https://leetcode.com/problems/invert-binary-tree/)
+
+---
+
+### Day 2 – BST  
+📚 Learn:
+- [BST Intro - NeetCode](https://www.youtube.com/watch?v=s6ATEkipzow)
+
+🧩 Practice:
+- [ ] [Validate BST (98)](https://leetcode.com/problems/validate-binary-search-tree/)
+- [ ] [Lowest Common Ancestor in BST (235)](https://leetcode.com/problems/lowest-common-ancestor-of-a-bst/)
+
+---
+
+### Day 3 – Design: Rate Limiter  
+📚 Learn:
+- [Sliding Window + Token Bucket](https://www.educative.io/courses/grokking-the-system-design-interview/qVZBx1OmP6x)
+
+---
+
+### Day 4 – Tree Depth Recursion  
+📚 Learn:
+- [Diameter of Binary Tree – NeetCode](https://www.youtube.com/watch?v=bkxqA8Rfv04)
+
+🧩 Practice:
+- [ ] [Diameter of Binary Tree (543)](https://leetcode.com/problems/diameter-of-binary-tree/)
+
+---
+
+### Day 5 – Auth Service  
+📚 Learn:
+- [JWT, OAuth, PKCE (Auth0)](https://auth0.com/docs/secure/attack-protection/pkce)
+
+---
+
+### Day 6 – Android: DI + Compose  
+📚 Learn:
+- [Dagger vs Hilt](https://developer.android.com/training/dependency-injection)
+- [Intro to Jetpack Compose](https://developer.android.com/jetpack/compose/tutorial)
+
+---
+
+### Day 7 – Practice + Review  
+- [ ] Review trees, DI, and auth
+
+---
+
+## ✅ Week 3: Sliding Window + Graphs + Modular Android
+
+### Day 1 – Sliding Window  
+📚 Learn:
+- [NeetCode: Sliding Window](https://www.youtube.com/watch?v=wiGpQwVHdE0)
+
+🧩 Practice:
+- [ ] [Best Time to Buy Stock (121)](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+- [ ] [Longest Substring Without Repeat (3)](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+---
+
+### Day 2 – Graph Basics  
+📚 Learn:
+- [NeetCode Graphs Explained](https://www.youtube.com/watch?v=tWVWeAqZ0WU)
+- [Visualgo: Graphs](https://visualgo.net/en/dfsbfs)
+
+🧩 Practice:
+- [ ] [Clone Graph (133)](https://leetcode.com/problems/clone-graph/)
+- [ ] [Number of Islands (200)](https://leetcode.com/problems/number-of-islands/)
+
+---
+
+### Day 3 – Design: Instagram Feed  
+📚 Learn:
+- [Feed Design + Fan-out](https://www.educative.io/courses/grokking-the-system-design-interview/RM1BDv71V60)
+
+---
+
+### Day 4 – Heap  
+📚 Learn:
+- [NeetCode: Heap / Priority Queue](https://www.youtube.com/watch?v=WP6oXgU6CAc)
+
+🧩 Practice:
+- [ ] [Kth Largest Element (215)](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+- [ ] [Top K Frequent Elements (347)](https://leetcode.com/problems/top-k-frequent-elements/)
+
+---
+
+### Day 5 – Secure File Upload Design  
+📚 Learn:
+- [Security for file uploads](https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html)
+
+---
+
+### Day 6 – Android Modularization  
+📚 Learn:
+- [Guide to Modular Android Architecture](https://proandroiddev.com/demystifying-modularization-in-android-3272e4c6fa83)
+
+---
+
+### Day 7 – Practice + Review  
+- [ ] Review graphs, heap, modularization
+
+---
+
+## ✅ Week 4–6 (Shortened Below for Space, Same Format):
+
+**Week 4:**
+- DSA: [Binary Tree Max Path Sum (124)](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+- Android: [LeakCanary](https://square.github.io/leakcanary/), [StrictMode](https://developer.android.com/reference/android/os/StrictMode)
+- Security: STRIDE, Android Threats
+- Design: Push Notifications
+
+**Week 5:**
+- Binary Search: [Binary Search (704)](https://leetcode.com/problems/binary-search/)
+- Concurrency: [Coroutines vs RxJava](https://developer.android.com/kotlin/coroutines)
+- Security: 2FA, Brute-force protection
+- Design: WhatsApp architecture
+
+**Week 6:**
+- DP: [Climbing Stairs (70)](https://leetcode.com/problems/climbing-stairs/)
+- Cold Start Perf: [Android App Startup](https://developer.android.com/topic/performance/vitals/launch-time)
+- Security: Cert Pinning, Root Detection
+- Design: E-commerce Architecture
+
+---
+
+## ✅ Summary: Topics to Pre-Learn
+Whenever a new concept appears, use:
+- 🎥 NeetCode / ByteByteGo / TechWithTim (YouTube)
+- 📖 Educative / GeeksForGeeks / Android docs
+- 🎨 Visualgo for trees, graphs, heaps
+
+
 ## How to cover ?
 
 |Day | Things to cover |
@@ -422,6 +630,8 @@ https://www.youtube.com/@TechDummiesNarendraL
 
 https://www.youtube.com/@SuccessinTech/featured
 https://github.com/sindresorhus/awesome?tab=readme-ov-file
+
+https://visualgo.net/en
 
 
 Remote Job plateform
@@ -505,6 +715,18 @@ I want you to act as a Python interpreter. I will give you commands in Python, a
 ### Act as Cheap Travel Ticket Advisor
 
 You are a cheap travel ticket advisor specializing in finding the most affordable transportation options for your clients. When provided with departure and destination cities, as well as desired travel dates, you use your extensive knowledge of past ticket prices, tips, and tricks to suggest the cheapest routes. Your recommendations may include transfers, extended layovers for exploring transfer cities, and various modes of transportation such as planes, car-sharing, trains, ships, or buses. Additionally, you can recommend websites for combining different trips and flights to achieve the most cost-effective journey.
+
+
+
+# To Recruiter:
+"Hi [Name], I’m [Your Name], currently working at [Company] / a final year student at [College].
+I’m looking for roles in [e.g., backend/data/scaled systems], and would love to explore opportunities at [Company].
+I’ve attached my resume for your reference. Thanks for your time!"
+
+# To an employee :
+"Hi [Name], I came across your profile while exploring [Company].
+I’m interested in the [Job Title] (Job ID: XYZ) role — aligns well with my background in [short summary].
+If you're open to referring, I’d really appreciate it. I’ve attached my resume for your reference. Thanks!"
 
 
 https://github.com/f/awesome-chatgpt-prompts
