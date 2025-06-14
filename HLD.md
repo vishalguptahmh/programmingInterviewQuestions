@@ -12,9 +12,19 @@
 | **Hex Digit** | 4 bits = 1 nibble                         | E.g., `F` = `1111`, `A` = `1010`               |
 | **Word**      | 16 bits (2 bytes) (in some architectures) | Architecture-dependent                         |
 
+### word = 2 Byte = 16 bit = 4 nibbles(hexDigit)  
+
 
 ![](images/HDL/biteTrick.png)
 
+
+| Zeros    | Traffic         | Storage   |
+|----------|----------------|-----------|
+| 3 zeros  | thousand       | KB        |
+| 6 zeros  | million        | MB        |
+| 9 zeros  | billion        | GB        |
+| 12 zeros | trillion       | TB        |
+| 15 zeros | quadrillion    | PB        |
 
 
 ## Netowrk protocols
@@ -60,6 +70,21 @@ Application layer can be divided into two parts
 
 
 ## Monolithic vs Microservices
+
+#### Phases to create microservices
+- Decomposition
+    - Discompose by business capacity
+    - Decompose by subdomain
+- Database
+    - single DB or Shared DB
+- Communication
+    - API based
+    - Event based
+- Integration
+    - API gateways
+- Observablity
+
+
 ![](images/HDL/micro1.png)
 ![](images/HDL/micro2.png)
 ![](images/HDL/micro3.png)
@@ -118,6 +143,17 @@ Application layer can be divided into two parts
 ![](images/HDL/sqlnosql1.png)
 ![](images/HDL/sqlnosql2.png)
 ![](images/HDL/sqlnosql3.png)
+
+
+
+## Proxy vs Reverse Proxy
+ - What is proxy server?
+ - What are its differnt types?
+    - Forward proxy
+    - Reverse proxy
+- Proxy vs VPN
+- Proxy vs LoadBalancer
+- Proxy vs firewall
 
 
 

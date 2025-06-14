@@ -1,5 +1,19 @@
 # Programming Interview Questions
 
+## Basic you need to know about your lang
+
+| item | syntax|
+|--|--|
+| creating hashmap |`val map = mutableMapOf<Int,Int>()`|
+| creating hasmap from list of num:IntArray| `val map = nums.toList().groupingBy { it }.eachCount()`|
+| geting element from hashmap| `map.getOrDefault(key,0)`|
+| putting element from hashmap| `map.put(key,0)`|
+| containing element in hashmap| `map.contains(key,0)`|
+
+
+
+
+
 ### Asked Questions in interview 
 
   - Difference bw type and interface
