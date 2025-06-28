@@ -31,6 +31,36 @@
 ## Sample Interview Answer
 “MVP uses a Presenter to manually update the View via an interface, while MVVM uses a ViewModel with reactive data like `StateFlow`. MVP is simpler for small apps but has more boilerplate and no lifecycle awareness. MVVM integrates better with Jetpack, making it ideal for modern apps. I’d use MVVM for a scalable app with Compose, like a product list, and MVP for a simple legacy project.”
 
+1. **What is MVVM, and how does it differ from MVP?**
+   - **Answer**: MVVM uses ViewModel for reactive data (LiveData/StateFlow), View observes automatically. MVP uses Presenter for manual View updates via interfaces. MVVM’s lifecycle-aware, ideal for Jetpack.
+
+2. **How do you handle data binding in MVVM?**
+   - **Answer**: Use LiveData/StateFlow in ViewModel, observed in View (e.g., Compose with `collectAsState()`). For a product list, ViewModel exposes `StateFlow`, and `LazyColumn` updates reactively.
+
+3. **Where do you place business logic in MVVM?**
+   - **Answer**: Business logic goes in Model’s Domain layer (use cases, e.g., `GetProductsUseCase`). ViewModel handles UI logic, keeping it lean for testability. 
+
+4. **How does ViewModel handle configuration changes?**
+   - **Answer**: ViewModel survives config changes (e.g., rotations) by retaining state, unlike MVP’s manual handling. It exposes data via LiveData/StateFlow for UI.
+
+5. **How do you manage API data models in MVVM?**
+   - **Answer**: Use mappers in Data layer to convert API models to domain models (e.g., `ApiProduct` to `Product`). Ensures decoupling, as in Clean Architecture.
+
+6. **How do you integrate MVVM with Jetpack Compose?**
+   - **Answer**: ViewModel exposes `StateFlow`, observed in composables with `collectAsState()`. For a product list, `LazyColumn` displays data reactively, reducing code. 
+
+7. **How do you test a ViewModel in MVVM?**
+   - **Answer**: Use JUnit, Mockito to mock use cases. Test ViewModel logic (e.g., `fetchProducts`) by verifying `StateFlow` emissions. Ensures robust UI updates.
+
+8. **How does MVVM work with Clean Architecture?**
+   - **Answer**: MVVM’s Model maps to Domain (use cases) and Data (repositories, mappers). ViewModel calls use cases, keeping business logic separate, testable.
+
+9. **What are MVVM’s benefits and drawbacks?**
+   - **Answer**: Benefits: Lifecycle-aware, reactive, testable. Drawbacks: Complex setup, risk of fat ViewModels. Use cases keep ViewModel lean, as in my projects.
+
+10. **How do you handle async operations in MVVM?**
+    - **Answer**: Use coroutines in ViewModel with `viewModelScope` for API calls. For a product list, fetch data asynchronously, update `StateFlow` for UI.
+    
 ## Practice Question
 You’re asked: “For a feature displaying a user profile, would you choose MVP or MVVM, and why?” Explain briefly:
 - One key difference (e.g., data flow or lifecycle handling).
