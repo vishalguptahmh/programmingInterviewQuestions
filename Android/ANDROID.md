@@ -1,7 +1,7 @@
 
 # Android
 
-![Alt text](drawio/mindmap%20testing.svg)
+![Alt text](../drawio/mindmap%20testing.svg)
 
 # Classes
 - Data
