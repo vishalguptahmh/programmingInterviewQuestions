@@ -16,14 +16,27 @@
 
 ### Asked Questions in interview 
 
-  - Difference bw type and interface
-  - when variable gives undefined and null in javascript
-  - async , await and promises 
-  - what is `coros`? can we delete from code? 
-  - How apple build is generated and what certficates are needed ?
-  - what will happen if provision cert got revoked? and expired?
-  - what are `SOLID` principal
+- Difference bw type and interface
+- when variable gives undefined and null in javascript
+- async , await and promises 
+- what is `coros`? can we delete from code? 
+- How apple build is generated and what certficates are needed ?
+- what will happen if provision cert got revoked? and expired?
+- what are `SOLID` principal
 
+
+------
+
+22 June Banking Company interview
+
+- infix function
+- latinit and lazy differences? how they are implemented in back?
+- inline function
+- crossline function
+- deligates
+- compose side-effects
+- problems you faced in compose
+- MVVM vs MVP . what are drawbacks of MVP and MVVM and benifets of it
 
   ---
   ### Mathematics For Topcoders
