@@ -181,6 +181,8 @@ Time Complexity :
 |Deleting at last |O(n)|
 |Read at first|O(1)|
 |Read at last |O(n)|
+
+
 # HashMap
 Time Complexity : 
 |Doing|Time|
@@ -188,6 +190,49 @@ Time Complexity :
 |Inserting|O(1)|
 |Deleting|O(1)|
 |Read|O(1)|
+
+### Key Points
+1. **How It Works**:
+   - Uses a hash table with buckets (arrays) to store key-value pairs.
+   - Keys are hashed using `hashCode()` to determine bucket index.
+   - Collisions resolved via linked lists or trees (Java 8+ for high collisions).
+2. **Common Operations**:
+   - `put(key, value)`: Adds or updates key-value pair.
+   - `get(key)`: Retrieves value by key.
+   - `remove(key)`: Deletes key-value pair.
+   - `containsKey(key)`: Checks if key exists.
+3. **Use Cases in Android**:
+   - Caching data (e.g., product data in a repository).
+   - Mapping UI states or IDs to objects (e.g., in ViewModel).
+   - Storing temporary key-value data (e.g., form inputs).
+4. **Performance Considerations**:
+   - Optimize with initial capacity to reduce resizing.
+   - Use `ConcurrentHashMap` for multi-threaded access.
+   - Monitor memory usage with Profiler (as you mentioned).
+
+### Example
+```kotlin
+// In a repository (Data layer, Clean Architecture)
+class ProductRepository {
+    private val cache = HashMap<Int, Product>()
+    suspend fun getProduct(id: Int): Product? {
+        return cache.getOrPut(id) { api.fetchProduct(id) } // Cache API result
+    }
+}
+```
+
+### Common Interview Questions with Answers
+1. **What is a HashMap, and how does it work?**
+   - **Answer**: HashMap stores key-value pairs using a hash table. Keys are hashed to a bucket index. `put`/`get` are O(1) average. Used for caching in my app’s repository. (110 chars)
+2. **When would you use HashMap in Android?**
+   - **Answer**: Use HashMap for caching (e.g., products in repository) or mapping IDs to objects in ViewModel. Fast lookups help UI performance. (94 chars)
+3. **How do you handle collisions in HashMap?**
+   - **Answer**: HashMap resolves collisions with linked lists or trees (Java 8+). Good `hashCode()` minimizes collisions for efficiency. (88 chars)
+4. **Why not use HashMap in multi-threaded scenarios?**
+   - **Answer**: HashMap isn’t thread-safe; use `ConcurrentHashMap` for safe multi-thread access, like in a shared cache. (80 chars)
+5. **How do you optimize HashMap performance?**
+   - **Answer**: Set initial capacity to avoid resizing. Used Profiler to monitor memory in a product cache, improving speed. (83 chars)
+
 
 # Stacks (LIFO)
 Time Complexity : 
