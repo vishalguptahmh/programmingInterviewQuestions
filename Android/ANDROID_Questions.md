@@ -414,3 +414,15 @@ class LoginViewModel @Inject constructor(
 - Use mockk or Mockito to mock AuthRepository.
 - Only test the feature module's UI and ViewModel.
 - Integration tests can be written in data module.
+
+
+Aspect,MVP (Model-View-Presenter),MVVM (Model-View-ViewModel)
+Definition,"View (UI) interacts with Presenter, which handles logic and updates View via an interface.","View (UI) observes ViewModel, which exposes data reactively and handles UI logic."
+Data Flow,Manual: Presenter calls View methods to update UI.,Reactive: View observes ViewModel’s LiveData/StateFlow.
+UI Updates,"Presenter explicitly updates View (e.g., showProducts()).",ViewModel exposes data; View updates automatically.
+Lifecycle Handling,Manual state management for configuration changes.,"ViewModel survives configuration changes (e.g., rotations)."
+Testability,High: Presenter is decoupled from Android Views.,High: ViewModel is independent of Android components.
+Boilerplate,High: Requires View interfaces and Presenter for each View.,"Moderate: ViewModel setup, less boilerplate with Compose."
+Android Integration,"Generic, less tied to Jetpack libraries.","Strong integration with Jetpack (LiveData, ViewModel)."
+Use Case Example,Simple app: Presenter updates a Fragment’s product list.,Modern app: ViewModel exposes StateFlow for Compose UI.
+Complexity,"Simpler for small apps, but scales poorly.","More complex, scales well for large apps."
