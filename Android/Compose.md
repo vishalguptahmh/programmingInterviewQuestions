@@ -122,111 +122,111 @@
     - **Definition**: Side effects are operations that interact with the outside world (e.g., API calls, navigation, toasts) and should be controlled to avoid unexpected behavior during recomposition.
 
     - **Key APIs**:
-    1. **LaunchedEffect**:
-     - Runs a coroutine-scoped side effect when a composable enters the composition or when specific keys change.
-     - **Use Case**: Fetch data or trigger navigation on initial composition or key change.
-     - **Example**:
-       ```kotlin
-       @Composable
-       fun ProfileScreen(viewModel: ProfileViewModel, userId: String) {
-           LaunchedEffect(userId) {
-               viewModel.fetchProfile(userId)
-           }
-           val profile by viewModel.profile.collectAsState()
-           Text(profile?.name ?: "Loading...")
-       }
-       ```
-    2. **DisposableEffect**:
-     - Manages side effects with cleanup (e.g., registering/unregistering listeners).
-     - **Use Case**: Start/stop a service when a composable enters/leaves composition.
-     - **Example**:
-       ```kotlin
-       @Composable
-       fun LocationTracker() {
-           DisposableEffect(Unit) {
-               val tracker = LocationTracker().apply { start() }
-               onDispose { tracker.stop() }
-           }
-       }
-       ```
-    3. **SideEffect**:
-     - Executes non-coroutine side effects on every recomposition (use cautiously).
-     - **Use Case**: Logging or analytics.
-     - **Example**:
-       ```kotlin
-       @Composable
-       fun AnalyticsScreen() {
-           SideEffect {
-               Analytics.logEvent("ScreenViewed")
-           }
-           Text("Analytics Tracked")
-       }
-       ```
-    4. **rememberCoroutineScope**:
-     - Provides a coroutine scope tied to the composable’s lifecycle for launching coroutines outside `LaunchedEffect`.
-     - **Use Case**: Trigger side effects on user actions (e.g., button clicks).
-     - **Example**:
-       ```kotlin
-       @Composable
-       fun ToastButton() {
-           val scope = rememberCoroutineScope()
-           Button(onClick = {
-               scope.launch { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() }
-           }) {
-               Text("Show Toast")
-           }
-       }
-       ```
-    5. **produceState**:
-     - Converts non-Compose reactive streams (e.g., Flow) into Compose state.
-     - **Use Case**: Fetch data reactively from a Flow.
-     - **Example**:
-       ```kotlin
-       @Composable
-       fun ProductList(viewModel: ProductViewModel) {
-           val products by produceState<List<Product>>(initialValue = emptyList()) {
-               viewModel.products.collect { value = it }
-           }
-           LazyColumn {
-               items(products) { product -> Text(product.name) }
-           }
-       }
-       ```
+        1. **LaunchedEffect**:
+            - Runs a coroutine-scoped side effect when a composable enters the composition or when specific keys change.
+            - **Use Case**: Fetch data or trigger navigation on initial composition or key change.
+            - **Example**:
+                ```kotlin
+                @Composable
+                fun ProfileScreen(viewModel: ProfileViewModel, userId: String) {
+                    LaunchedEffect(userId) {
+                        viewModel.fetchProfile(userId)
+                    }
+                    val profile by viewModel.profile.collectAsState()
+                    Text(profile?.name ?: "Loading...")
+                }
+                ```
+        2. **DisposableEffect**:
+            - Manages side effects with cleanup (e.g., registering/unregistering listeners).
+            - **Use Case**: Start/stop a service when a composable enters/leaves composition.
+            - **Example**:
+                ```kotlin
+                @Composable
+                fun LocationTracker() {
+                    DisposableEffect(Unit) {
+                        val tracker = LocationTracker().apply { start() }
+                        onDispose { tracker.stop() }
+                    }
+                }
+                ```
+        3. **SideEffect**:
+            - Executes non-coroutine side effects on every recomposition (use cautiously).
+            - **Use Case**: Logging or analytics.
+            - **Example**:
+                ```kotlin
+                @Composable
+                fun AnalyticsScreen() {
+                    SideEffect {
+                        Analytics.logEvent("ScreenViewed")
+                    }
+                    Text("Analytics Tracked")
+                }
+                ```
+        4. **rememberCoroutineScope**:
+            - Provides a coroutine scope tied to the composable’s lifecycle for launching coroutines outside `LaunchedEffect`.
+            - **Use Case**: Trigger side effects on user actions (e.g., button clicks).
+            - **Example**:
+                ```kotlin
+                @Composable
+                fun ToastButton() {
+                    val scope = rememberCoroutineScope()
+                    Button(onClick = {
+                        scope.launch { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show() }
+                    }) {
+                        Text("Show Toast")
+                    }
+                }
+                ```
+        5. **produceState**:
+            - Converts non-Compose reactive streams (e.g., Flow) into Compose state.
+            - **Use Case**: Fetch data reactively from a Flow.
+            - **Example**:
+                ```kotlin
+                @Composable
+                fun ProductList(viewModel: ProductViewModel) {
+                    val products by produceState<List<Product>>(initialValue = emptyList()) {
+                        viewModel.products.collect { value = it }
+                    }
+                    LazyColumn {
+                        items(products) { product -> Text(product.name) }
+                    }
+                }
+                ```
 
-    Use LaunchedEffect, SideEffect, or rememberCoroutineScope for side effects.
-    ```kotlin
-    LaunchedEffect(Unit) {
-        // Called once on composition
-        fetchData()
-    }
-    ```
+    - Use LaunchedEffect, SideEffect, or rememberCoroutineScope for side effects.
+        ```kotlin
+        LaunchedEffect(Unit) {
+            // Called once on composition
+            fetchData()
+        }
+        ```
 
-    | Question                           | Answer Hint                                  |
-    | ---------------------------------- | -------------------------------------------- |
-    | What is `@Composable`?             | Marks a function that defines UI             |
-    | How does state management work?    | `remember`, `mutableStateOf`, `State<T>`     |
-    | What is recomposition?             | UI re-renders when observable state changes  |
-    | How is navigation handled?         | `NavController`, `NavHost`, `composable`     |
-    | How does Compose compare with XML? | Declarative vs imperative                    |
-    | How do you test Compose UI?        | `ComposeTestRule`, semantics, assertions     |
-    | Can you use ViewModel in Compose?  | Yes, with `hiltViewModel()` or `viewModel()` |
-    | What is `rememberSaveable`?        | Like `remember`, but survives config changes |
+        | Question                           | Answer Hint                                  |
+        | ---------------------------------- | -------------------------------------------- |
+        | What is `@Composable`?             | Marks a function that defines UI             |
+        | How does state management work?    | `remember`, `mutableStateOf`, `State<T>`     |
+        | What is recomposition?             | UI re-renders when observable state changes  |
+        | How is navigation handled?         | `NavController`, `NavHost`, `composable`     |
+        | How does Compose compare with XML? | Declarative vs imperative                    |
+        | How do you test Compose UI?        | `ComposeTestRule`, semantics, assertions     |
+        | Can you use ViewModel in Compose?  | Yes, with `hiltViewModel()` or `viewModel()` |
+        | What is `rememberSaveable`?        | Like `remember`, but survives config changes |
 
 
 
-- **Custom Modifiers**:
-  - Create reusable modifiers for consistent styling.
-  - **Example**:
-    ```kotlin
-    fun Modifier.customBorder() = this.then(
-        Modifier.border(2.dp, Color.Black).padding(8.dp)
-    )
+    - **Custom Modifiers**:
+        - Create reusable modifiers for consistent styling.
+        - **Example**:
+            ```kotlin
+            fun Modifier.customBorder() = this.then(
+                Modifier.border(2.dp, Color.Black).padding(8.dp)
+            )
 
-    @Composable
-    fun BorderedText(text: String) {
-        Text(text, modifier = Modifier.customBorder())
-    }
-    ```
+            @Composable
+            fun BorderedText(text: String) {
+                Text(text, modifier = Modifier.customBorder())
+            }
+            ```
 
 ## CompositionLocal
 - **Definition**: Provides implicit data passing through the composition tree (e.g., for theming, context).

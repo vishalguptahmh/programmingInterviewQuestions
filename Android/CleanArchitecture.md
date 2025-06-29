@@ -1,8 +1,14 @@
 # Overview of Clean Architecture
-- **Definition**: Clean Architecture is a design philosophy that separates concerns into layers (Presentation, Domain, Data) to create modular, testable, and maintainable code, emphasizing independence from frameworks and external systems.
+- **Definition**:
+
+    **What-** Clean Architecture is a design philosophy 
+    
+    **Does-** that separates concerns into layers (Presentation, Domain, Data) 
+    
+    **Why-** to create modular, testable, and maintainable code, emphasizing independence from frameworks and external systems.
 - **Core Principles**:
   - **Separation of Concerns**: Each layer has a specific responsibility, reducing coupling.
-  - **Dependency Rule:** Dependencies flow inward—outer layers (Presentation, Data) depend on inner layers (Domain), not vice versa.
+  - **Dependency Rule:** All concrete dependencies point inward.
   - **Testability**: Business logic (Domain) is isolated, making it easy to unit test.
   - **Framework Independence**: Code is decoupled from UI, database, or network frameworks.
 
@@ -165,4 +171,18 @@ fun ProductScreen(viewModel: ProductViewModel) {
         | **Clean Architecture** | Blueprint for structuring app into layers with strict separation of concerns          |
         | **SOLID**              | Guidelines for writing maintainable, scalable code inside and across layers           |
         | **Relationship**       | Clean Architecture **enforces** SOLID principles in how layers depend and communicate |
+
+
+6. **Which layers knows about which Layer?**
+    | Layer            | Knows About             | Doesn’t Know About |
+    | ---------------- | ----------------------- | ------------------ |
+    | **Presentation** | Domain                  | Data               |
+    | **Domain**       | Nothing outside         | Presentation, Data |
+    | **Data**         | Domain (via interfaces) | Presentation       |
+    
+    - The Domain layer defines the interfaces, and the Data layer implements them.
+    - All concrete dependencies point inward.
+    - Abstractions (interfaces) are defined in the domain layer.
+    - The domain is completely isolated — it can be reused in a CLI app, backend service, etc.
+
 

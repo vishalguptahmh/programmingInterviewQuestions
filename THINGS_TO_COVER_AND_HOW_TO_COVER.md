@@ -657,6 +657,7 @@ My first sentence is "Hi"
 
 if you are giving difference give me in tabular form in md format so that it will be easy to understand and copy for revision.
 give me understanding with analogy first and if i understand from there and i tell you "got it" then we move to main concept.
+give me Mnemonic (Simple and Fun) to remember.
 lets start preparing on those modules one-by-one.
 When i say "start next" we will jump to another topic and try to cover in depth which is relevent for interview.
 
