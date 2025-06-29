@@ -156,4 +156,13 @@ fun ProductScreen(viewModel: ProductViewModel) {
         | Complexity          | Low to Medium             | Medium to High                      |
 
 
-In fact, most real-world scalable Android projects use Clean Architecture with MVVM in the presentation layer.
+        In fact, most real-world scalable Android projects use Clean Architecture with MVVM in the presentation layer.
+
+5. **Clean Architecture and SOLID Principals?**
+    - **Answer:**
+        | Concept    | Description  |
+        | ---------------------- | --------------- |
+        | **Clean Architecture** | Blueprint for structuring app into layers with strict separation of concerns          |
+        | **SOLID**              | Guidelines for writing maintainable, scalable code inside and across layers           |
+        | **Relationship**       | Clean Architecture **enforces** SOLID principles in how layers depend and communicate |
+
