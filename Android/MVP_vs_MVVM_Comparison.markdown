@@ -189,11 +189,3 @@ fun ProductScreen(viewModel: ProductViewModel) {
 3. **Manual UI Updates**: Presenter must explicitly call View methods, adding boilerplate.
 4. **Tightly Coupled View-Presenter**: Presenter’s direct View reference limits reusability.
 5. **Less Modern Integration**: Doesn’t align as well with Jetpack libraries compared to MVVM.
-
-
-
-## Practice Question
-You’re asked: “For a feature displaying a user profile, would you choose MVP or MVVM, and why?” Explain briefly:
-- One key difference (e.g., data flow or lifecycle handling).
-- Why you’d choose one for the feature.
-- A specific benefit (e.g., less code, better testing).

@@ -11,14 +11,14 @@
 ## Layers in Clean Architecture
 1. **Presentation Layer**:
    - Handles UI and user interactions (e.g., Activities, Fragments, Jetpack Compose).
-   - Integrates with MVVM’s View and ViewModel (as you asked about earlier).
+   - Integrates with MVVM’s View and ViewModel .
    - **Example**: A `ProductScreen` composable displaying a product list.
 2. **Domain Layer**:
-   - Contains business logic, implemented as **use cases** (or Interactors), which you asked about in MVVM.
+   - Contains business logic, implemented as **use cases** (or Interactors)
    - Pure Kotlin, no Android dependencies, highly testable.
    - **Example**: `GetProductsUseCase` to fetch and validate product data.
 3. **Data Layer**:
-   - Manages data sources (e.g., API, Room database) and **mappers** (as you asked about) to convert API models to domain models.
+   - Manages data sources (e.g., API, Room database) and **mappers**  to convert API models to domain models.
    - Includes repositories that abstract data access for the Domain layer.
    - **Example**: `ProductRepository` fetching data from Retrofit or Room.
 
@@ -37,8 +37,8 @@
 
 ## Integration with MVVM
 - **Presentation Layer**: Maps to MVVM’s View (Compose/Fragment) and ViewModel.
-- **Domain Layer**: Contains MVVM’s Model (use cases), handling business logic (as you asked about use cases).
-- **Data Layer**: Part of MVVM’s Model, including repositories and mappers (as you asked about API-to-domain mapping).
+- **Domain Layer**: Contains MVVM’s Model (use cases), handling business logic.
+- **Data Layer**: Part of MVVM’s Model, including repositories and mappers (API-to-domain mapping).
 - **Example**:
   - **View**: Jetpack Compose `ProductScreen` observes `ProductViewModel`.
   - **ViewModel**: Calls `GetProductsUseCase` and maps domain models to UI models.
@@ -130,21 +130,30 @@ fun ProductScreen(viewModel: ProductViewModel) {
 - **Dependency Inversion**: High-level modules (use cases) depend on abstractions (repository interfaces), not implementations.
 
 ## Performance Considerations
-- Use Android Studio’s **Profiler** (as you mentioned) to monitor performance across layers.
+- Use Android Studio’s **Profiler**  to monitor performance across layers.
 - Optimize data fetching with coroutines (e.g., `viewModelScope`) to avoid blocking the UI thread.
 - Cache data in the repository to reduce network calls, improving app responsiveness.
 
-## Common Interview Questions
+## Common Questions
 1. **“How do you implement Clean Architecture in an Android app?”**
-   - **Answer**: “I structure the app into Presentation (ViewModel, Compose), Domain (use cases), and Data (repositories, mappers) layers. For a product list, I used `GetProductsUseCase` to handle business logic, `ProductRepository` to fetch data, and a ViewModel to update a Compose UI, ensuring modularity.”
+   - **Answer**: I structure the app into Presentation (ViewModel, Compose), Domain (use cases), and Data (repositories, mappers) layers. For a product list, I used `GetProductsUseCase` to handle business logic, `ProductRepository` to fetch data, and a ViewModel to update a Compose UI, ensuring modularity.
 2. **“Why use Clean Architecture with MVVM?”**
    - **Answer**: “Clean Architecture enhances MVVM by isolating business logic in the Domain layer’s use cases, making it testable and decoupled. In an e-commerce app, I used Clean Architecture to swap a mock API for testing without changing the ViewModel or UI.”
 3. **“How do you handle mappers in Clean Architecture?”**
    - **Answer**: “Mappers reside in the Data layer to convert API models to domain models, as I did with `ProductMapper` to transform `ApiProduct` to `Product`. This decouples the Domain layer from external data structures.”
 
-## Practice Question
-You’re asked in an interview: “Describe how you’d implement a feature to display a user’s order history using Clean Architecture in an Android app.” Explain:
-- The structure of the Presentation, Domain, and Data layers.
-- How you’d use a use case (e.g., `GetOrderHistoryUseCase`) and a mapper (e.g., `OrderMapper`).
-- How you’d integrate with Jetpack Compose and optimize performance (e.g., using `LazyColumn`, Profiler).
-Provide a brief code snippet to illustrate your approach.
+4. **How clean Architecture differsfrom MVVM architecture**
+     - **Answer**:
+        | Feature  | MVVM    | Clean Architecture   |
+        | -------- | ------------------------- | ----------------------------------- |
+        | Scope               | UI-level pattern          | Full app-level layered architecture |
+        | Layers              | View, ViewModel, Model    | Presentation, Domain, Data          |
+        | Use Cases           | ❌ Usually absent          | ✅ Central to domain logic           |
+        | Dependency Rule     | Flexible                  | Strict inward dependencies only     |
+        | Domain Isolation    | ❌ Mixed logic             | ✅ Completely separate (testable)    |
+        | Android-free domain | ❌ Often Android-dependent | ✅ Pure Kotlin (no Android imports)  |
+        | Testing Ease        | Moderate                  | High (pure, testable components)    |
+        | Complexity          | Low to Medium             | Medium to High                      |
+
+
+In fact, most real-world scalable Android projects use Clean Architecture with MVVM in the presentation layer.
