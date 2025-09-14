@@ -752,6 +752,98 @@ Risk Mitigation Strategies
 
 
 
+## PKI system
+
+PKI is a system that helps people share private information securely over the internet — like passwords, messages, or bank details — without letting bad guys snoop.
+
+You and your best friend want to share secret notes in school, but you don’t want anyone else to read them.
+
+
+Public Key = Open Locker
+Anyone can put a message in, but once it's locked, only your friend can open it with their private key.
+This open locker is like a public key — anyone can use it to send you stuff securely.
+
+Private Key = Secret Key to Open Locker
+ When they get the locker, they use their private key to open it and read the message.
+ This secret key is like a private key — only the owner can use it to open and read the secure message.
+
+Certificates = School ID Cards
+The school helps by issuing a certificate — like a school ID — proving the locker really belongs to your friend.
+  
+This certificate is like a digital certificate, and it’s signed by a Certificate Authority (CA) — a trusted group that says “Yes, this locker is really your friend’s.”
+
+ In Short
+- PKI = System for secure digital communication
+- Public Key = Open locker anyone can use to send secure stuff
+- Private Key = Secret key to open the locker
+- Certificate = School ID to prove the locker is really yours
+- Certificate Authority (CA) = The school (trusted organization) that issues IDs
+
+
+```mermaid
+sequenceDiagram
+    participant ENDPOINT
+    participant CLOUD as CLOUD - Backend CA
+
+    ENDPOINT->>ENDPOINT: Generate private & public key (Keystore)
+    ENDPOINT->>+CLOUD: Send CSR (Certificate Signing Request)
+    activate CLOUD
+    CLOUD->>CLOUD: Sign CSR with CA's private key
+    CLOUD-->>ENDPOINT: Return signed certificate
+    deactivate CLOUD
+
+    ENDPOINT->>ENDPOINT: Store certificate with private key
+    ENDPOINT->>+CLOUD: Use certificate to authenticate (e.g., mTLS)
+    activate CLOUD
+    CLOUD-->>ENDPOINT: Validate cert → Send cookie / token
+    deactivate CLOUD
+```
+client sends CSR to server
+```json
+CSR = {
+  public_key: [client's public key],
+  subject: "Vishal Gupta, vishal@example.com",
+  signature: sign(hash(public_key + subject), client_private_key)
+}
+```
+
+When the server receives the CSR:
+
+- Verifies the CSR signature
+-  It uses the client’s public key (included in CSR)
+-  Confirms that only someone with the private key could've created the signature
+- If valid, creates a certificate by:
+    ```
+    certificate = {
+            subject: "Vishal Gupta",
+            public_key: [client public key],
+            issuer: "CA Name",
+            validity: from-to dates,
+            ...
+            signature: sign(hash(cert_data), CA_private_key)
+    }
+
+    ```
+
+✔️ CSR is signed by the client, to prove key ownership
+
+✔️ Certificate is signed by the CA, to prove identity validity
+
+❌ The CA does not use the CSR signature directly in the certificate
+
+✅ The CA uses the data from CSR (like public key + subject) and wraps it into a signed certificate
+
+🔐 CSR = "Please issue me a certificate. Here’s my public key and who I am. And look — I signed it with my private key to prove it’s really me."
+
+🛡️ Certificate = "I, the CA, confirm that this public key belongs to Vishal. Here’s my signature to vouch for it."
+
+The certificate has its own new signature from the CA.
+The client’s CSR signature is not included anymore.
+
+| Thing       | Signed by            | Purpose                             | Included in cert? |
+| ----------- | -------------------- | ----------------------------------- | ----------------- |
+| CSR         | Client (private key) | Prove they own the public key       | ❌ No              |
+| Certificate | CA (CA private key)  | CA vouches for subject & public key | ✅ Yes             |
 
 
 ## Security Learning  

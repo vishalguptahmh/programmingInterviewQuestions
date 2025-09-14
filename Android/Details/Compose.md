@@ -46,7 +46,7 @@
 3. ✅ Basic **Layouts**:
 
    - **Basic**: `Column`, `Row`, `Box` for simple arrangements.
-   - **Advanced**: `ConstraintLayout` for complex positioning, `LazyColumn`/`LazyRow` for efficient lists (as you mentioned replacing RecyclerView with `LazyColumn`).
+   - **Advanced**: `ConstraintLayout` for complex positioning, `LazyColumn`/`LazyRow` for efficient lists.
    - **Example**:
      ```kotlin
      @Composable
@@ -137,6 +137,7 @@
                 }
                 ```
         2. **DisposableEffect**:
+            -  "Do something when I'm on screen, and undo it when I’m gone."
             - Manages side effects with cleanup (e.g., registering/unregistering listeners).
             - **Use Case**: Start/stop a service when a composable enters/leaves composition.
             - **Example**:
@@ -366,16 +367,16 @@
 
 ## Common Interview Questions
 1. **“How does Jetpack Compose differ from traditional View-based systems?”**
-   - **Answer**: “Compose is declarative, using Kotlin composables to describe UI as a function of state, unlike View-based systems’ XML and imperative updates. For a product list, I used `LazyColumn` in Compose, eliminating RecyclerView’s adapter, reducing code significantly (as you mentioned).”
+   - **Answer**: “Compose is declarative, using Kotlin composables to describe UI as a function of state, unlike View-based systems’ XML and imperative updates. For a product list, I used `LazyColumn` in Compose, eliminating RecyclerView’s adapter, reducing code significantly.”
 2. **“How do you handle side effects in Jetpack Compose?”**
    - **Answer**: “I use `LaunchedEffect` for one-time data fetching, `rememberCoroutineScope` for user actions like toasts, and `DisposableEffect` for resource management. In a project, I used `LaunchedEffect` to fetch cart data on screen load.”
 3. **“How do you optimize Compose performance?”**
-   - **Answer**: “I use `remember`, `key` in `LazyColumn`, and state hoisting. In a list feature (like your `LazyColumn` example), I used Profiler to reduce recompositions by adding `key = { item.id }`, improving performance.”
+   - **Answer**: “I use `remember`, `key` in `LazyColumn`, and state hoisting. In a list feature, I used Profiler to reduce recompositions by adding `key = { item.id }`, improving performance.”
 4. **“How do you manage complex UI states in Compose?”**
    - **Answer**: “I use sealed classes (`Loading`, `Success`, `Error`) with `StateFlow` in ViewModel. For a profile screen, I displayed a loading indicator, data, or error based on state, ensuring a robust UX.”
 5. **“How does the Modifier system work?”**
    - **Answer**: “Modifiers customize composables in order (e.g., `padding`, `clickable`). I created a `customBorder` modifier for consistent styling across buttons in an app.”
-6 **"Why Should i choose Compose instead of XML?"**
+6. **"Why Should i choose Compose instead of XML?"**
     - **Answer**: 
     1. **Declarative UI**:
     - Compose uses Kotlin-based `@Composable` functions to describe UI as a function of state, making it intuitive and reducing imperative boilerplate compared to XML’s static layouts.

@@ -14,7 +14,7 @@
 - DataStore
 - WorkManager
 - Paging
-- UI <a href="#jetpack-compose">Compose</a>
+- <a href="Details/Compose.md#jetpack-compose">Compose</a>
 
 # Coroutines
 - Suspend
@@ -35,17 +35,15 @@
 - <a href="Kotlin.md#flow">FLOW</a> 
 
 # Basic Android Components 
-- Activity Fragment Lifecycle
+- <a href="/Android/Details/ActivityFragment.md">Activity Fragment Lifecycle</a> 
 - <a href="#SSL-Pinning">SSL Pinning</a> 
 - SQLITE
 - Whats new in Android?
-- MVP vs MVI vs <a href="MVP_vs_MVVM_Comparison.markdown">MVVM</a> : Differences and use cases.
-- ViewModel survival during configuration changes: Understand ViewModel internals.
+- <a href="MVP_vs_MVVM_Comparison.markdown">MVP vs MVI vs MVVM</a> : Differences and use cases.
+- <a href="./Details/DeepDocument.md#how-viewmodel-survives-configuration-changes-in-android"> ViewModel survival during configuration changes: Understand ViewModel internals.</a>
 - RecyclerView view caching: How RecyclerView handles view caching internally.
 - Android Handler, Looper, and message queue: Their roles in Android threading.
 - Normal class vs data class: Differences in Kotlin.
-- Activity and Fragment Lifecycle: Understand their lifecycle methods.
-- Activity launch modes: Different launch modes in Android.
 - Memory Management and solving memory leaks: Techniques to manage memory efficiently.
 - StateFlow vs SharedFlow vs LiveData: Differences and when to use each.
 - App performance improvement: Strategies to enhance app performance.
@@ -112,7 +110,7 @@ It manages data sharing between different applications. Example: Sharing contact
 
 
 
-## SSL Pinning
+# SSL Pinning
 #### What is SSL ?
 SSL (Secure Sockets Layer) is a protocol for establishing authenticated and encrypted links between networked computers and servers.
 
@@ -121,7 +119,8 @@ SSL (Secure Sockets Layer) is a protocol for establishing authenticated and encr
 SSL encrypts the data exchanged between our server and app, and the attacker middle man can’t view the actual data transmitted. Actual data exchanged will only be visible to our Server and App.
 
 #### What is SSL pinning?
-It is a process where we can check the authenticity of a HOST by checking its core X509 certificate. This X509 certificate is the integral part of SSL. we can find more about it here X509 certificate.
+It is a process where we can check the authenticity of a HOST by checking its core X509 certificate. This X509 certificate is the integral part of SSL.
+
 SSL pinning is a process which forces our client App to validate the server’s certificate against a known copy.
 
 
@@ -207,7 +206,7 @@ add this file to `AndroidManifest.xml`
 ```
 
 
-## launch modes 
+# launch modes 
 We use launchMode to give instructions to the Android operating system about how to launch the activity
 
 4 types of launch modes

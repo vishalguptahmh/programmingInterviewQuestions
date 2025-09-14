@@ -1,6 +1,6 @@
 # Kotlin
 
-- <a href ="Questions">Structured Concurrency</a>
+- <a href ="#Structured Concurrency">Structured Concurrency</a>
 - val vs const val: Differences and usage scenarios.
 - lateinit vs lazy: When to use each and how they work.
 - Lambda and higher-order functions: Benefits and examples.
@@ -242,11 +242,30 @@ Log.d("After run blocking " )
 - Global scope is living till app dies what is time to live for runblocking as its working on main thread?
 
 
-### Scopes
-Scopes in Kotlin Coroutines are very useful because we need to cancel the background task as soon as the activity is destroyed
+### Coroutine Scopes
+CoroutineScope is like a parent supervising a group of workers (coroutines).
+If the parent is fired or leaves the building (cancelled), all the workers must stop.
+
+A CoroutineScope defines where coroutines live and how long they live.
+
+- It ties a group of coroutines to a lifecycle (e.g., an Activity, ViewModel, or custom object).
+- When the scope is cancelled, all its child coroutines are also cancelled.
 
 - lifecycleScope : to cancle background task as soon as activity is destroyed
 - ViewModelScope : to cancel background task as soon as viewmodel is destroyed
+
+
+| Scope Name                 | Lifecycle Awareness | Blocks Thread? | Typical Use Case                        |
+| -------------------------- | ------------------- | -------------- | --------------------------------------- |
+| `runBlocking`              | ❌ No                | ✅ Yes          | Tests, `main()` functions               |
+| `coroutineScope`           | ✅ Yes (Structured)  | ❌ No           | Suspend functions with children         |
+| `supervisorScope`          | ✅ Yes (Structured)  | ❌ No           | Isolated child coroutine failure        |
+| `GlobalScope`              | ❌ No                | ❌ No           | Rare, long-lived background jobs        |
+| `viewModelScope`           | ✅ ViewModel         | ❌ No           | ViewModel-related async work            |
+| `lifecycleScope`           | ✅ Activity/Fragment | ❌ No           | UI or network work bound to UI          |
+| `rememberCoroutineScope()` | ✅ Compose           | ❌ No           | UI state work in Composables            |
+| `Custom CoroutineScope`    | ✅ If managed        | ❌ No           | Utility classes, repositories, services |
+
 
 ### Exception handling
  we generally handle exceptions using try catch but in coroutines there is another way also
@@ -274,7 +293,7 @@ GlobalScope.launch(Dispatchers.Main + handler) {
 
 For async we have to use try catch only
 
-IN below code i want to call two apis in parrlel if anyone fails it should return empty list. how can we do?
+In below code i want to call two apis in parllel if anyone fails it should return empty list. how can we do?
 
 ```kotlin
 //Question

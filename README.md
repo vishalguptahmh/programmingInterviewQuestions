@@ -9,9 +9,12 @@
 | geting element from hashmap| `map.getOrDefault(key,0)`|
 | putting element from hashmap| `map.put(key,0)`|
 | containing element in hashmap| `map.contains(key,0)`|
+|convert to binary | `Integer.toString(number,2)`|
 
 
 
+
+- Getting character of string s ="abc" => s.charAt(i) 
 
 
 ### Asked Questions in interview 
