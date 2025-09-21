@@ -129,7 +129,7 @@ fun ProductScreen(viewModel: ProductViewModel) {
 }
 ```
 
-## Applying SOLID Principles (as you mentioned)
+## Applying SOLID Principles
 - **Single Responsibility**: Each layer/class (e.g., use case, repository) has one responsibility.
 - **Open/Closed**: Use cases and repositories are open for extension (e.g., new data sources) but closed for modification.
 - **Liskov Substitution**: Repository implementations can be swapped without affecting use cases.

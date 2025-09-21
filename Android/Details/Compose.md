@@ -7,7 +7,17 @@
 - Imperative (XML): You tell how to build the UI step by step.
 - Declarative (Compose): You describe what the UI should look like for a given state.
 
-- **Key Characteristics**:
+ ✅ Imagine telling someone to draw a smiley face:
+- Imperative: “First draw a circle, now two dots for eyes one by one, then a curved line for a smile.”
+- Declarative: “Draw a happy face.”
+
+Compose is like declarative drawing — you tell what you want, not every little step.
+
+Relating to XML and Compose
+- XML describes how the UI should be built in detailed steps (imperative part behind the scenes by Android inflating views).
+- Compose describes what UI you want for the current state, and the system handles updating/redrawing automatically.
+
+**Key Characteristics**:
   - **Declarative**: UI is defined as `@Composable` functions that react to state changes.
   - **Reactive**: State-driven recomposition updates only affected UI components.
   - **Component-Based**: Modular, reusable composables for complex UIs.
@@ -136,6 +146,10 @@
                     Text(profile?.name ?: "Loading...")
                 }
                 ```
+            - When a part of your screen shows up or something important changes
+            - LaunchedEffect runs some job once, like fetching data, starting a timer, or doing something that takes time.
+            - If the important thing changes again, it stops the old job and starts a new one.
+            - If the part of the screen goes away, it stops the job.
         2. **DisposableEffect**:
             -  "Do something when I'm on screen, and undo it when I’m gone."
             - Manages side effects with cleanup (e.g., registering/unregistering listeners).
@@ -163,6 +177,12 @@
                     Text("Analytics Tracked")
                 }
                 ```
+            - SideEffect: runs after every recomposition, synchronously.
+            - that's why Use it only for light, fast, side effects (e.g., logging, analytics).
+            - Avoid expensive or state-changing operations here to prevent performance issues.
+            - For more complex or suspend functions, use other effect APIs like LaunchedEffect.
+
+    
         4. **rememberCoroutineScope**:
             - Provides a coroutine scope tied to the composable’s lifecycle for launching coroutines outside `LaunchedEffect`.
             - **Use Case**: Trigger side effects on user actions (e.g., button clicks).
@@ -178,6 +198,13 @@
                     }
                 }
                 ```
+            -   |Feature	|LaunchedEffect	| rememberCoroutineScope
+                | --	| --	| --	| 
+               	| Trigger		| Auto on composition/key change		| Manual coroutine launch	| 
+	            | Lifecycle		| Canceled & restarted on key change or disposal		| Scope persists as long as composable alive	| 
+	            | Use case		| Declarative side effects, e.g. data fetch		| User-triggered events, e.g. button press	| 
+        	    | Composable?	| Yes	| 	No	| 
+
         5. **produceState**:
             - Converts non-Compose reactive streams (e.g., Flow) into Compose state.
             - **Use Case**: Fetch data reactively from a Flow.
@@ -194,14 +221,7 @@
                 }
                 ```
 
-    - Use LaunchedEffect, SideEffect, or rememberCoroutineScope for side effects.
-        ```kotlin
-        LaunchedEffect(Unit) {
-            // Called once on composition
-            fetchData()
-        }
-        ```
-
+    - 
         | Question                           | Answer Hint                                  |
         | ---------------------------------- | -------------------------------------------- |
         | What is `@Composable`?             | Marks a function that defines UI             |
@@ -309,24 +329,60 @@
 
 ## Performance Optimization
 - **Techniques**:
+  - Use Android Studio’s **Profiler** to monitor recompositions and memory.
   - Use `remember` to cache expensive objects.
   - Add `key` to `LazyColumn`/`LazyRow` for efficient list updates (as you noted with `LazyColumn`).
+    - **Example**:
+    ```kotlin
+    @Composable
+    fun OptimizedList(products: List<Product>) {
+        LazyColumn {
+            items(products, key = { it.id }) { product ->
+                Text(
+                    product.name,
+                    modifier = Modifier.remember { Modifier.padding(8.dp) }
+                )
+            }
+        }
+    }
+    ```
   - Hoist state to avoid unnecessary recompositions.
-  - Use Android Studio’s **Profiler** (as you mentioned) to monitor recompositions and memory.
-- **Example**:
-  ```kotlin
-  @Composable
-  fun OptimizedList(products: List<Product>) {
-      LazyColumn {
-          items(products, key = { it.id }) { product ->
-              Text(
-                  product.name,
-                  modifier = Modifier.remember { Modifier.padding(8.dp) }
-              )
-          }
-      }
-  }
-  ```
+    
+    Example Without hoisted state:
+    ```kotlin
+    @Composable
+    fun Counter() {
+        var count by remember { mutableStateOf(0) }
+        Button(onClick = { count++ }) {
+            Text("Count: $count")
+        }
+    }
+
+    ```
+
+    Here count is local state inside the composable.
+
+    Example With hoisted state:
+
+    ```kotlin
+        @Composable
+        fun Counter(count: Int, onIncrement: () -> Unit) {
+            Button(onClick = onIncrement) {
+                Text("Count: $count")
+            }
+        }
+
+        @Composable
+        fun Parent() {
+            var count by remember { mutableStateOf(0) }
+            Counter(count, onIncrement = { count++ })
+        }
+
+    ```
+    Here, Parent owns the state and passes it down to Counter. Counter itself is stateless, making it reusable and avoiding unnecessary recomposition.
+
+
+
 
 ## Accessibility
 - Use `semantics` modifier for screen reader support.
